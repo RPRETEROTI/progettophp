@@ -1,0 +1,305 @@
+$(window).resize(function() {
+    var width = $(window).width();
+    if (width < 769) {
+       
+    }
+    else {
+        //Do Something Else
+    }
+});
+
+
+	  <script>
+	  function myFunction() {
+
+
+$(document).ready(function(){
+    $(".vmenu").mouseover(function(){
+        $(this).css("background-color","red");
+    });
+$(".vmenu").mouseout(function(){
+        $(this).css("background-color","");
+    });
+
+});
+</script>
+		 
+	
+	
+	<script type="text/javascript">
+	function cambiamenu(){
+		
+		$(".nave").addClass("responsive");
+		
+	}
+</script>
+	
+	
+	<script type="text/javascript">
+	function ritornamenu(){
+		
+		$(".nave").removeClass("responsive");
+		
+	}
+</script>
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	  
+	  
+
+
+
+
+
+
+
+
+		<?php 
+						       session_start();?>	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <style>
+	  
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+MENU WORK
+
+	.nave ul{	
+list-style-type:none;
+overflow:hidden;
+
+}
+
+.nave li{	
+font-size:28px;
+display:inline;
+text-align: center;
+padding: 20px 8px;
+
+text-decoration:none;
+
+}
+
+
+	  
+
+
+li.drop	{
+display:block-inline;
+ } 
+
+	
+	
+	
+	
+	
+	li a#inizio {
+ color:white;
+border-bottom:4px solid blue; 
+background-color:black;
+ } 
+
+li a.pagina{
+	
+	border-bottom:4px solid white; 
+	color:black;
+   
+   
+	
+}
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+  body{
+			font-size:100%;width:100%;
+		}
+	  
+
+
+	
+
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+#logos1{width:100%;height:40%;
+	}	
+#logos{width:100%;height:50%;
+	}
+	
+	
+	
+
+	.prima { 
+
+
+transition: top 0.1s;
+background-color:red;
+z-index:5;
+ width:100%; }
+
+ .row.nave {
+
+margin:0%;
+background-color:#7fc4f5;
+
+  transition: top 0.1s;
+z-index:5;width:100%;padding:0%;
+  }	
+  
+  
+  	
+
+
+	
+	
+	.nave a.icon { display: none;
+position: absolute;font-size:30px;
+right: 0;
+top: 0;
+}
+	
+
+@media screen and (max-width:800px) {
+
+.nave.prima.log {position:absolute; top:.7em; left:30px;}
+
+.nave li{display:none;}
+ .nave a.icon {
+ display: block;
+}
+
+.nave.responsive li{display:block;text:align:left;}
+.nave.responsive {position: relative;}
+ a.icon {
+float:right;
+display:block;
+}
+}	
+.content {padding: 350px 30px 0; }	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	.loger{
+  background-color: red;
+}
+.aser {
+  background-color: green;
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+.subdrop{
+  display:none;
+position:absolute;right:260px;top:50px;
+ background-color: #f9f9f9;	
+ }
+	
+.subdrop a{
+ color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+	
+.drop:hover .subdrop {
+    display: block;
+}
+.subdrop a:hover {
+  background-color: #ddd;
+}
+	
+	</style>
