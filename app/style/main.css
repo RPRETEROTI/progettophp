@@ -1,0 +1,304 @@
+@import "header.css";
+@import "footer.css";
+body {
+  font-size: 100%;
+  width: 100%;
+  line-height: 1.8;
+}
+
+/* <style> stile index
+		body {
+			font-size: 100%;
+			width: 100%;
+			line-height: 1.8;
+		}
+
+
+		.content .description {
+			font-family: Swistblnk Monthoers;
+			justify-content: center;
+			display: flex;
+			align-items: center;
+			font-weight: bold;
+			padding: 24px;
+			background-color: #039ed8;
+		}
+
+		.content .home-call-to-action {
+			background: #039ed8;
+			display: flex;
+			height: 460px;
+			border-radius: 35%;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.content .home-call-to-action .artists,
+		.content .home-call-to-action .program {
+			color: white;
+			font-size: 25px;
+			font-weight: bold
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		.carousel-caption {
+			border: 4px solid white;
+			height: 300px;
+		}
+
+		.evento {
+			color: red;
+			font-family: Swistblnk Monthoers;
+			font-size: 2em;
+			line-height: 100px;
+			text-align: center;
+			text-transform: uppercase;
+			text-shadow: 0px 0px 10px #323232;
+			position: relative;
+			top: 10px;
+		}
+
+		.claim-carousel {
+			color: white;
+			font-family: Swistblnk Monthoers;
+			font-size: 1.5em;
+			line-height: 60px;
+			text-align: center;
+			text-transform: uppercase;
+			text-shadow: 0px 0px 10px #323232;
+			position: relative;
+			top: 30px;
+		}
+
+		.imgcarousel {
+			height: 28.5rem;
+		}
+
+		.carousel-container {
+			border: 1px solid blue;
+			z-index: 5;
+		}
+
+		.navigation-menu ul {
+			list-style-type: none;
+
+		}
+
+		.navigation-menu li {
+			display: inline-block;
+			text-align: center;
+			padding: 5px 9px;
+			font-family: Swistblnk Monthoers;
+			text-decoration: none;
+			position: relative;
+		}
+
+		li a#activePage {
+			color: white;
+			border-bottom: 14px solid blue;
+			background-color: black;
+		}
+
+		li a.pagina {
+			border-bottom: 14px solid white;
+			color: black;
+		}
+
+		a.icon {
+			font-size: 30px;
+			color: white;
+			display: block;
+		}
+
+		.navigation-menu {
+			background-color: #7fc4f5;
+			position: fixed;
+			height: 15%;
+			transition: top 0.1s;
+			z-index: 16;
+			width: 100%;
+		}
+
+		#subdrop {
+			color: black;
+			padding: 20px 10px;
+			text-decoration: none;
+			text-align: center;
+			background-color: #f9f9f9;
+			display: inline-block;
+		}
+
+		#subdrop:hover {
+			background-color: blue;
+		}
+
+
+		@media screen and (min-width:1280px) {
+			.navigation-menu li {
+				font-size: 20px;
+			}
+
+			.navigation-menu {
+				height: 18%;
+			}
+
+			.content {
+				padding-top: 115px;
+			}
+		}
+
+		@media screen and (min-width:768px) and (max-width:1279px) {
+			.navigation-menu li {
+				font-size: 15px;
+			}
+
+			.navigation-menu {
+				height: 15%;
+			}
+
+			.content {
+				padding-top: 90px;
+			}
+		}
+
+		@media screen and (min-width:360px) and (max-width:767px) {
+			.content {
+				padding-top: 62px;
+			}
+
+			.navigation-menu {
+				height: 10%;
+			}
+		}
+
+		.navigation-menu {
+			background-color: #039ed8;
+		}
+
+		.container-menu-icon {
+			display: flex;
+			justify-content: center;
+			height: 100%;
+			align-items: center;
+		}
+
+
+		.mobileview {
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: #1f57a2;
+		}
+
+		.mobilecontainer ul {
+			position: relative;
+			margin-top: 10px;
+			list-style-type: none;
+		}
+
+		.mobilecontainer li a#activePage {
+			color: white;
+			border-bottom: 10px solid blue;
+			background-color: black;
+			display: block;
+			text-align: center;
+			padding: 5px 9px;
+			font-family: Swistblnk Monthoers;
+			text-decoration: none;
+			position: relative;
+			font-size: 35px;
+		}
+
+		.mobilecontainer li a.pagina {
+			border-bottom: 10px solid white;
+			color: black;
+			display: block;
+			text-align: center;
+			padding: 5px 9px;
+			font-family: Swistblnk Monthoers;
+			text-decoration: none;
+			position: relative;
+			font-size: 35px;
+		}
+
+		.mobilecontainer li a.icona {
+			font-size: 40px;
+			color: black;
+			display: block;
+			text-align: left;
+			padding: 5px 9px;
+			font-family: Swistblnk Monthoers;
+			text-decoration: none;
+			position: relative;
+			font-size: 35px;
+		}
+
+		.mobilecontainer li a#subdrop {
+			font-size: 50px;
+			color: black;
+			display: block;
+			text-align: right;
+			padding: 5px 9px;
+			font-family: Swistblnk Monthoers;
+			text-decoration: none;
+			position: relative;
+			font-size: 35px;
+			background-color: #f9f9f9;
+		}
+
+		.mobilecontainer li a#subdrop:hover {
+			background-color: blue;
+		}
+
+		.abbonamento {
+			font-family: Swistblnk Monthoers;
+			font-size: 3em;
+
+		}
+
+		.footer .title {
+			font-family: Swistblnk Monthoers;
+			font-size: 2em;
+			text-align: center;
+			font-weight: bold
+		}
+
+		.footer .section-brand {
+			border-top: 1px solid black;
+			text-align: center;
+		}
+
+		.footer .section-brand p {
+			text-align: center;
+			font-family: Swistblnk Monthoers;
+			font-size: 1em;
+
+		}
+
+		.footer .column {
+			border: 5px solid #1ab3c1;
+		}
+
+		.footer #logo {
+			width: 50%;
+			height: 100px;
+		}
+
+		.footer {
+			background-color: white;
+		}
+
+		.marchio {
+			margin-left: 5em;
+			margin-right: 5em;
+			height: 40%;
+		}
+
+		.logo-home {
+			margin-top: 9rem;
+			height: 20rem;
+		}
+	</style> */

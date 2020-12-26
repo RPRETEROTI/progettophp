@@ -1,0 +1,155 @@
+.navigation-menu {
+  background-color: #7fc4f5;
+  position: fixed;
+  height: 15%;
+  transition: top 0.1s;
+  z-index: 16;
+  width: 100%;
+}
+.navigation-menu ul {
+  list-style-type: none;
+  position: relative;
+  top: 30px;
+}
+
+.navigation-menu li {
+  display: inline-block;
+  text-align: center;
+  padding: 5px 9px;
+  font-family: Swistblnk Monthoers;
+  text-decoration: none;
+  position: relative;
+}
+
+li a#activePage {
+  color: white;
+  border-bottom: 14px solid blue;
+  background-color: black;
+}
+
+li a.pagina {
+  border-bottom: 14px solid white;
+  color: black;
+}
+
+a.icon {
+  font-size: 30px;
+  color: white;
+  display: block;
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation-menu li {
+    font-size: 20px;
+  }
+
+  .navigation-menu {
+    height: 18%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .navigation-menu li {
+    font-size: 15px;
+  }
+
+  .navigation-menu {
+    height: 15%;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+  .navigation-menu {
+    height: 10%;
+  }
+}
+
+.navigation-menu {
+  background-color: #039ed8;
+}
+
+.container-menu-icon {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.mobileview {
+  display: none;
+  width: 100%;
+  height: 700px;
+  background-color: #1f57a2;
+}
+
+.mobilecontainer ul {
+  position: relative;
+  margin-top: 10px;
+  list-style-type: none;
+}
+
+.mobilecontainer li a#activePage {
+  color: white;
+  border-bottom: 10px solid blue;
+  background-color: black;
+  display: block;
+  text-align: center;
+  padding: 5px 9px;
+  font-family: Swistblnk Monthoers;
+  text-decoration: none;
+  position: relative;
+  font-size: 35px;
+}
+
+.mobilecontainer li a.pagina {
+  border-bottom: 10px solid white;
+  color: black;
+  display: block;
+  text-align: center;
+  padding: 5px 9px;
+  font-family: Swistblnk Monthoers;
+  text-decoration: none;
+  position: relative;
+  font-size: 35px;
+}
+
+.mobilecontainer li a.icona {
+  font-size: 40px;
+  color: black;
+  display: block;
+  text-align: left;
+  padding: 5px 9px;
+  font-family: Swistblnk Monthoers;
+  text-decoration: none;
+  position: relative;
+  font-size: 35px;
+}
+
+.mobilecontainer li a#subdrop {
+  font-size: 50px;
+  color: black;
+  display: block;
+  text-align: right;
+  padding: 5px 9px;
+  font-family: Swistblnk Monthoers;
+  text-decoration: none;
+  position: relative;
+  font-size: 35px;
+  background-color: #f9f9f9;
+}
+.mobilecontainer #subdrop {
+  color: black;
+  padding: 20px 10px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #f9f9f9;
+  display: inline-block;
+}
+
+.mobilecontainer #subdrop:hover {
+  background-color: blue;
+}
+
+.mobilecontainer li a#subdrop:hover {
+  background-color: blue;
+}

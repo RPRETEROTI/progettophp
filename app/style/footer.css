@@ -1,0 +1,29 @@
+.footer {
+  background-color: white;
+}
+.footer .title {
+  font-family: Swistblnk Monthoers;
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.footer .section-brand {
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+.footer .section-brand p {
+  text-align: center;
+  font-family: Swistblnk Monthoers;
+  font-size: 1em;
+}
+
+.footer .column {
+  border: 5px solid #1ab3c1;
+}
+
+.footer #logo {
+  width: 50%;
+  height: 100px;
+}
