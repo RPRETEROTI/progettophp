@@ -126,7 +126,6 @@ a.icon {
 }
 
 .mobilecontainer li a#subdrop {
-  font-size: 50px;
   color: black;
   display: block;
   text-align: right;
@@ -137,19 +136,6 @@ a.icon {
   font-size: 35px;
   background-color: #f9f9f9;
 }
-.mobilecontainer #subdrop {
-  color: black;
-  padding: 20px 10px;
-  text-decoration: none;
-  text-align: center;
-  background-color: #f9f9f9;
-  display: inline-block;
-}
-
 .mobilecontainer #subdrop:hover {
-  background-color: blue;
-}
-
-.mobilecontainer li a#subdrop:hover {
   background-color: blue;
 }

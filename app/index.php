@@ -5,83 +5,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style/main.css">
-
-	<script>
-		$(document).ready(function() {
-			$(".notActive").mouseover(function() {
-				$(this).css("background-color", "red");
-			});
-			$(".notActive").mouseout(function() {
-				$(this).css("background-color", "");
-			});
-		});
-	</script>
-	<script type="text/javascript">
-		function cambiamenu() {
-			$(".deskview").hide();
-			$("footer").hide();
-			$(".mobileview").show();
-		}
-	</script>
-	<script type="text/javascript">
-		function ritornamenu() {
-			$(".mobileview").hide();
-			$(".deskview").show();
-			$("footer").show();
-		}
-	</script>
-	<script>
-		$(document).ready(function() {
-			if (document.documentElement.clientWidth >= 1279) {
-				$(window).scroll(function() {
-					if ($(document).scrollTop() > 150) {
-						$(".navigation-menu").css("height", "20%");
-						$(".navigation-menu ul").css("top", "40px");
-					} else {
-						$(".navigation-menu").css("height", "18%");
-						$(".navigation-menu ul").css("top", "30px");
-					}
-				});
-			}
-		});
-	</script>
-	<script>
-		$(document).ready(function() {
-			if (document.documentElement.clientWidth < 1279) {
-				$(window).scroll(function() {
-					if ($(document).scrollTop() > 150) {
-						$(".navigation-menu").css("height", "17%");
-						$(".navigation-menu ul").css("top", "40px");
-					} else {
-						$(".navigation-menu").css("height", "16%");;
-						$(".navigation-menu ul").css("top", "30px");
-					}
-				});
-			}
-		});
-	</script>
-	<script>
-		$(document).ready(function() {
-			if (document.documentElement.clientWidth < 768) {
-				$(window).scroll(function() {
-					if ($(document).scrollTop() > 150) {
-						$(".navigation-menu").css("height", "11%");
-						$(".icon").css("top", "-58px");
-						$(".navigation-menu ul").css("top", "40px");
-					} else {
-						$(".navigation-menu").css("height", "10%");;
-						$(".icon").css("top", "-40px");
-						$(".navigation-menu ul").css("top", "30px");
-					}
-				});
-			}
-		});
-	</script>
 
 	<?php function mypage()
 	{
@@ -128,10 +57,6 @@
 			font-weight: bold
 		}
 
-		h1 {
-			text-align: center;
-		}
-
 		.carousel-caption {
 			border: 4px solid white;
 			height: 300px;
@@ -170,24 +95,6 @@
 			z-index: 5;
 		}
 
-		@media screen and (min-width:1280px) {
-			.content {
-				padding-top: 115px;
-			}
-		}
-
-		@media screen and (min-width:768px) and (max-width:1279px) {
-			.content {
-				padding-top: 90px;
-			}
-		}
-
-		@media screen and (min-width:360px) and (max-width:767px) {
-			.content {
-				padding-top: 62px;
-			}
-		}
-
 		.abbonamento {
 			font-family: Swistblnk Monthoers;
 			font-size: 3em;
@@ -203,6 +110,19 @@
 		.logo-home {
 			margin-top: 9rem;
 			height: 20rem;
+		}
+
+		.deskview .navigation-menu li a#subdrop {
+			color: black;
+			padding: 20px 10px;
+			text-decoration: none;
+			text-align: center;
+			background-color: #f9f9f9;
+			display: inline-block;
+		}
+
+		.deskview #subdrop:hover {
+			background-color: blue;
 		}
 	</style>
 
@@ -365,7 +285,6 @@
 			</div>
 		</div>
 	</footer>
-	</div>
 	<div class="mobileview container-fluid">
 		<div class="mobilecontainer row">
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
