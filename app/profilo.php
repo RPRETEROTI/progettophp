@@ -46,6 +46,10 @@
 			height: 90%;
 		}
 
+		.favourite {
+			text-align: center;
+		}
+
 		.lista {
 			list-style-type: none;
 		}
@@ -95,7 +99,7 @@
 				<a href="#" class="icon" onclick="cambiamenu();">☰</a>
 			</div>
 		</div>
-		<div class="content">
+		<div class="content container-fluid">
 			<div class=" row">
 				<div class="cover col-12">
 					<h1>MyPAGE</h1>
@@ -163,7 +167,7 @@
 
 				echo "</form> </div>";
 				echo "</div>";
-				echo "<div class=\" col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4\">";
+				echo "<div class=\" col-12 col-lg-3\">";
 				echo "<h1 class=\"profilo\">PROFILO</h1>";
 				echo "<ul class=\"lista\">";
 				echo "<li class=\"mypage\">Nome:$nome";
@@ -192,7 +196,7 @@
 
 
 
-				echo "<div class=\"mb-3 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4\">";
+				echo "<div class=\"mb-3 col-12 col-lg-3\">";
 				echo "<h1 class=\"profilo\">I MIEI BIGLIETTI</h1>";
 
 				if ($quante_tuple  == 0) {
@@ -218,52 +222,55 @@
 					echo "</div>";
 				}
 				?>
-			</div>
-		</div>
-	</div>
-	<footer>
-		<div class="footer flex flex-column">
-			<div class="column flex mb-2">
-				<img id="logo" src="assets/images/logo.png" alt="">
-				<div class="section-brand">
-					<p>7-8-9 Settembre 2018<p>
-							<p>Piscinas(Sardegna)<p>
+				<div class="col-12 col-lg-3">
+					<h1 class="profilo">ARTISTI FAVORITI</h1>
+					<p class="favourite">Max Gazze</p>
 				</div>
 			</div>
-			<div class="column flex">
-				<form action="newsletter.php" method="post">
-					<div class="form-group d-flex flex-column align-items-center">
-						<div class="d-flex justify-content-center">
-							<h3 class="title">Newsletter</h5>
-						</div>
-						<div class="d-flex justify-content-center w-25">
-							<label for="em" class="col-form-label"></label>
-							<input type="email" name="em" id="em" class="form-control" placeholder="Email">
-						</div>
-						<div class="d-flex justify-content-center py-2">
-							<button type="submit" class="btn btn-primary">Iscriviti</button>
-						</div>
+		</div>
+		<footer>
+			<div class="footer flex flex-column">
+				<div class="column flex mb-2">
+					<img id="logo" src="assets/images/logo.png" alt="">
+					<div class="section-brand">
+						<p>7-8-9 Settembre 2018<p>
+								<p>Piscinas(Sardegna)<p>
 					</div>
-				</form>
+				</div>
+				<div class="column flex">
+					<form action="newsletter.php" method="post">
+						<div class="form-group d-flex flex-column align-items-center">
+							<div class="d-flex justify-content-center">
+								<h3 class="title">Newsletter</h5>
+							</div>
+							<div class="d-flex justify-content-center w-25">
+								<label for="em" class="col-form-label"></label>
+								<input type="email" name="em" id="em" class="form-control" placeholder="Email">
+							</div>
+							<div class="d-flex justify-content-center py-2">
+								<button type="submit" class="btn btn-primary">Iscriviti</button>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
-	</footer>
-	<div class="mobileview container-fluid">
-		<div class="mobilecontainer row">
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-				<ul>
-					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
-					<li><a id="subdrop" href="logout.php" tabindex="2" accesskey="8">LOGOUT</a></li>
-					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
-					<li><a class="notActive pagina" href="contacts.php" tabindex="" accesskey="">CONTACTS</a></li>
-					<li> <a id="activePage" href="">MYPAGE</a></li>
+		</footer>
+		<div class="mobileview container-fluid">
+			<div class="mobilecontainer row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+					<ul>
+						<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+						<li><a id="subdrop" href="logout.php" tabindex="2" accesskey="8">LOGOUT</a></li>
+						<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
+						<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
+						<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
+						<li><a class="notActive pagina" href="contacts.php" tabindex="" accesskey="">CONTACTS</a></li>
+						<li> <a id="activePage" href="">MYPAGE</a></li>
 
-				</ul>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
 
 </body>
 

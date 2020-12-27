@@ -9,8 +9,8 @@
 	<script src="js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.js" integrity="sha512-14GPUgKFTeCsgj5WWZpTNQ525GYlOK3DMTqrjsly3TDIDnOUbZ5sWyfI6HqsWUmMmaCoa6q7FHrbq9xdqNhmYg==" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style/main.css">
 
 	<?php
@@ -88,6 +88,11 @@
 			position: relative;
 		}
 
+		.icon {
+			color: white;
+			font-size: 1.5em
+		}
+
 		.deskview .navigation-menu li a#subdrop {
 			color: black;
 			padding: 20px 10px;
@@ -162,6 +167,7 @@
 				echo "</div>";
 				echo "<div class=\"background-artist d-flex artist-name col-12 col-sm-5 col-md-12 col-xl-6\">";
 				echo "<h5  class=\"cantante\">$nomeart</h5>";
+				echo "<i class=\"far fa-heart icon\"></i>";
 				echo "</div></div></div>";
 			}
 			echo "</div>";
@@ -181,7 +187,9 @@
 				echo "<div class=\"artist col-12 col-sm-6 col-md-6 col-xl-6\">";
 				echo "<div class=\"row p-2\">";
 				echo "<div class=\"background-artist  col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5></div>";
+				echo "<h5  class=\"cantante\">$nomeart</h5>";
+				echo "<i class=\"far fa-heart icon\"></i>";
+				echo "</div>";
 				echo "<div style=\"background-image:  url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
 				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\"artist-margin  btn btn-primary\">Acquista</a>";
 				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
@@ -210,6 +218,7 @@
 				echo "</div>";
 				echo "<div class=\"background-artist d-flex artist-name col-12 col-sm-5 col-md-12 col-xl-6\">";
 				echo "<h5  class=\"cantante\">$nomeart</h5>";
+				echo "<i class=\"far fa-heart icon\"></i>";
 				echo "</div></div></div>";
 			}
 			echo "</div>";
@@ -228,7 +237,9 @@
 				echo "<div class=\"artist col-12 col-sm-6 col-md-6 col-xl-6\">";
 				echo "<div class=\"row p-2\">";
 				echo "<div class=\"background-artist  col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5></div>";
+				echo "<h5  class=\"cantante\">$nomeart</h5>";
+				echo "<i class=\"far fa-heart icon\"></i>";
+				echo "</div>";
 				echo "<div style=\"background-image:  url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
 				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\"artist-margin  btn btn-primary\">Acquista</a>";
 				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
@@ -257,6 +268,7 @@
 				echo "</div>";
 				echo "<div class=\"background-artist d-flex artist-name col-12 col-sm-5 col-md-12 col-xl-6\">";
 				echo "<h5  class=\"cantante\">$nomeart</h5>";
+				echo "<i class=\"far fa-heart icon\"></i>";
 				echo "</div></div></div>";
 			}
 			echo "</div>";
@@ -276,7 +288,9 @@
 				echo "<div class=\"artist col-12 col-sm-6 col-md-6 col-xl-6\">";
 				echo "<div class=\"row p-2\">";
 				echo "<div class=\"background-artist  col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante \">$nomeart</h5></div>";
+				echo "<h5  class=\"cantante \">$nomeart</h5>";
+				echo "<i class=\"far fa-heart icon\"></i>";
+				echo "</div>";
 				echo "<div style=\"background-image:  url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
 				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\"artist-margin  btn btn-primary\">Acquista</a>";
 				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
