@@ -1,7 +1,7 @@
 .navigation-menu {
   background-color: #7fc4f5;
   position: fixed;
-  height: 15%;
+  /* height: 15%; */
   transition: top 0.1s;
   z-index: 16;
   width: 100%;
@@ -52,9 +52,8 @@ a.icon {
   .navigation-menu li {
     font-size: 15px;
   }
-
   .navigation-menu {
-    height: 15%;
+    height: 17%;
   }
 }
 
