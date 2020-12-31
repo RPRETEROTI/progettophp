@@ -16,9 +16,6 @@
 
 
 
-	<?php
-	session_start(); ?>
-
 
 
 	<script>
@@ -276,9 +273,7 @@
 					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
 					<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
 					<li><a id="activePage" href="#" tabindex="" accesskey="">CONTACTS</a></li>
-					<?php
-					$mypage = mypage()
-					?>
+
 				</ul>
 			</div>
 			<div class="container-menu-icon col-2 col-sm-2 d-md-none">
@@ -348,17 +343,6 @@
 						</div>
 
 
-						<?php
-						if (isset($_SESSION["faq"])) {
-							echo "<div class=\"form-row\">";
-							echo "<div class=\"form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12\">";
-							echo "<p class=\"profiloo\" >Messaggio ricevuto</p>";
-							echo "</div> </div>";
-						}
-						?>
-
-
-
 
 					</form>
 				</div>
@@ -392,35 +376,7 @@
 			</div>
 		</div>
 	</footer>
-	<div class="mobileview container-fluid">
-		<div class="mobilecontainer row">
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-				<ul>
-					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
-					<?php
-					if (isset($_SESSION["utente"])) {
-						$ut = $_SESSION["utente"];
-						echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
-					} else {
-						echo " <li><a id=\"subdrop\" href=\"registrazione.php?causa=0\">LOGIN</a></li>";
-					}
-					?>
-					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
-					<li><a id="activePage" href="">CONTACTS</a></li>
-					<?php
-					if (isset($_SESSION["utente"])) {
-						$ut = $_SESSION["utente"];
-						echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-					} else {
-						echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
-					}
-					?>
-				</ul>
-			</div>
-		</div>
-	</div>
+
 
 </body>
 

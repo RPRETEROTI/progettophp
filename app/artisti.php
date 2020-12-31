@@ -4,8 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 	<script src="js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
@@ -16,17 +17,6 @@
 	<?php
 	session_start();
 	?>
-
-	<script>
-		$(document).ready(function() {
-			$(".cantante").mouseover(function() {
-				$(this).css("color", "white");
-			});
-			$(".cantante").mouseout(function() {
-				$(this).css("color", "black");
-			});
-		});
-	</script>
 
 	<?php function mypage()
 	{
@@ -110,6 +100,8 @@
 </head>
 
 <body>
+	<script src="js/read-artists.js"></script>
+
 	<div class="deskview container-fluid p-0 m-0 ">
 		<div class="navigation-menu row m-0" id="myTopnav">
 			<div class="col-10 col-sm-10 col-md-3 col-lg-5">
@@ -138,169 +130,7 @@
 				</div>
 			</div>
 
-			<?php
-			$host = "127.0.0.1:3307";
-			$phpuser = "root";
-			$phppwd = "";
-			$dbname = "approcciavanzatiprogetto";
-
-			$conn = new mysqli($host, $phpuser, $phppwd, $dbname);
-
-			//prima riga//
-
-			$sql = "select fotoartista,nome,codice from artisti where nome='my bloody valentine' or nome='samuel'; ";
-
-			$result = $conn->query($sql);
-
-			echo "<div class=\"background-artist row \">";
-
-			while ($row = $result->fetch_assoc()) {
-				$fotoart = $row["fotoartista"];
-				$nomeart = $row["nome"];
-				$codice = $row["codice"];
-
-				echo "<div class=\"artist col-12 col-sm-6\">";
-				echo "<div class=\"row p-2\">";
-				echo "<div style=\"background-image: url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
-				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\" artist-margin  btn btn-primary\">Acquista</a>";
-				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
-				echo "</div>";
-				echo "<div class=\"background-artist d-flex artist-name col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5>";
-				echo "<i class=\"far fa-heart icon\"></i>";
-				echo "</div></div></div>";
-			}
-			echo "</div>";
-			//seconda riga//
-
-			$query = "select fotoartista,nome,codice from artisti where nome='calcutta' or nome='first aid kit'; ";
-
-			$result = $conn->query($query);
-
-			echo "<div class=\"background-artist  row \">";
-
-			while ($row = $result->fetch_assoc()) {
-				$fotoart = $row["fotoartista"];
-				$nomeart = $row["nome"];
-				$codice = $row["codice"];
-
-				echo "<div class=\"artist col-12 col-sm-6 col-md-6 col-xl-6\">";
-				echo "<div class=\"row p-2\">";
-				echo "<div class=\"background-artist  col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5>";
-				echo "<i class=\"far fa-heart icon\"></i>";
-				echo "</div>";
-				echo "<div style=\"background-image:  url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
-				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\"artist-margin  btn btn-primary\">Acquista</a>";
-				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
-
-				echo "</div>";
-				echo "</div></div>";
-			}
-			echo "</div>";
-
-			//terza riga//
-			$query = "select fotoartista,nome,codice from artisti where nome='max gazze' or nome='prodigy'; ";
-
-			$result = $conn->query($query);
-			echo "<div class=\"background-artist row\">";
-
-			while ($row = $result->fetch_assoc()) {
-				$fotoart = $row["fotoartista"];
-				$nomeart = $row["nome"];
-				$codice = $row["codice"];
-
-				echo "<div class=\"artist col-12 col-sm-6\">";
-				echo "<div class=\"row p-2\">";
-				echo "<div style=\"background-image: url(assets/images/$fotoart);\"class=\"container-img-artist  col-12 col-sm-7 col-md-12 col-xl-6 \">";
-				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\" artist-margin  btn btn-primary\">Acquista</a>";
-				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
-				echo "</div>";
-				echo "<div class=\"background-artist d-flex artist-name col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5>";
-				echo "<i class=\"far fa-heart icon\"></i>";
-				echo "</div></div></div>";
-			}
-			echo "</div>";
-
-			//quarta riga//
-			$query = "select fotoartista,nome,codice from artisti where nome='coez' or nome='levante'; ";
-
-			$result = $conn->query($query);
-			echo "<div class=\"background-artist  row\">";
-
-			while ($row = $result->fetch_assoc()) {
-				$fotoart = $row["fotoartista"];
-				$nomeart = $row["nome"];
-				$codice = $row["codice"];
-
-				echo "<div class=\"artist col-12 col-sm-6 col-md-6 col-xl-6\">";
-				echo "<div class=\"row p-2\">";
-				echo "<div class=\"background-artist  col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5>";
-				echo "<i class=\"far fa-heart icon\"></i>";
-				echo "</div>";
-				echo "<div style=\"background-image:  url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
-				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\"artist-margin  btn btn-primary\">Acquista</a>";
-				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
-
-				echo "</div>";
-				echo "</div></div>";
-			}
-			echo "</div>";
-
-			//quinta riga//
-			$query = "select fotoartista,nome,codice from artisti where nome='tazenda' or nome='tame impala'; ";
-
-			$result = $conn->query($query);
-			echo "<div class=\"background-artist row s\">";
-
-			while ($row = $result->fetch_assoc()) {
-				$fotoart = $row["fotoartista"];
-				$nomeart = $row["nome"];
-				$codice = $row["codice"];
-
-				echo "<div class=\"artist col-12 col-sm-6\">";
-				echo "<div class=\"row p-2\">";
-				echo "<div style=\"background-image: url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
-				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\" artist-margin  btn btn-primary\">Acquista</a>";
-				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
-				echo "</div>";
-				echo "<div class=\"background-artist d-flex artist-name col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante\">$nomeart</h5>";
-				echo "<i class=\"far fa-heart icon\"></i>";
-				echo "</div></div></div>";
-			}
-			echo "</div>";
-
-
-			//sesta riga//
-			$query = "select fotoartista,nome,codice from artisti where nome='marlene kuntz' or nome='cosmo'; ";
-
-			$result = $conn->query($query);
-			echo "<div class=\"background-artist  row \">";
-
-			while ($row = $result->fetch_assoc()) {
-				$fotoart = $row["fotoartista"];
-				$nomeart = $row["nome"];
-				$codice = $row["codice"];
-
-				echo "<div class=\"artist col-12 col-sm-6 col-md-6 col-xl-6\">";
-				echo "<div class=\"row p-2\">";
-				echo "<div class=\"background-artist  col-12 col-sm-5 col-md-12 col-xl-6\">";
-				echo "<h5  class=\"cantante \">$nomeart</h5>";
-				echo "<i class=\"far fa-heart icon\"></i>";
-				echo "</div>";
-				echo "<div style=\"background-image:  url(assets/images/$fotoart);\"class=\"container-img-artist col-12 col-sm-7 col-md-12 col-xl-6 \">";
-				echo "<div class=\"\" ><a href=\"accessoticket.php\"  class=\"artist-margin  btn btn-primary\">Acquista</a>";
-				echo "<a  href=\"schedaartista.php?cantantesel=$codice\" class=\"artist-margin  btn btn-primary\">Dettagli</a></div>";
-
-				echo "</div>";
-				echo "</div></div>";
-			}
-			echo "</div>";
-
-			?>
+			<div class="artist-section"></div>
 		</div>
 	</div>
 	<footer>

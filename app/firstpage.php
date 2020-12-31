@@ -13,11 +13,25 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style/main.css">
 
+
+
 	<?php
 	session_start();
 	unset($_SESSION["faq"]);
 	?>
-	<!-- <style>
+	<?php function mypage()
+	{
+		if (isset($_SESSION["utente"])) {
+			$ut = $_SESSION["utente"];
+			echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
+			echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
+		} else {
+			echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
+			echo " <li><a id=\"subdrop\" href=\"registrazione.php?causa=0\">LOGIN</a></li>";
+		}
+	}
+	?>
+	<style>
 		.content .description {
 			font-family: Swistblnk Monthoers;
 			justify-content: center;
@@ -114,7 +128,7 @@
 	</style>
 
 	<title>Piscinas Sounds </title>
-</head> -->
+</head>
 
 <body>
 	<?php
@@ -162,7 +176,7 @@
 	<!-- <script src="js/read-artists.js"></script> -->
 	<!-- <div id='page-content'></div> -->
 
-	<!-- <div class="test"></div>
+	<div class="test"></div>
 	<div class="artist-section"></div>
 
 	<div class="deskview container-fluid p-0 m-0 ">
@@ -177,7 +191,7 @@
 					<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
 					<li><a class="notActive pagina" href="contacts.php" tabindex="" accesskey="">CONTACTS</a></li>
 					<?php
-					// $mypage = mypage();
+					$mypage = mypage();
 					// $mybase=$database;
 					// $result=$resultSet;
 					?>
@@ -294,11 +308,8 @@
 				</div>
 			</div>
 		</div>
-	</div>  -->
+	</div>
 
-	<?php
-	include_once 'firstpage.php';
-	?>
 	<footer>
 		<div class="footer flex flex-column">
 			<div class="column flex mb-2">
@@ -326,7 +337,7 @@
 			</div>
 		</div>
 	</footer>
-	<!-- <div class="mobileview container-fluid">
+	<div class="mobileview container-fluid">
 		<div class="mobilecontainer row">
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 				<ul>
@@ -354,7 +365,7 @@
 				</ul>
 			</div>
 		</div>
-	</div> -->
+	</div>
 </body>
 
 </html>
