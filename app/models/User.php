@@ -5,13 +5,15 @@ class Artist
 
     private $conn;
 
+    public string $username;
+    public string $password;
     public string $name;
-    public string $code;
-    public string $foto;
-    public string $description;
-    public string $video;
-    public string $dataesibizione;
-    public string $oraesibizione;
+    public string $surname;
+    public string $mail;
+    public string $address;
+    public int $civicnumber;
+    public string $city;
+    public array $country;
 
     public function __construct($database)
     {
