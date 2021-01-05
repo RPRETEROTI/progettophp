@@ -9,7 +9,9 @@ include_once '../models/Event.php';
 $db = new APPDatabase();
 $database = $db->getConnection();
 $events = new Event($database);
-$stmt = $events->read();
+$key = $_GET['filterKey'] ? $_GET['filterKey'] : 'all';
+$stmt = $events->filter($key);
+
 if ($stmt->rowCount() > 0) {
     $events = array();
     $events["events"] = array();

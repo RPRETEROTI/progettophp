@@ -4,19 +4,19 @@ header("Access-Control-Allow-Origin: *");
 // definisco il formato della risposta (json)
 header("Content-Type: application/json; charset=UTF-8");
 include_once '../models/APPDatabase.php';
-include_once '../models/Artist.php';
+include_once '../models/Event.php';
 
 
 $db = new APPDatabase();
 $database = $db->getConnection();
-$artist = new Artist($database);
+$event = new Event($database);
 
 // leggo i dati nel body della request (metodo POST)
 $data = json_decode(file_get_contents("php://input"));
-$artist->code = $data->code;
+$event->code = $data->code;
 
 // invoco il metodo create() che crea un nuovo prodotto
-if ($artist->delete()) { // se va a buon fine...
+if ($event->delete()) { // se va a buon fine...
     http_response_code(201); // response code 201 = created
 
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
