@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 	<script src="js/main.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="js/footer.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -83,8 +83,6 @@
 				<ul class="pl-2">
 					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
-					<li><a class="notActive pagina" href="contacts.php" tabindex="" accesskey="">CONTACTS</a></li>
 					<li> <a id="activePage" href="">MYPAGE</a></li>
 					<li><a id="subdrop" href="">LOGIN</a></li>
 				</ul>
@@ -275,32 +273,7 @@
 
 		</div>
 	</div>
-	<footer>
-		<div class="footer flex flex-column">
-			<div class="column flex mb-2">
-				<img id="logo" src="assets/images/logo.png" alt="">
-				<div class="section-brand">
-					<p>7-8-9 Settembre 2018<p>
-							<p>Piscinas(Sardegna)<p>
-				</div>
-			</div>
-			<div class="column flex">
-				<form action="newsletter.php" method="post">
-					<div class="form-group d-flex flex-column align-items-center">
-						<div class="d-flex justify-content-center">
-							<h3 class="title">Newsletter</h5>
-						</div>
-						<div class="d-flex justify-content-center w-25">
-							<label for="em" class="col-form-label"></label>
-							<input type="email" name="em" id="em" class="form-control" placeholder="Email">
-						</div>
-						<div class="d-flex justify-content-center py-2">
-							<button type="submit" class="btn btn-primary">Iscriviti</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+	<footer id="footer">
 	</footer>
 	<div class="mobileview container-fluid">
 		<div class="mobilecontainer row">
@@ -310,8 +283,6 @@
 					<li><a id="subdrop" href="" tabindex="2" accesskey="8">LOGIN</a></li>
 					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li><a class="notActive pagina" href="program.php" tabindex="" accesskey="">PROGRAM</a></li>
-					<li><a class="notActive pagina" href="contacts.php" tabindex="" accesskey="">CONTACTS</a></li>
 					<li> <a id="activePage" href="#">MYPAGE</a></li>
 
 				</ul>
