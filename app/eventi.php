@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -20,8 +23,6 @@
 
 	<?php
 	include_once './models/APPDatabase.php';
-	include_once './models/Artist.php';
-	session_start();
 	?>
 
 	<?php function mypage()

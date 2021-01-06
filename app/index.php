@@ -16,8 +16,6 @@
 
 <body>
 	<?php
-	include_once './models/APPDatabase.php';
-	include_once './models/Artist.php';
 
 	// $db = new APPDatabase();
 	// $database = $db->getConnection();

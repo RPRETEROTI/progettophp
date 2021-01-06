@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,18 +46,16 @@
 		// };
 	</script>
 	<?php
-	session_start();
+	print_r($_SESSION);
 	?>
-
 	<?php function mypage()
 	{
+
 		if (isset($_SESSION["utente"])) {
-			// $ut = $_SESSION["utente"];
 			// echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-			echo "<li><a class=\"notActive pagina\" href=\"artisticonfilter.php\" >ARTISTSTest</a></li>";
+			// echo "<li><a class=\"notActive pagina\" href=\"artisticonfilter.php\" >ARTISTSTest</a></li>";
 			echo "<li><a class=\"notActive pagina\" href=\"eventi.php\" >EVENTI</a></li>";
 			echo "<li><a class=\"notActive pagina\" href=\"buildevent.php\" >BUILDEVENT</a></li>";
-
 			echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
 		} else {
 			// echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";

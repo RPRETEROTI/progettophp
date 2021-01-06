@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +11,7 @@
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 	<script src="js/main.js"></script>
 	<script src="js/footer.js"></script>
-	<script src="js/login.js"></script>
+	<script src="js/authenticate.js"></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -16,8 +19,9 @@
 	<link rel="stylesheet" href="style/main.css">
 
 
-
-	<?php session_start(); ?>
+	<?php
+	print_r($_SESSION);
+	?>
 
 
 	<script>
@@ -78,8 +82,15 @@
 		}
 
 		.mypage {
-			height: 300px;
+			/* height: 300px; */
 			margin: 2em 0em;
+			justify-content: center;
+
+		}
+
+		.containerBtn {
+			padding: 10px 20px;
+			margin: 2em auto;
 		}
 
 		.mypage .row {
@@ -87,8 +98,17 @@
 			margin: 5% auto;
 		}
 
-		.mypagebtn {
+		.loginbtn {
+			background-color: #F08080;
+		}
+
+		.signbtn {
 			background-color: #039ed8;
+
+		}
+
+		.mypagebtn {
+			/* background-color: #039ed8; */
 			padding: 10px 30px;
 			border-radius: 6px;
 			margin: 2em 11em;
@@ -131,6 +151,7 @@
 
 <body>
 	<div class="deskview container-fluid p-0 m-0 ">
+		<div></div>
 		<div class="navigation-menu row m-0" id="myTopnav">
 			<div class="col-10 col-sm-10 col-md-3 col-lg-5">
 				<img id="logo" class="w-100" src="assets/images/logo.png" alt="">
@@ -153,22 +174,73 @@
 					<h1>MYPAGE</h1>
 				</div>
 			</div>
-
-			<!-- <div class="row">
-				<div class="col-12 col-md-8">
-					<h3 class="title">Bentornato. Accedi al tuo profilo</h3>
+			<div class="row">
+				<div class="col-12">
+					<h3 class="title">Accedi O Registrati.</h3>
 				</div>
-			</div> -->
-			<!-- <i class="fas fa-toggle-on"></i>
-			<i class="fas fa-toggle-off"></i> -->
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-6 backgr">
 
+			</div>
+			<div class=" row buttonregistration"></div>
+			<div class="container-fluid registration">
+				<!-- <div class="row">
+					<div class="col-6 backgr login">
+						<h3 class="title">Accedi al tuo profilo</h3>
+						<form action="#" method="post" id="loginForm">
+							<div class="form-row mypage">
+								<div class="form-group col-12 col-md-5 backgr">
+									<label for="usr" class="accesso col-form-label">Username</label>
+									<div>
+										<input name="usr" type="text" id="usr" class="credenziali form-control" />
+										<small id="passwordHelpBlock" class="usrn message form-text"></small>
+									</div>
+								</div>
+								<div class="form-group col-12 col-md-5 backgr">
+									<label for="usr" class="accesso col-form-label">Password</label>
+									<div>
+										<input name="pwd" type="password" id="pwd" class="credenziali form-control" />
+										<small id="passwordHelpBlock" class="usrn message form-text"></small>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col-12 align-items-center d-flex justify-content-center">
+									<button type="submit" class="btn mypagebtn">LOGIN</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-6 nobackgr signin">
+						<h3 class="title">Crea il tuo profilo</h3>
+						<form action="#" method="post" id="loginForm">
+							<div class="form-row mypage">
+								<div class="form-group col-12 col-md-5 nobackgr">
+									<label for="usr" class="accesso col-form-label">Username</label>
+									<div>
+										<input name="usr" type="text" id="usr" class="credenziali form-control" />
+										<small id="passwordHelpBlock" class="usrn message form-text"></small>
+									</div>
+								</div>
+								<div class="form-group col-12 col-md-5 nobackgr">
+									<label for="usr" class="accesso col-form-label">Password</label>
+									<div>
+										<input name="pwd" type="password" id="pwd" class="credenziali form-control" />
+										<small id="passwordHelpBlock" class="usrn message form-text"></small>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col-12 align-items-center d-flex justify-content-center">
+									<button type="submit" class="btn mypagebtn">SIGN IN</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div> -->
+			</div>
+			<!-- <div class="col-6 backgr">
 						<form action="#" method="post" id="loginForm">
 							<div class="container-fluid mypage">
 								<h3 class="title">Accedi al tuo profilo</h3>
-
 								<div class="row">
 									<div class="col-12 col-md-6 d-flex username">
 										<div class="form-group row">
@@ -189,15 +261,6 @@
 											</div>
 										</div>
 									</div>
-
-									<!-- <div class="col-12 col-md-1">
-										<div class="form-group row">
-											<button type="submit" class="btn" style="background-color:#039ed8">ACCEDI</button>
-										</div>
-									</div> -->
-									<!-- <div class="col-12 col-md-1 switchcontainer">
-							<i class="fas fa-toggle-on"></i>
-						</div> -->
 								</div>
 								<div class="form-group row">
 									<div class="col-12 align-items-center d-flex">
@@ -205,10 +268,10 @@
 									</div>
 								</div>
 							</div>
-						</form>
-					</div>
-					<!-- signin section -->
-					<div class="col-6">
+						</form></div> -->
+
+			<!-- signin section -->
+			<!-- <div class="col-6">
 
 						<form action="#" method="post" id="loginForm">
 							<div class="container-fluid mypage">
@@ -234,15 +297,6 @@
 											</div>
 										</div>
 									</div>
-
-									<!-- <div class="col-12 col-md-1">
-				<div class="form-group row">
-					<button type="submit" class="btn" style="background-color:#039ed8">ACCEDI</button>
-				</div>
-			</div> -->
-									<!-- <div class="col-12 col-md-1 switchcontainer">
-	<i class="fas fa-toggle-on"></i>
-</div> -->
 								</div>
 								<div class="form-group row">
 									<div class="col-12 align-items-center d-flex">
@@ -251,9 +305,13 @@
 								</div>
 							</div>
 						</form>
-					</div>
-				</div>
-			</div>
+					
+					
+					
+					
+					
+					</div> -->
+
 			<!-- <div class="row">
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 					<h3 class="title">Registrati per accedere al tuo profilo ed acquistare i nostri biglietti</h2>
