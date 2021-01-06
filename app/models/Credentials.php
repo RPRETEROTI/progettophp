@@ -8,17 +8,18 @@ class Credentials
     public string $username;
     public string $password;
 
-    public function __construct($database, $usr_digitato, $pwd_digitata)
+    public function __construct($database)
     {
         $this->conn = $database;
-        $this->username = $usr_digitato;
-        $this->password = $pwd_digitata;
     }
-    function login()
+    function login($usr_digitato)
     {
-        $sql = "SELECT passwr FROM profilo WHERE usr='$this->username' ";
-        // $resultSet=$this->conn->$query;
+        // $sql = "SELECT passwr FROM profilo WHERE usr='$usr_digitato' ";
+        $sql = 'SELECT passwr FROM profilo WHERE usr= ?';
         $stmt = $this->conn->prepare($sql);
+        $usr_digitato = htmlspecialchars(strip_tags($usr_digitato));
+        $stmt->bindParam(1, $usr_digitato);
+        // $resultSet=$this->conn->$query;
         $stmt->execute();
         return $stmt;
         // return $resultSet;
