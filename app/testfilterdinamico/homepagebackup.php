@@ -198,7 +198,7 @@
 </head>
 
 <body>
-	<script src="js/test.js"></script>
+	<!-- <script src="js/test.js"></script> -->
 
 
 	<!-- <script src="js/create-favorite-song.js"></script> -->

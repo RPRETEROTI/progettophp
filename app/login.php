@@ -3,15 +3,12 @@
 include_once './models/APPDatabase.php';
 include_once './models/Credentials.php';
 
-$usr_digitato = $_REQUEST["usr"];
-$pwd_digitata = $_REQUEST["pwd"];
-
-
 $db = new APPDatabase();
 $database = $db->getConnection();
-$credentials = new Credentials($database, $usr_digitato, $pwd_digitata);
-$stmt = $credentials->login();
-
+$credentials = new Credentials($database);
+$usr_digitato = $_GET['usr'];
+$pwd_digitata = $_GET['pwd'];
+$stmt = $credentials->login($usr_digitato, $pwd_digitata);
 
 $quante_tuple = $stmt->rowCount();
 
@@ -32,5 +29,7 @@ session_start();
 if (!isset($_SESSION["utente"])) {
    $_SESSION["utente"] = $usr_digitato;
 }
-header("Location:index.php?profilo=$usr_digitato");
+// header("Location:index.php?profilo=$usr_digitato");
+header("Location:index.php");
+
 exit();
