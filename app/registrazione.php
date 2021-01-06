@@ -8,10 +8,11 @@
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 	<script src="js/main.js"></script>
 	<script src="js/footer.js"></script>
+	<script src="js/login.js"></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.js" integrity="sha512-14GPUgKFTeCsgj5WWZpTNQ525GYlOK3DMTqrjsly3TDIDnOUbZ5sWyfI6HqsWUmMmaCoa6q7FHrbq9xdqNhmYg==" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="style/main.css">
 
 
@@ -46,6 +47,16 @@
 			color: red;
 		}
 
+		.switchcontainer {
+			display: flex;
+			justify-content: start;
+			align-items: center;
+			bottom: 10px;
+			position: relative;
+			color: #039ed8;
+			font-size: 30px;
+		}
+
 		@media screen and (min-width: 768px) {
 			.username {
 				justify-content: flex-end;
@@ -64,6 +75,51 @@
 				display: flex;
 				justify-content: center;
 			}
+		}
+
+		.mypage {
+			height: 300px;
+			margin: 2em 0em;
+		}
+
+		.mypage .row {
+			align-items: center;
+			margin: 5% auto;
+		}
+
+		.mypagebtn {
+			background-color: #039ed8;
+			padding: 10px 30px;
+			border-radius: 6px;
+			margin: 2em 11em;
+		}
+
+		.title {
+			font-weight: bold;
+		}
+
+		.backgr {
+			background-color: #0f4c81;
+		}
+
+		.nobackgr {
+			background-color: white;
+		}
+
+		.nobackgr .btn {
+			background-color: #039ed8;
+		}
+
+		.backgr .btn {
+			background-color: white;
+		}
+
+		.backgr h3 {
+			color: white;
+		}
+
+		.nobackgr h3 {
+			color: black;
 		}
 
 		.accesso {
@@ -91,66 +147,114 @@
 				<a href="#" class="icon" onclick="cambiamenu()">☰</a>
 			</div>
 		</div>
-		<div class="content container-fluid">
+		<div class="content container-fluid p-0">
 			<div class="row">
 				<div class="cover col-12">
 					<h1>MYPAGE</h1>
 				</div>
 			</div>
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-12 col-md-8">
 					<h3 class="title">Bentornato. Accedi al tuo profilo</h3>
 				</div>
-			</div>
+			</div> -->
+			<!-- <i class="fas fa-toggle-on"></i>
+			<i class="fas fa-toggle-off"></i> -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-6 backgr">
 
-			<form action="login.php" method="post">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12 col-md-5 d-flex username">
-							<div class="form-group row">
-								<label for="usr" class="accesso col-form-label">Username</label>
-								<div>
-									<input name="usr" type="text" id="usr" class="credenziali form-control">
+						<form action="#" method="post" id="loginForm">
+							<div class="container-fluid mypage">
+								<h3 class="title">Accedi al tuo profilo</h3>
 
-									<?php
-									$causa = $_REQUEST["causa"];
-									if ($causa == 1) {
-										$error_msg = "Utente inesistente";
-										echo "<small id=\"passwordHelpBlock\" class=\"usrn form-text \">";
-										echo "$error_msg";
-										echo "</small>";
-									}
-									?>
+								<div class="row">
+									<div class="col-12 col-md-6 d-flex username">
+										<div class="form-group row">
+											<label for="usr" class="accesso col-form-label">Username</label>
+											<div>
+												<input name="usr" type="text" id="usr" class="credenziali form-control">
+												<small id="passwordHelpBlock" class="usrn message form-text "></small>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 d-flex justify-content-center">
+										<div class="form-group row">
+											<label for="pwd" class="accesso col-form-label">Password</label>
+											<div>
+												<input name="pwd" type="password" id="pwd" class="credenziali form-control">
+												<small id="passwordHelpBlock" class="usrn message form-text "></small>
+
+											</div>
+										</div>
+									</div>
+
+									<!-- <div class="col-12 col-md-1">
+										<div class="form-group row">
+											<button type="submit" class="btn" style="background-color:#039ed8">ACCEDI</button>
+										</div>
+									</div> -->
+									<!-- <div class="col-12 col-md-1 switchcontainer">
+							<i class="fas fa-toggle-on"></i>
+						</div> -->
+								</div>
+								<div class="form-group row">
+									<div class="col-12 align-items-center d-flex">
+										<button type="submit" class="btn mypagebtn">LOGIN</button>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-12 col-md-5 d-flex justify-content-center">
-							<div class="form-group row">
-								<label for="pwd" class="accesso col-form-label">Password</label>
-								<div>
-									<input name="pwd" type="password" id="pwd" class="credenziali form-control">
-									<?php
-									$causa = $_REQUEST["causa"];
-									if ($causa == 2) {
-										$error_msg = "Password errata";
-										echo "<small id=\"passwordHelpBlock\" class=\"usrn form-text\">";
-										echo "$error_msg";
-										echo "</small>";
-									}
-									?>
+						</form>
+					</div>
+					<!-- signin section -->
+					<div class="col-6">
+
+						<form action="#" method="post" id="loginForm">
+							<div class="container-fluid mypage">
+								<h3 class="title">Crea un profilo</h3>
+
+								<div class="row">
+									<div class="col-12 col-md-6 d-flex username">
+										<div class="form-group row">
+											<label for="usr" class="accesso col-form-label">Username</label>
+											<div>
+												<input name="usr" type="text" id="usr" class="credenziali form-control">
+												<small id="passwordHelpBlock" class="usrn message form-text "></small>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 d-flex justify-content-center">
+										<div class="form-group row">
+											<label for="pwd" class="accesso col-form-label">Password</label>
+											<div>
+												<input name="pwd" type="password" id="pwd" class="credenziali form-control">
+												<small id="passwordHelpBlock" class="usrn message form-text "></small>
+
+											</div>
+										</div>
+									</div>
+
+									<!-- <div class="col-12 col-md-1">
+				<div class="form-group row">
+					<button type="submit" class="btn" style="background-color:#039ed8">ACCEDI</button>
+				</div>
+			</div> -->
+									<!-- <div class="col-12 col-md-1 switchcontainer">
+	<i class="fas fa-toggle-on"></i>
+</div> -->
+								</div>
+								<div class="form-group row">
+									<div class="col-12 align-items-center d-flex">
+										<button type="submit" class="btn mypagebtn" style="background-color:#039ed8">SIGN IN</button>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-12 col-md-2 loginbtn">
-							<div class="form-group row">
-								<button type="submit" class="btn" style="background-color:#039ed8">ACCEDI</button>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
-			</form>
-			<div class="row">
+			</div>
+			<!-- <div class="row">
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 					<h3 class="title">Registrati per accedere al tuo profilo ed acquistare i nostri biglietti</h2>
 				</div>
@@ -164,18 +268,18 @@
 								<label for="user" class="col-form-label">Username*</label>
 								<input name="user" type="text" id="user" class=" credenziali form-control" placeholder="" maxlength="20" value="" aria-describedby="passwordHelpBlock">
 								<?php
-								$causa = $_REQUEST["causa"];
-								if ($causa == 4) {
-									$error_msg = "Utente gia' esistente";
-									echo "<small id=\"passwordHelpBlock\" class=\"usrn form-text\">";
-									echo "$error_msg";
-									echo "</small>";
-								}
-								if ($causa != 4) {
-									echo "<small id=\"passwordHelpBlock\" class=\"form-text text-muted\">";
-									echo "Your username must be 7 characters long.";
-									echo "</small>";
-								}
+								// $causa = $_REQUEST["causa"];
+								// if ($causa == 4) {
+								// 	$error_msg = "Utente gia' esistente";
+								// 	echo "<small id=\"passwordHelpBlock\" class=\"usrn form-text\">";
+								// 	echo "$error_msg";
+								// 	echo "</small>";
+								// }
+								// if ($causa != 4) {
+								// 	echo "<small id=\"passwordHelpBlock\" class=\"form-text text-muted\">";
+								// 	echo "Your username must be 7 characters long.";
+								// 	echo "</small>";
+								// }
 								?>
 							</div>
 							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -189,7 +293,8 @@
 						<div class="form-row">
 							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 								<label for="nome" class="col-form-label">Nome</label>
-								<input name="nome" type="text" id="nome" class="form-control" placeholder="" value=""></div>
+								<input name="nome" type="text" id="nome" class="form-control" placeholder="" value="">
+							</div>
 							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 								<label for="cogn" class="col-form-label">Cognome</label>
 								<input type="text" class="form-control" id="cogn" name="cogn" placeholder="" value="">
@@ -269,7 +374,7 @@
 							</div>
 						</div>
 					</div>
-			</form>
+			</form> -->
 
 		</div>
 	</div>
@@ -291,7 +396,7 @@
 	</div>
 
 
-	<script text="javascript">
+	<!-- <script text="javascript">
 		$(document).ready(function() {
 			$("#formvalidato").validate({
 				rules: {
@@ -359,7 +464,7 @@
 				}
 			});
 		});
-	</script>
+	</script> -->
 
 </body>
 
