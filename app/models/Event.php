@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class Event
 {
 
@@ -20,40 +20,57 @@ class Event
 
     function create()
     {
-        $sql = "INSERT INTO eventi SET 
-        nome = :name, 
-        codice = :code,
-        categoria = :category, 
-        descrizione = :description,
-        prezzo = :price, 
-        data = :date,
-        ora = :hour, 
-        fotoevento = :fotoev ";
 
-        $stmt = $this->conn->prepare($sql);
-
-        $this->name = htmlspecialchars(strip_tags($this->name));
+        $sql1 = "SELECT 'codice' FROM eventi WHERE codice=?";
+        $stmt = $this->conn->prepare($sql1);
         $this->code = htmlspecialchars(strip_tags($this->code));
-        $this->category = htmlspecialchars(strip_tags($this->category));
-        $this->description = htmlspecialchars(strip_tags($this->description));
-        $this->price = htmlspecialchars(strip_tags($this->price));
-        $this->date = htmlspecialchars(strip_tags($this->date));
-        $this->hour = htmlspecialchars(strip_tags($this->hour));
-        $this->fotoev = htmlspecialchars(strip_tags($this->fotoev));
-
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":code", $this->code);
-        $stmt->bindParam(":category", $this->category);
-        $stmt->bindParam(":description", $this->description);
-        $stmt->bindParam(":price", $this->price);
-        $stmt->bindParam(":date", $this->date);
-        $stmt->bindParam(":hour", $this->hour);
-        $stmt->bindParam(":fotoev", $this->fotoev);
-
+        $stmt->bindParam(1, $this->code);
         $stmt->execute();
+        $quante_tuple = $stmt->rowCount();
 
-        return $stmt;
-        // return $resultSet;
+        if ($quante_tuple === 0) {
+            $sql = "INSERT INTO eventi SET 
+                nome = :name, 
+                codice = :code,
+                categoria = :category, 
+                descrizione = :description,
+                prezzo = :price, 
+                data = :date,
+                ora = :hour, 
+                fotoevento = :fotoev ";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->code = htmlspecialchars(strip_tags($this->code));
+            $this->category = htmlspecialchars(strip_tags($this->category));
+            $this->description = htmlspecialchars(strip_tags($this->description));
+            $this->price = htmlspecialchars(strip_tags($this->price));
+            $this->date = htmlspecialchars(strip_tags($this->date));
+            $this->hour = htmlspecialchars(strip_tags($this->hour));
+            $this->fotoev = htmlspecialchars(strip_tags($this->fotoev));
+
+            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":code", $this->code);
+            $stmt->bindParam(":category", $this->category);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":price", $this->price);
+            $stmt->bindParam(":date", $this->date);
+            $stmt->bindParam(":hour", $this->hour);
+            $stmt->bindParam(":fotoev", $this->fotoev);
+
+            $stmt->execute();
+            unset($_SESSION["codevento"]);
+            // print_r($_SESSION);
+
+
+            return $stmt;
+        } else {
+            $_SESSION["codevento"] = "Il codice evento non può essere usato";
+            // print_r($_SESSION);
+
+            return $stmt;
+        }
     }
     function filter($key)
     {

@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 include_once '../models/APPDatabase.php';
 include_once '../models/Event.php';
-
+// session_start();
 $db = new APPDatabase();
 $database = $db->getConnection();
 $event = new Event($database);
@@ -23,14 +23,14 @@ $filename = $_FILES['uploadimg']['name'];
 
 if (isset($_FILES['uploadimg']['name'])) {
     // $filename = $_FILES['uploadimg']['name'];
-    // echo "so stronzo" .  $filename;
+    // echo "filename" .  $filename;
     $target_subdir = "/progetto_approcciavanzati2020/app/assets/uploadimages/";
     $target_dir = $_SERVER['DOCUMENT_ROOT'] . $target_subdir;
     $location = $target_dir . $filename;
     if (move_uploaded_file($_FILES['uploadimg']['tmp_name'], $location)) {
         $response = $location;
         $isFileUploaded = true;
-        // echo "sei proprio stronzo" . $response;
+        // echo "filenamelocationnew" . $response;
     }
 }
 // echo "upload:" . $isFileUploaded;
@@ -77,12 +77,24 @@ if (
     $event->hour = $hour;
     $event->category = $category;
 
-
+    // if (isset($_SESSION["codevento"])) {
+    //     $codeerror = $_SESSION["codevento"];
+    //     // echo "capra";
+    // }
+    // if (!isset($_SESSION["codevento"])) {
+    //     // echo "cinghiale";
+    // };
     // invoco il metodo create() che crea un nuovo prodotto
     if ($event->create()) { // se va a buon fine...
-        http_response_code(201); // response code 201 = created
-        // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-        echo json_encode(array("message" => "Event was created"));
+        if (!isset($_SESSION["codevento"])) {
+            http_response_code(201); // response code 201 = created
+            // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+            echo json_encode(array("message" => "Event was created"));
+        } else {
+            http_response_code(409); // response code 201 = created
+            // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+            echo json_encode(array("message" => "Event code in conflitto"));
+        }
     } else { // se la creazione è fallita...
         http_response_code(503); // response code 503 = service unavailable
         // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
