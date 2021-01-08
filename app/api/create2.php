@@ -9,66 +9,75 @@ include_once '../models/Event.php';
 $db = new APPDatabase();
 $database = $db->getConnection();
 $event = new Event($database);
-
-$profile = $_POST['name'];
-
+$isFileUploaded = false;
+$name = $_POST['name'];
+$code = $_POST['code'];
+$checkcode = $_POST['checkcode'];
+$price = $_POST['price'];
+$category = $_POST['category'];
+$date = $_POST['date'];
+$hour = $_POST['hour'];
+$descr = $_POST['descr'];
+$filename = $_FILES['uploadimg']['name'];
 
 
 if (isset($_FILES['uploadimg']['name'])) {
-    $filename = $_FILES['uploadimg']['name'];
-    echo "so stronzo" .  $filename;
+    // $filename = $_FILES['uploadimg']['name'];
+    // echo "so stronzo" .  $filename;
     $target_subdir = "/progetto_approcciavanzati2020/app/assets/uploadimages/";
     $target_dir = $_SERVER['DOCUMENT_ROOT'] . $target_subdir;
     $location = $target_dir . $filename;
     if (move_uploaded_file($_FILES['uploadimg']['tmp_name'], $location)) {
         $response = $location;
-        echo "sei proprio stronzo" . $response;
+        $isFileUploaded = true;
+        // echo "sei proprio stronzo" . $response;
     }
 }
+// echo "upload:" . $isFileUploaded;
+// echo "a+" . $profile;
 
-echo "a+" . $profile;
+// // $imga = [
+// //     'nome' => $img,
+// //     'tmp_name' => '/tmp/php/php1h4j1o',
+// // ];
 
-// $imga = [
-//     'nome' => $img,
-//     'tmp_name' => '/tmp/php/php1h4j1o',
-// ];
-
-$profilea = $_REQUEST['name'];
-echo "aZ+" . $profilea;
-// leggo i dati nel body della request (metodo POST)
-$data = json_decode(file_get_contents("php://input"));
-echo "ciuao" . $data;
-
-
+// $profilea = $_REQUEST['name'];
+// echo "aZ+" . $profilea;
+// // leggo i dati nel body della request (metodo POST)
+// $data = json_decode(file_get_contents("php://input"));
+// echo "ciuao" . $data;
 
 // controllo che i dati ci siano...
 if (
-    !empty($data->name)
+    !empty($name)
     &&
-    !empty($data->code)
+    !empty($code)
     &&
-    !empty($data->checkcode)
+    !empty($checkcode)
     &&
-    !empty($data->price)
+    !empty($price)
     &&
-    !empty($data->category)
+    !empty($category)
     &&
-    !empty($data->date)
+    !empty($date)
     &&
-    !empty($data->hour)
+    !empty($hour)
     &&
-    !empty($data->descr)
+    !empty($descr)
+    ||  isset($_FILES['uploadimg']['name']) && $isFileUploaded = true
 ) {
 
     // inserisco i valori nelle variabili d'istanza dell'oggetto $product
-    $event->name = $data->name;
-    $event->code = $data->code;
-    $event->fotoev = $data->uploadimg;
-    $event->price = $data->price;
-    $event->description = $data->descr;
-    $event->date = $data->date;
-    $event->hour = $data->hour;
-    $event->category = $data->category;
+    $event->name = $name;
+    $event->code = $code;
+    $event->fotoev = $filename;
+    $event->price = $price;
+    $event->description = $descr;
+    $event->date = $date;
+    $event->hour = $hour;
+    $event->category = $category;
+
+
     // invoco il metodo create() che crea un nuovo prodotto
     if ($event->create()) { // se va a buon fine...
         http_response_code(201); // response code 201 = created
