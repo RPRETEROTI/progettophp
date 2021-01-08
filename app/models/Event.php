@@ -6,11 +6,11 @@ class Event
     private $conn;
     public string $name;
     public string $code;
-    public string $fotoart;
+    public string $fotoev;
     public string $price;
-    // public string $description;
-    public string $dateexhibition;
-    public string $hourexhibition;
+    public string $description;
+    public string $date;
+    public string $hour;
     public string $category;
 
     public function __construct($database)
@@ -18,7 +18,43 @@ class Event
         $this->conn = $database;
     }
 
+    function create()
+    {
+        $sql = "INSERT INTO eventi SET 
+        nome = :name, 
+        codice = :code,
+        categoria = :category, 
+        descrizione = :description,
+        prezzo = :price, 
+        data = :date,
+        ora = :hour, 
+        fotoevento = :fotoev ";
 
+        $stmt = $this->conn->prepare($sql);
+
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->code = htmlspecialchars(strip_tags($this->code));
+        $this->category = htmlspecialchars(strip_tags($this->category));
+        $this->description = htmlspecialchars(strip_tags($this->description));
+        $this->price = htmlspecialchars(strip_tags($this->price));
+        $this->date = htmlspecialchars(strip_tags($this->date));
+        $this->hour = htmlspecialchars(strip_tags($this->hour));
+        $this->fotoev = htmlspecialchars(strip_tags($this->fotoev));
+
+        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":code", $this->code);
+        $stmt->bindParam(":category", $this->category);
+        $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(":price", $this->price);
+        $stmt->bindParam(":date", $this->date);
+        $stmt->bindParam(":hour", $this->hour);
+        $stmt->bindParam(":fotoev", $this->fotoev);
+
+        $stmt->execute();
+
+        return $stmt;
+        // return $resultSet;
+    }
     function filter($key)
     {
         if ($key === 'all') {
