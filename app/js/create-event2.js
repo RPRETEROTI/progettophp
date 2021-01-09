@@ -205,6 +205,8 @@ function createEvent(formData) {
     error: function (xhr, err, exc) {
       console.log(xhr.responseText);
       console.log(err);
+      var errorJsonMessage = JSON.parse(xhr.responseText);
+      failureLogin(errorJsonMessage);
     },
   });
   return false;
@@ -224,21 +226,34 @@ function createEvent(formData) {
 // }
 
 function failureLogin(errorJsonMessage) {
-  $("#registerForm").find("input").val("");
+  // $(".modal").css({ opacity: "1", display: "block" });
+  // $("#myModal").modal("show");
+  $(document).on("click", ".close", function () {
+    $("#myModal").hide();
+  });
+
   containerHtml =
-    `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong> Retry. ` +
+    `
+    <div class="modal fade show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="">Errore nel caricamento form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Retry. ` +
     errorJsonMessage["message"] +
     `
-    </strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">  <i class="fas fa-times"></i></span>
-  </button>
-    
-    </div>`;
+        </div>
+      </div>
+    </div>
+  </div>`;
 
   // inject to 'page-content' of our app
-  $(".messageLogin").html(containerHtml);
+  $(".errorModal").html(containerHtml);
 }
 
 function formTemplate() {
