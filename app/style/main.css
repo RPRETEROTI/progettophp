@@ -9,7 +9,10 @@ body {
 h1 {
   text-align: center;
 }
-
+#logo {
+  height: 90px;
+  width: 90px;
+}
 @media screen and (min-width: 1280px) {
   .content {
     padding-top: 115px;
