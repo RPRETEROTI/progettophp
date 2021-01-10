@@ -54,17 +54,18 @@ function deleteEvent(id) {
       console.log("datacheck", result);
       // html for listing products
       positiveFeedbackSong();
-      showArtists(); // data = server's response (= list of artists, as JSON object)
+      location.href = "eventi.php";
     },
     error: function (xhr, err, exc) {
       // show error to console
-      console.log(xhr, err, exc);
+      // console.log(xhr, err, exc);
       console.log("capra");
-      negativeFeedbackSong();
+      // negativeFeedbackSong();
       //console.warn(xhr.responseText);
       // console.log(form_data);
     },
   });
+  negativeFeedbackSong();
   return false;
 } // showProducts
 
@@ -83,7 +84,7 @@ function positiveFeedbackSong() {
 }
 
 function negativeFeedbackSong() {
-  containerHtml = `<div class="alert alert-primary" role="alert">
+  containerHtml = `<div class="alert alert-danger" role="alert">
       C'è stato un problema. Ritenta
     </div>`;
 

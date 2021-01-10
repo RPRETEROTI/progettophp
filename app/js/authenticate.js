@@ -1,22 +1,4 @@
 $(document).ready(function () {
-  // registrationTemplate();
-
-  // $(document).on("mouseover", ".login", function () {
-  //   $(this).addClass("backgr");
-  //   $(".signin :input").prop("disabled", true);
-  // });
-  // $(document).on("mouseout", ".login", function () {
-  //   $(this).removeClass("backgr");
-  //   $(".signin :input").prop("disabled", false);
-  // });
-  // $(document).on("mouseover", ".signin", function () {
-  //   $(this).addClass("backgr");
-  //   $(".login :input").prop("disabled", true);
-  // });
-  // $(document).on("mouseout", ".signin", function () {
-  //   $(this).removeClass("backgr");
-  //   $(".login :input").prop("disabled", false);
-  // });
   registerTemplate();
   $(document).on("click", ".signin", function () {
     formTemplate();
@@ -44,7 +26,9 @@ $(document).ready(function () {
     console.log("form_data", form_data);
     console.log("key", userName, passWord);
     console.log("cetrioli");
-    authenticate_id === "logIn" ? login(userName, passWord) : signin(form_data);
+    authenticate_id === "logIn" ? login(form_data) : signin(form_data);
+
+    // authenticate_id === "logIn" ? login(userName, passWord) : signin(form_data);
   });
 });
 
@@ -63,18 +47,40 @@ $.fn.serializeObject = function () {
   });
   return o;
 };
-function login(usr, psw) {
+// function login(usr, psw) {
+//   $.ajax({
+//     url:
+//       "http://localhost/progetto_approcciavanzati2020/app/api/login.php?usr=" +
+//       usr +
+//       "&pwd=" +
+//       psw,
+//     method: "GET",
+//     success: function (data) {
+//       // successLogin(data);
+//       location.href = "homepage.php";
+//       console.log("dataaf", data);
+//     },
+//     error: function (xhr, err, exc) {
+//       console.log("E stato riscontrato un errore", err);
+//       console.log("E stato riscontrato un errore", xhr.responseText);
+//       console.log("xhr", xhr);
+//       console.log("E stato riscontrato un errore", exc);
+//       var errorJsonMessage = JSON.parse(xhr.responseText);
+//       failureLogin(errorJsonMessage);
+//     },
+//   });
+// }
+function login(form_data) {
   $.ajax({
-    url:
-      "http://localhost/progetto_approcciavanzati2020/app/api/login.php?usr=" +
-      usr +
-      "&pwd=" +
-      psw,
-    method: "GET",
-    success: function (data) {
+    url: "http://localhost/progetto_approcciavanzati2020/app/api/login.php",
+    method: "POST",
+    contentType: "application/json",
+    dataType: "json",
+    data: form_data,
+    success: function (result) {
       // successLogin(data);
       location.href = "homepage.php";
-      console.log("dataaf", data);
+      console.log("dataaf", result);
     },
     error: function (xhr, err, exc) {
       console.log("E stato riscontrato un errore", err);
@@ -86,7 +92,6 @@ function login(usr, psw) {
     },
   });
 }
-
 function signin(form_data) {
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/signin.php",
@@ -101,6 +106,8 @@ function signin(form_data) {
     },
     error: function (xhr, err, exc) {
       console.log("hai bsagliato:", xhr.responseText);
+      var errorJsonMessage = JSON.parse(xhr.responseText);
+      failureLogin(errorJsonMessage);
     },
   });
   return false;
@@ -118,14 +125,7 @@ function successLogin() {
   // inject to 'page-content' of our app
   $(".message").html(containerHtml);
 }
-{
-  /* <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div> */
-}
+
 function failureLogin(errorJsonMessage) {
   $("#registerForm").find("input").val("");
   containerHtml =
@@ -181,11 +181,6 @@ function formTemplate() {
   $(".registration").html(containerHtml);
 }
 {
-  /* <div class="form-row">
-        <div class="col-12 align-items-center d-flex justify-content-center">
-          <button type="submit" data-id="" class="btn"></button>
-        </div>
-      </div> */
 }
 function registerTemplate() {
   containerHtml = `	

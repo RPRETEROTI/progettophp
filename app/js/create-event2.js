@@ -57,26 +57,30 @@ $(document).ready(function () {
     },
     submitHandler: function () {
       $(this).submit();
-      console.log("forzo submit", form);
+      console.log("forzo submit", $(this));
+      var form = $(this.currentForm)[0]; // You need to use standard javascript object here
+      var formData = new FormData(form);
+      console.log("formData", formData);
+      createEvent(formData);
     },
   });
   $(document).on("submit", "#formvalidato", function (e) {
     e.preventDefault();
-    if ($(this).valid()) {
-      var form = $(this)[0]; // You need to use standard javascript object here
-      var formData = new FormData(form);
-      console.log("formData", formData);
-      createEvent(formData);
-      // var field = $("#uploadimg").val();
-      // var k = field.substring(12);
-      // var form = $(this).serializeObject(); // this = the submitted form
-      // // form["img"] = k;
-      // var form_data = JSON.stringify(form); // this = the submitted form
+    // if ($(this).valid()) {
+    //   var form = $(this)[0]; // You need to use standard javascript object here
+    //   var formData = new FormData(form);
+    //   console.log("formData", formData);
+    //   createEvent(formData);
+    //   // var field = $("#uploadimg").val();
+    //   // var k = field.substring(12);
+    //   // var form = $(this).serializeObject(); // this = the submitted form
+    //   // // form["img"] = k;
+    //   // var form_data = JSON.stringify(form); // this = the submitted form
 
-      // console.log("form_data", form_data);
-      // console.log("form", form);
-      // console.log("k", k);
-    }
+    //   // console.log("form_data", form_data);
+    //   // console.log("form", form);
+    //   // console.log("k", k);
+    // }
     // else {
     //   location.href = "buildevento.php";
     // }

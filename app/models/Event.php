@@ -72,9 +72,9 @@ class Event
             return $stmt;
         }
     }
-    function filter($key)
+    function filter()
     {
-        if ($key === 'all') {
+        if ($this->category === 'all') {
             $sql = 'SELECT * FROM eventi';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
@@ -82,7 +82,7 @@ class Event
         } else {
             $sql = 'SELECT * FROM eventi WHERE categoria = ?';
             $stmt = $this->conn->prepare($sql);
-            $key = htmlspecialchars(strip_tags($key));
+            $key = htmlspecialchars(strip_tags($this->category));
             $stmt->bindParam(1, $key);
             $stmt->execute();
             return $stmt;

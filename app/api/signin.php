@@ -27,12 +27,24 @@ if (
 
     // invoco il metodo create() che crea un nuovo prodotto
     if ($user->signin()) { // se va a buon fine...
-        http_response_code(201); // response code 201 = created
-        if (!isset($_SESSION["utente"])) {
+        // http_response_code(201); // response code 201 = created
+        // if (!isset($_SESSION["utente"])) {
+        //     $_SESSION["utente"] = $data->usr;
+        // }
+        // // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+        // echo json_encode(array("message" => "Product was created"));
+
+        if (!isset($_SESSION["errorsignin"])) {
+            // session_start();
             $_SESSION["utente"] = $data->usr;
+            http_response_code(201); // response code 201 = created
+            // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+            echo json_encode(array("message" => "User was created"));
+        } else {
+            http_response_code(409); // response code 201 = created
+            // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+            echo json_encode(array("message" => "L'username non è disponibile"));
         }
-        // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-        echo json_encode(array("message" => "Product was created"));
     } else { // se la creazione è fallita...
         http_response_code(503); // response code 503 = service unavailable
 
@@ -42,5 +54,5 @@ if (
 } else { // se i dati sono incompleti
     http_response_code(400); // response code 400 = bad request
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-    (array("message" => "Unable to create product. Data is incomplete: "));
+    echo json_encode(array("message" => "Unable to create product. Data is incomplete: "));
 }

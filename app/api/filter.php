@@ -10,9 +10,11 @@ $db = new APPDatabase();
 $database = $db->getConnection();
 $events = new Event($database);
 $key = $_GET['filterKey'] ? $_GET['filterKey'] : 'all';
-$stmt = $events->filter($key);
+$events->category = $key;
 
-if ($stmt->rowCount() > 0) {
+$stmt = $events->filter();
+
+if ($stmt) {
     $events = array();
     $events["events"] = array();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -29,7 +31,8 @@ if ($stmt->rowCount() > 0) {
     }
     http_response_code(200);
     echo json_encode(($events));
-} else {
-    http_response_code(400);
-    echo json_encode(array("message" => "event not found"));
+} else { // se la creazione è fallita...
+    http_response_code(503); // response code 503 = service unavailable
+    // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+    echo json_encode(array("message" => "Unable to create product"));
 }
