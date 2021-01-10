@@ -145,6 +145,19 @@ session_start();
 		.accesso {
 			margin-right: 5px;
 		}
+
+		.deskview .navigation-menu li a#subdrop {
+			color: black;
+			padding: 20px 10px;
+			text-decoration: none;
+			text-align: center;
+			background-color: #f9f9f9;
+			display: inline-block;
+		}
+
+		.deskview #subdrop:hover {
+			background-color: blue;
+		}
 	</style>
 	<title>Piscinas Sounds </title>
 </head>
@@ -158,9 +171,9 @@ session_start();
 			</div>
 			<div class="d-none d-md-block col-md-9 col-lg-7">
 				<ul class="pl-2">
-					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li> <a id="activePage" href="">MYPAGE</a></li>
+					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li><a id="activePage" href="registrazione.php" tabindex="" accesskey="">CREATE</a></li>
+					<!-- <li> <a id="activePage" href="">MYPAGE</a></li> -->
 					<li><a id="subdrop" href="">LOGIN</a></li>
 				</ul>
 			</div>
@@ -444,10 +457,8 @@ session_start();
 				<ul>
 					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
 					<li><a id="subdrop" href="" tabindex="2" accesskey="8">LOGIN</a></li>
-					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li> <a id="activePage" href="#">MYPAGE</a></li>
-
+					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li><a id="activePage" href="registrazione.php" tabindex="" accesskey="">CREATE</a></li>
 				</ul>
 			</div>
 		</div>

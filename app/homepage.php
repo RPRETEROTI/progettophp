@@ -55,11 +55,23 @@ session_start();
 			// echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
 			// echo "<li><a class=\"notActive pagina\" href=\"artisticonfilter.php\" >ARTISTSTest</a></li>";
 			echo "<li><a class=\"notActive pagina\" href=\"eventi.php\" >EVENTI</a></li>";
-			echo "<li><a class=\"notActive pagina\" href=\"buildevent.php\" >BUILDEVENT</a></li>";
+			echo "<li><a class=\"notActive pagina\" href=\"buildevent.php\" >CREATE</a></li>";
 			echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
 		} else {
 			// echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
+			echo "<li><a class=\"notActive pagina\" href=\"registrazione.php\" >CREATE</a></li>";
 			echo " <li><a id=\"subdrop\" href=\"registrazione.php\">LOGIN</a></li>";
+		}
+	}
+	?>
+	<?php function mypageMobile()
+	{
+
+		if (isset($_SESSION["utente"])) {
+			$ut = $_SESSION["utente"];
+			echo "<li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
+		} else {
+			echo "<li><a id=\"subdrop\" href=\"registrazione.php\">LOGIN</a></li>";
 		}
 	}
 	?>
@@ -358,23 +370,32 @@ session_start();
 				<ul>
 					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
 					<?php
-					if (isset($_SESSION["utente"])) {
-						$ut = $_SESSION["utente"];
-						echo "<li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
-					} else {
-						echo "<li><a id=\"subdrop\" href=\"registrazione.php?causa=0\">LOGIN</a></li>";
-					}
+					$mypage = mypageMobile();
 					?>
 					<li> <a id="activePage" href="">HOME</a></li>
-					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
 					<?php
 					if (isset($_SESSION["utente"])) {
 						$ut = $_SESSION["utente"];
-						echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-					} else {
-						echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
+						echo "<li><a class=\"notActive pagina\" href=\"eventi.php\">EVENTS</a></li>";
 					}
 					?>
+					<?php
+					if (isset($_SESSION["utente"])) {
+						$ut = $_SESSION["utente"];
+						echo "<li><a class=\"notActive pagina\" href=\"buildevent.php\">CREATE</a></li>";
+					} else {
+						echo "<li><a class=\"notActive pagina\" href=\"registrazione.php\">CREATE</a></li>";
+					}
+					?>
+					<!-- <li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">CREATE</a></li>
+					<?php
+					// if (isset($_SESSION["utente"])) {
+					// 	$ut = $_SESSION["utente"];
+					// 	echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
+					// } else {
+					// 	echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
+					// }
+					?> -->
 				</ul>
 			</div>
 		</div>

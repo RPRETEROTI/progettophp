@@ -42,7 +42,16 @@ session_start();
 			});
 		});
 	</script>
-
+	<?php function mypageMobile()
+	{
+		if (isset($_SESSION["utente"])) {
+			// $ut = $_SESSION["utente"];
+			echo "<li><a id=\"subdrop\" href=\"logout.php\"  tabindex=\"2\" accesskey=\"8\">LOGOUT</a></li>";
+		} else {
+			echo "<li><a id=\"subdrop\" href=\"registrazione.php\" tabindex=\"2\" accesskey=\"8\">LOGIN</a></li>";
+		}
+	}
+	?>
 	<style>
 		.title {
 			text-align: center;
@@ -148,6 +157,10 @@ session_start();
 			margin-right: 5px;
 		}
 
+		.modal {
+			display: block;
+		}
+
 		.testt {
 			position: absolute;
 			top: 38px;
@@ -168,23 +181,46 @@ session_start();
 			border-radius: .25rem;
 			border-style: hidden;
 		}
+
+		.deskview .navigation-menu li a#subdrop {
+			color: black;
+			padding: 20px 10px;
+			text-decoration: none;
+			text-align: center;
+			background-color: #f9f9f9;
+			display: inline-block;
+		}
+
+		.deskview #subdrop:hover {
+			background-color: blue;
+		}
 	</style>
 	<title>Piscinas Sounds </title>
 </head>
 
 <body>
 	<div class="deskview container-fluid p-0 m-0 ">
-		<div></div>
+		<div class="errorModal"></div>
 		<div class="navigation-menu row m-0" id="myTopnav">
 			<div class="col-10 col-sm-10 col-md-3 col-lg-5">
 				<img id="logo" class="w-100" src="assets/images/logo.png" alt="">
 			</div>
 			<div class="d-none d-md-block col-md-9 col-lg-7">
 				<ul class="pl-2">
-					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-					<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-					<li> <a id="activePage" href="">MYPAGE</a></li>
-					<li><a id="subdrop" href="">LOGIN</a></li>
+					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<?php
+					if (isset($_SESSION["utente"])) {
+						$ut = $_SESSION["utente"];
+						echo "<li><a class=\"notActive pagina\" href=\"eventi.php\">EVENTS</a></li>";
+					}
+					?>
+					<li> <a id="activePage" href="">CREATE</a></li>
+
+					<?php if (isset($_SESSION["utente"])) {
+						echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
+					} else {
+						echo " <li><a id=\"subdrop\" href=\"registrazione.php\">LOGIN</a></li>";
+					} ?>
 				</ul>
 			</div>
 			<div class="container-menu-icon col-2 col-sm-2 d-md-none">
@@ -200,26 +236,33 @@ session_start();
 			<div class="container-fluid registration">
 			</div>
 		</div>
-		<footer id="footer">
-		</footer>
-		<div class="mobileview container-fluid">
-			<div class="mobilecontainer row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-					<ul>
-						<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
-						<li><a id="subdrop" href="" tabindex="2" accesskey="8">LOGIN</a></li>
-						<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-						<li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">ARTISTS</a></li>
-						<li> <a id="activePage" href="#">MYPAGE</a></li>
-
-					</ul>
-				</div>
+	</div>
+	<footer id="footer">
+	</footer>
+	<div class="mobileview container-fluid">
+		<div class="mobilecontainer row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<ul>
+					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+					<?php
+					$mypage = mypageMobile();
+					?>
+					<li><a class="notActive pagina" href="homepage.php">HOME</a></li>
+					<?php
+					if (isset($_SESSION["utente"])) {
+						$ut = $_SESSION["utente"];
+						echo "<li><a class=\"notActive pagina\" href=\"eventi.php\">EVENTS</a></li>";
+					}
+					?>
+					<li> <a id="activePage" href="#">CREATE</a></li>
+				</ul>
 			</div>
 		</div>
+	</div>
 
-		<script src="js/jquery.validate.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
 
-		<!-- <script text="javascript">
+	<!-- <script text="javascript">
 											<input type="file" name="fileToUpload" class="custom-file-input" id="custom-File"><label class="img-action custom-file-label" for="customFile">Inserisci foto</label>
 
 			$(document).ready(function() {

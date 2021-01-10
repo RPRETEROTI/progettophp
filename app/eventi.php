@@ -37,7 +37,17 @@ session_start();
 		}
 	}
 	?>
+	<?php function mypageMobile()
+	{
 
+		if (isset($_SESSION["utente"])) {
+			$ut = $_SESSION["utente"];
+			echo "<li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
+		} else {
+			echo "<li><a id=\"subdrop\" href=\"registrazione.php\">LOGIN</a></li>";
+		}
+	}
+	?>
 	<?php
 	$ut = "";
 	if (isset($_SESSION["utente"])) {
@@ -145,11 +155,13 @@ session_start();
 			</div>
 			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-2">
 				<ul class="pl-2">
-					<li> <a class="notActive pagina" href="home.php">HOME</a></li>
-					<li><a id="activePage" href="#" tabindex="" accesskey="">EVENTI</a></li>
-					<?php
-					$mypage = mypage()
-					?>
+					<li> <a class="notActive pagina" href="homepage.php">HOME</a></li>
+					<li><a id="activePage" tabindex="" accesskey="">EVENTI</a></li>
+					<li> <a class="notActive pagina" href="buildevent.php">CREATE</a></li>
+					<li><a id="subdrop" href="logout.php">LOGOUT</a></li>
+					<!-- <?php
+							// $mypage = mypage()
+							?> -->
 				</ul>
 			</div>
 			<div class="container-menu-icon col-2 col-sm-2 d-md-none">
@@ -172,35 +184,33 @@ session_start();
 				<div class="artist-section-filtered"></div>
 			</div>
 		</div>
-		<footer id="footer">
-		</footer>
-		<div class="mobileview container-fluid">
-			<div class="mobilecontainer row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-					<ul>
-						<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+	</div>
+	<footer id="footer">
+	</footer>
+	<div class="mobileview container-fluid">
+		<div class="mobilecontainer row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<ul>
+					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+					<?php
+					$mypage = mypageMobile();
+					?>
+					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li> <a id="activePage" href="">EVENTS</a></li>
+					<li><a class="notActive pagina" href="buildevent.php" tabindex="" accesskey="">CREATE</a></li>
+					<!-- 
 						<?php
-						if (isset($_SESSION["utente"])) {
-							$ut = $_SESSION["utente"];
-							echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
-						} else {
-							echo " <li><a id=\"subdrop\" href=\"registrazione.php?causa=0\">LOGIN</a></li>";
-						}
-						?>
-						<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
-						<li> <a id="activePage" href="">ARTISTS</a></li>
-						<?php
-						if (isset($_SESSION["utente"])) {
-							$ut = $_SESSION["utente"];
-							echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-						} else {
-							echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
-						}
-						?>
-					</ul>
-				</div>
+						// if (isset($_SESSION["utente"])) {
+						// 	$ut = $_SESSION["utente"];
+						// 	echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
+						// } else {
+						// 	echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
+						// }
+						?> -->
+				</ul>
 			</div>
 		</div>
+	</div>
 </body>
 
 </html>
