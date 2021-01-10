@@ -63,6 +63,12 @@ session_start();
 			color: black;
 			font-family: Swistblnk Monthoers;
 			margin: auto;
+			font-weight: bold;
+
+		}
+
+		.eventcontent {
+			font-weight: bold;
 		}
 
 		#feedback {
@@ -88,6 +94,11 @@ session_start();
 			.cantante {
 				font-size: 3em;
 			}
+
+			.container-img-artist {
+				height: 30em;
+				background-size: cover;
+			}
 		}
 
 		@media screen and (min-width:360px) and (max-width:1279px) {
@@ -96,16 +107,18 @@ session_start();
 			}
 		}
 
+		@media screen and (min-width:360px) and (max-width:767px) {
+			.container-img-artist {
+				height: 20em;
+				background-size: cover;
+			}
+		}
+
 		.background-artist {
 			background-color: #039ed8;
 			border-bottom: 2px solid white
 		}
 
-
-		.container-img-artist {
-			height: 22em;
-			background-size: cover;
-		}
 
 		.artist-margin {
 			margin: 0.3em;
@@ -146,6 +159,9 @@ session_start();
 	<title>Piscinas Sounds </title>
 </head>
 
+
+
+
 <body>
 
 	<div class="deskview container-fluid p-0 m-0 ">
@@ -176,6 +192,12 @@ session_start();
 				<div class="cover col-12">
 					<h1>EVENTS </h1>
 				</div>
+				<i class="fas fa-music"></i>
+				<i class="fas fa-volleyball-ball"></i>
+				<i class="fas fa-book"></i>
+				<i class="fas fa-clock"></i>
+				<i class="fas fa-calendar-day"></i>
+				<i class="fas fa-info"></i>
 			</div>
 
 			<div class=" container-fluid p-0">

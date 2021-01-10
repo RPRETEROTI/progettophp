@@ -12,6 +12,7 @@ class Event
     public string $date;
     public string $hour;
     public string $category;
+    public string $iconCategory;
 
     public function __construct($database)
     {
@@ -91,7 +92,7 @@ class Event
 
     function read()
     {
-        $sql = 'SELECT * FROM eventi';
+        $sql = 'SELECT *,categorie.icon FROM eventi JOIN categorie ON eventi.categoria=categorie.id';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt;
@@ -108,6 +109,35 @@ class Event
         return $stmt;
         // return $resultSet;
     }
+
+
+    // public function setIconCategoryEvent($iconCategory)
+    // {
+    //     switch ($iconCategory) {
+    //         case $iconCategory === 'a1':
+    //             $iconCategory = 'fa-music';
+    //             $this->iconCategory = $iconCategory;
+    //             break;
+    //         case $iconCategory === 'b2':
+    //             $iconCategory = 'fa-volleyball-ball';
+    //             $this->iconCategory = $iconCategory;
+
+    //             break;
+    //         case $iconCategory === 'c3':
+    //             $iconCategory = 'fa-book';
+    //             $this->iconCategory = $iconCategory;
+
+    //             break;
+    //         case $iconCategory === 'd4':
+    //             $iconCategory = 'fa-utensils';
+    //             $this->iconCategory = $iconCategory;
+
+    //             break;
+    //         default;
+    //     }
+    // }
+
+
 
     function readWithAuthentication()
     {

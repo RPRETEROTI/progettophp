@@ -46,25 +46,41 @@ function readEventsTemplate(data) {
     containerHtml +=
       `<div class="background-artist row align-items-center ">
      
-					<div style="background-image: url(assets/images/` +
-      val.fotoart +
+					<div style="background-image: url(assets/uploadimages/` +
+      val.fotoev +
       `)" class="container-img-artist col-12 col-sm-6"></div>
                     <div class="d-flex flex-column artist-name col-12 col-sm-5 col-md-6 col-xl-6">
-                    <i class="fas fa-trash delete-event" style="color:white" data-event="` +
+                    <div class="d-flex justify-content-end py-3"><i class="fas fa-trash delete-event" style="color:#F08080;font-size:30px;" data-event="` +
       val.code +
-      `"></i>
+      `"></i></div> 
+
+      <div class="d-flex"><i class="fas ` +
+      val.iconCategory +
+      `" style="color:white;font-size:30px;"></i></div> 
                         <h5 class="cantante">` +
       val.name +
       `</h5>
-                        <p>Canzone artista:` +
+     
+      <div class="d-flex"><i class="fas fa-euro-sign" style="color:white;font-size:24px;"></i></div>
+      <div class="d-flex"> <p class="eventcontent">Prezzo artista:` +
       val.price +
-      `</p>
-                        <p>Ora esibizione:` +
+      `</p>  </div> 
+      <div ><i class="fas fa-clock" style="color:white;font-size:24px;"></i></div>
+
+      <div class="d-flex"> <p class="eventcontent">Ora esibizione:` +
       val.hourexhibition +
-      `</p>
-                        <p>Data esibizione:` +
+      `</p></div>
+
+      <div class="d-flex"><i class="fas fa-calendar-day" style="color:white;font-size:24px;"></i></div>
+         <div>               <p class="eventcontent">Data esibizione:` +
       val.dateexhibition +
-      `</p>
+      `</p></div>
+      <div class="d-flex"><i class="fas fa-info" style="color:white;font-size:24px;"></i>
+      </i></div>
+      <div>               <p class="eventcontent">Descrizione:` +
+      val.description +
+      `</p></div>
+
 					</div>
 					</div>`;
   });

@@ -17,11 +17,14 @@ if ($stmt->rowCount() > 0) {
         $event = array(
             "name" => $row["nome"],
             "price" => $row["prezzo"],
+            "description" => $row["descrizione"],
             "dateexhibition" => $row["data"],
             "hourexhibition" => $row["ora"],
             "code" => $row["codice"],
-            "fotoart" => $row["fotoevento"],
-            "category" => $row["categoria"]
+            "fotoev" => $row["fotoevento"],
+            "category" => $row["categoria"],
+            "iconCategory" =>  $row["icon"]
+
         );
         array_push($events["events"], $event);
     }
