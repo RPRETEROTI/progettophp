@@ -9,7 +9,8 @@ include_once '../models/Event.php';
 $db = new APPDatabase();
 $database = $db->getConnection();
 $event = new Event($database);
-$isFileUploaded = false;
+$isFileUploaded = 0;
+$imgErrorType = '';
 $name = $_POST['name'];
 $code = $_POST['code'];
 $checkcode = $_POST['checkcode'];
@@ -19,33 +20,28 @@ $date = $_POST['date'];
 $hour = $_POST['hour'];
 $descr = $_POST['descr'];
 $filename = $_FILES['uploadimg']['name'];
+$hasValue =  (strpos($filename, '.') !== false);
 
+if (isset($_FILES['uploadimg']['name']) && $hasValue == true) {
 
-if (isset($_FILES['uploadimg']['name'])) {
-    // $filename = $_FILES['uploadimg']['name'];
-    // echo "filename" .  $filename;
-    $target_subdir = "/progetto_approcciavanzati2020/app/assets/uploadimages/";
-    $target_dir = $_SERVER['DOCUMENT_ROOT'] . $target_subdir;
-    $location = $target_dir . $filename;
-    if (move_uploaded_file($_FILES['uploadimg']['tmp_name'], $location)) {
-        $response = $location;
-        $isFileUploaded = true;
-        // echo "filenamelocationnew" . $response;
+    //setto un array con i tipi di file che consentono l'upload  
+    $formati_consentiti = array("png", "jpeg", "jpg");
+    $inclusion_check = explode('.', $_FILES['uploadimg']['name']);
+    if (in_array(strtolower(end($inclusion_check)), $formati_consentiti)) {
+        $target_subdir = "/progetto_approcciavanzati2020/app/assets/uploadimages/";
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . $target_subdir;
+        $location = $target_dir . $filename;
+        if (move_uploaded_file($_FILES['uploadimg']['tmp_name'], $location)) {
+            $response = $location;
+            $isFileUploaded = 1;
+        }
+    } else {
+        $imgErrorType = "Il formato del file non è consentito. Solo .png,.jpeg,.jpg!";
+        $isFileUploaded = 0;
     }
+} else {
+    $isFileUploaded = 1;
 }
-// echo "upload:" . $isFileUploaded;
-// echo "a+" . $profile;
-
-// // $imga = [
-// //     'nome' => $img,
-// //     'tmp_name' => '/tmp/php/php1h4j1o',
-// // ];
-
-// $profilea = $_REQUEST['name'];
-// echo "aZ+" . $profilea;
-// // leggo i dati nel body della request (metodo POST)
-// $data = json_decode(file_get_contents("php://input"));
-// echo "ciuao" . $data;
 
 // controllo che i dati ci siano...
 if (
@@ -64,13 +60,13 @@ if (
     !empty($hour)
     &&
     !empty($descr)
-    ||  isset($_FILES['uploadimg']['name']) && $isFileUploaded = true
+    && $isFileUploaded == 1
 ) {
 
     // inserisco i valori nelle variabili d'istanza dell'oggetto $product
     $event->name = $name;
     $event->code = $code;
-    $event->fotoev = $filename;
+    $event->fotoev = $hasValue ? $filename : ' ';
     $event->price = $price;
     $event->description = $descr;
     $event->date = $date;
@@ -89,7 +85,7 @@ if (
         if (!isset($_SESSION["codevento"])) {
             http_response_code(201); // response code 201 = created
             // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-            echo json_encode(array("message" => "Event was created"));
+            echo json_encode(array("message" => "Event was created" . $isFileUploaded . $imgErrorType));
         } else {
             http_response_code(409); // response code 201 = created
             // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
@@ -103,5 +99,10 @@ if (
 } else { // se i dati sono incompleti
     http_response_code(400); // response code 400 = bad request
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-    (array("message" => "Unable to create product. Data is incomplete: "));
+    if ($imgErrorType != null) {
+        echo json_encode(array("message" => $imgErrorType));
+    }
+    if ($imgErrorType === null) {
+        echo json_encode(array("message" => "Errore di caricamento img"));
+    }
 }
