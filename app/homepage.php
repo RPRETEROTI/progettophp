@@ -19,32 +19,7 @@ session_start();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style/main.css">
 
-	<script>
-		// $(document).ready(function() {
-		// 	$(document).on("submit", "#formsong", function() {
-		// 		// first par = event; second (optional) par = selector (in this case the id); last par = event handler
 
-		// 		// get form data
-		// 		var form_data = JSON.stringify($("#formsong").serializeObject());
-		// 		console.log("form_data", form_data);
-		// 	});
-		// });
-		// $.fn.serializeObject = function() {
-		// 	var o = {};
-		// 	var a = this.serializeArray();
-		// 	$.each(a, function() {
-		// 		if (o[this.name] !== undefined) {
-		// 			if (!o[this.name].push) {
-		// 				o[this.name] = [o[this.name]];
-		// 			}
-		// 			o[this.name].push(this.value || "");
-		// 		} else {
-		// 			o[this.name] = this.value || "";
-		// 		}
-		// 	});
-		// 	return o;
-		// };
-	</script>
 	<?php
 	print_r($_SESSION);
 	?>
@@ -207,70 +182,6 @@ session_start();
 </head>
 
 <body>
-	<!-- <script src="js/test.js"></script> -->
-
-
-	<!-- <script src="js/create-favorite-song.js"></script> -->
-	<!-- <form action="#" method="post" id="formsong">
-		<div class="form-row">
-			<div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-7">
-				<textarea name="song" type="text" id="song" class=" credenziali form-control" maxlength="100"></textarea>
-			</div>
-			<div class=" col-12 col-xl-5 d-flex justify-content-center">
-				<button type="submit" class="btn h-75" data-id="" style="background-color: white;align-items: center;align-content: center;display: flex;">SAVE</button>
-			</div>
-		</div>
-	</form> -->
-
-
-	<?php
-	// include_once './models/APPDatabase.php';
-	// include_once './models/Artist.php';
-
-	// $db = new APPDatabase();
-	// $database = $db->getConnection();
-	// $sql = 'SELECT nome FROM artisti WHERE codice="co"';
-	// $stmt = $database->prepare($sql);
-	// $stmt->execute();
-	// $tot=$stmt->rowCount();
-	// while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-	// 	echo 'Il nome dello scopatore è:'.$row['nome'];
-	// }
-	// Per me è la cipolla: $tot";
-	// $artists = new Artist($db);
-	// $x= $artists->read();
-	// $ciao = $x
-	?>
-	<?php
-	// include_once './models/APPDatabase.php';
-	// include_once './models/Artist.php';
-
-	// $db = new APPDatabase();
-	// $database = $db->getConnection();
-	// $artists = new Artist($database);
-	// $stmt = $artists->read();
-	// $tot = $stmt->rowCount();
-
-	// $artists = array();
-	// $artists["artists"] = array();
-	// // $sql = 'SELECT nome FROM artisti WHERE codice="co"';
-	// // $stmt = $database->prepare($sql);
-	// // $stmt->execute();
-	// // $tot=$stmt->rowCount();
-	// // while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-	// // 	echo 'Il nome dello scopatore è:'.$row['nome'];
-	// // }
-	// Per me è la cipolla: $tot";
-	// $artists = new Artist($db);
-	// $x= $artists->read();
-	// $ciao = $x
-	?>
-	<!-- <script src="js/read-artists.js"></script> -->
-	<!-- <div id='page-content'></div> -->
-
-	<div class="test"></div>
-	<div class="artist-section"></div>
-
 	<div class="deskview container-fluid p-0 m-0 ">
 		<div class="navigation-menu row m-0" id="myTopnav">
 			<div class="col-10 col-sm-10 col-md-5 col-lg-6">
@@ -387,15 +298,6 @@ session_start();
 						echo "<li><a class=\"notActive pagina\" href=\"registrazione.php\">CREATE</a></li>";
 					}
 					?>
-					<!-- <li><a class="notActive pagina" href="artisti.php" tabindex="" accesskey="">CREATE</a></li>
-					<?php
-					// if (isset($_SESSION["utente"])) {
-					// 	$ut = $_SESSION["utente"];
-					// 	echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-					// } else {
-					// 	echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
-					// }
-					?> -->
 				</ul>
 			</div>
 		</div>

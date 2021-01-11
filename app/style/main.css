@@ -9,13 +9,17 @@ body {
 h1 {
   text-align: center;
 }
-#logo {
+/* #logo {
   height: 90px;
   width: 90px;
-}
+} */
 @media screen and (min-width: 1280px) {
   .content {
     padding-top: 115px;
+  }
+  #logo {
+    height: 115px;
+    width: 115px;
   }
 }
 
@@ -23,11 +27,19 @@ h1 {
   .content {
     padding-top: 90px;
   }
+  #logo {
+    height: 80px;
+    width: 80px;
+  }
 }
 
 @media screen and (min-width: 360px) and (max-width: 767px) {
   .content {
     padding-top: 62px;
+  }
+  #logo {
+    height: 65px;
+    width: 65px;
   }
 }
 /* <style> stile index

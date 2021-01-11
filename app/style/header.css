@@ -1,5 +1,6 @@
 .navigation-menu {
   background-color: #7fc4f5;
+  border-bottom: 8px solid #0f4c82;
   position: fixed;
   /* height: 15%; */
   transition: top 0.1s;
@@ -44,7 +45,7 @@ a.icon {
   }
 
   .navigation-menu {
-    height: 18%;
+    height: 20%;
   }
 }
 
@@ -59,7 +60,7 @@ a.icon {
 
 @media screen and (min-width: 360px) and (max-width: 767px) {
   .navigation-menu {
-    height: 10%;
+    height: 12%;
   }
 }
 
