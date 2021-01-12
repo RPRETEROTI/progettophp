@@ -28,13 +28,13 @@ $(document).ready(function () {
   if (document.documentElement.clientWidth >= 1280) {
     $(window).scroll(function () {
       if ($(document).scrollTop() > 150) {
-        $(".navigation-menu").css("height", "22%");
+        $(".navigation-menu").css("height", "24%");
         $(".navigation-menu ul").css("top", "40px");
-        $(".navigation-menu #logo").css({ height: "115px", width: "115px" });
+        $(".navigation-menu #logo").css({ height: "130px", width: "130px" });
       } else {
         $(".navigation-menu").css("height", "20%");
         $(".navigation-menu ul").css("top", "30px");
-        $(".navigation-menu #logo").css({ height: "100px", width: "100px" });
+        $(".navigation-menu #logo").css({ height: "110px", width: "110px" });
       }
     });
   }
@@ -43,11 +43,11 @@ $(document).ready(function () {
   if (document.documentElement.clientWidth < 1280) {
     $(window).scroll(function () {
       if ($(document).scrollTop() > 150) {
-        $(".navigation-menu").css("height", "18%");
+        $(".navigation-menu").css("height", "22%");
         $(".navigation-menu ul").css("top", "40px");
-        $(".navigation-menu #logo").css({ height: "100px", width: "100px" });
+        $(".navigation-menu #logo").css({ height: "120px", width: "120px" });
       } else {
-        $(".navigation-menu").css("height", "17%");
+        $(".navigation-menu").css("height", "19%");
         $(".navigation-menu ul").css("top", "30px");
         $(".navigation-menu #logo").css({ height: "80px", width: "80px" });
       }
@@ -58,7 +58,7 @@ $(document).ready(function () {
   if (document.documentElement.clientWidth < 768) {
     $(window).scroll(function () {
       if ($(document).scrollTop() > 150) {
-        $(".navigation-menu").css("height", "14%");
+        $(".navigation-menu").css("height", "16%");
         $(".icon").css("top", "-58px");
         $(".navigation-menu ul").css("top", "40px");
         $(".navigation-menu #logo").css({ height: "80px", width: "80px" });

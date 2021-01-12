@@ -23,14 +23,14 @@ function showCategoriesFilter() {
 function filterTemplate(data) {
   containerHtml = ` 
     <form action="#" method="POST" id="filterForm">
-    <div class="form-row my-2">`;
+    <div class="form-row my-4">`;
   containerHtml += `    
-  <div class="form-group col-8 d-flex align-items-center justify-content-end">
-    <button type="submit" class="btn py-2 px-5" style="background-color:#039ed8">
+  <div class="form-group col-12 col-md-8 w-100 d-flex align-items-center justify-content-end">
+    <button type="submit" class="btn  filterbtn py-2 px-5" >
       FILTER
     </button>
   </div>`;
-  containerHtml += ` <div class="form-group d-flex align-items-center col-4 class="d-flex justify-flex-end">
+  containerHtml += ` <div class="form-group d-flex align-items-center col-12 col-md-4 class="d-flex justify-flex-end">
     <label for="filter"></label>
     <select name="filter" class="form-control">
     <option value="" >Seleziona il filtro eventi</option>
