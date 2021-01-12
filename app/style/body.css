@@ -18,10 +18,13 @@
 
 .cover {
   height: 30rem;
-  background-image: url(../assets/images/backsito.jpg);
+  /* background-image: url(../assets/images/backsito.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover; */
+  background: #49c6e5;
+  /* opacity: 0.9; */
+  border-bottom: 10px solid black;
 }
 
 .cover h1 {

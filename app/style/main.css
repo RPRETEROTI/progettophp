@@ -13,13 +13,40 @@ h1 {
   height: 90px;
   width: 90px;
 } */
+.footer-container {
+  background: #039ed8;
+  border-top: 8px solid #0f4c82;
+}
+
+.footer-container .title {
+  font-family: Swistblnk Monthoers;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
+  border: 5px solid #0f4c82;
+  padding: 24px;
+}
+.footer-container #logo {
+  height: 140px;
+  width: 140px;
+}
+.logo-container {
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .logo-container {
+    justify-content: flex-end;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .content {
     padding-top: 115px;
   }
   #logo {
-    height: 115px;
-    width: 115px;
+    height: 110px;
+    width: 110px;
   }
 }
 
