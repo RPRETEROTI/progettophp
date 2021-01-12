@@ -79,7 +79,7 @@ function login(form_data) {
     data: form_data,
     success: function (result) {
       // successLogin(data);
-      location.href = "homepage.php";
+      location.href = "index.php";
       console.log("dataaf", result);
     },
     error: function (xhr, err, exc) {
@@ -102,7 +102,7 @@ function signin(form_data) {
     success: function (result) {
       console.log(result);
       console.log(form_data);
-      location.href = "homepage.php";
+      location.href = "index.php";
     },
     error: function (xhr, err, exc) {
       console.log("hai bsagliato:", xhr.responseText);

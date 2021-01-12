@@ -40,7 +40,7 @@ function login(usr, psw) {
     method: "GET",
     success: function (data) {
       // successLogin(data);
-      location.href = "homepage.php";
+      location.href = "index.php";
       console.log("dataaf", data);
     },
     error: function (xhr, err, exc) {
