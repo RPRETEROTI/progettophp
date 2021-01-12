@@ -22,7 +22,7 @@ session_start();
 
 
 	<?php
-	print_r($_SESSION);
+	// print_r($_SESSION);
 	?>
 
 
@@ -161,7 +161,21 @@ session_start();
 			display: block;
 		}
 
-		.testt {
+		.createbtn {
+			background-color: #039ed8;
+			padding: 10px 30px;
+			border-radius: 6px;
+			align-items: center;
+			justify-content: center;
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 10px;
+			color: white;
+			width: 50%;
+		}
+
+
+		.imgbutton {
 			position: absolute;
 			top: 38px;
 			/* right: 187px; */
@@ -180,6 +194,8 @@ session_start();
 			border-left: 1px solid #ced4da;
 			border-radius: .25rem;
 			border-style: hidden;
+			font-weight: bold;
+			text-align: center;
 		}
 
 		.deskview .navigation-menu li a#subdrop {
@@ -202,12 +218,12 @@ session_start();
 	<div class="deskview container-fluid p-0 m-0 ">
 		<div class="errorModal"></div>
 		<div class="navigation-menu row m-0" id="myTopnav">
-			<div class="col-10 col-sm-10 col-md-3 col-lg-5">
-				<img id="logo" class="w-100" src="assets/images/logo.png" alt="">
+			<div class="col-10 col-sm-10 col-md-5 col-lg-6">
+				<img id="logo" src="assets/images/newlogo.png" alt="">
 			</div>
-			<div class="d-none d-md-block col-md-9 col-lg-7">
+			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-1">
 				<ul class="pl-2">
-					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<?php
 					if (isset($_SESSION["utente"])) {
 						$ut = $_SESSION["utente"];
@@ -228,26 +244,25 @@ session_start();
 			</div>
 		</div>
 		<div class="content container-fluid p-0">
-			<div class="row">
+			<div class="row m-0">
 				<div class="cover col-12">
-					<h1>MYPAGE</h1>
+					<h1>CREATE</h1>
 				</div>
 			</div>
-			<div class="container-fluid registration">
+			<div class="container-fluid registration p-0">
 			</div>
 		</div>
 	</div>
 	<footer id="footer">
 	</footer>
-	<div class="mobileview container-fluid">
+	<div class="mobileview container-fluid p-0">
 		<div class="mobilecontainer row">
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-				<ul>
-					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+			<div class="col-12 mobilecol">
+				<ul class="p-0">
 					<?php
 					$mypage = mypageMobile();
 					?>
-					<li><a class="notActive pagina" href="homepage.php">HOME</a></li>
+					<li><a class="notActive pagina" href="index.php">HOME</a></li>
 					<?php
 					if (isset($_SESSION["utente"])) {
 						$ut = $_SESSION["utente"];
@@ -255,6 +270,7 @@ session_start();
 					}
 					?>
 					<li> <a id="activePage" href="#">CREATE</a></li>
+					<li><a href="#" class="icona mt-5" onclick="ritornamenu()"><i class="fas fa-arrow-circle-left" style="font-size: 2em;"></i></a></li>
 				</ul>
 			</div>
 		</div>

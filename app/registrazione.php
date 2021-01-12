@@ -19,9 +19,9 @@ session_start();
 	<link rel="stylesheet" href="style/main.css">
 
 
-	<?php
-	print_r($_SESSION);
-	?>
+	<!-- <?php
+			// print_r($_SESSION);
+			?> -->
 
 
 	<script>
@@ -89,8 +89,22 @@ session_start();
 		}
 
 		.containerBtn {
-			padding: 10px 20px;
-			margin: 2em auto;
+			/* padding: 10px 20px;
+			margin: 2em auto; */
+			align-items: center;
+			display: flex;
+
+		}
+
+		.containerBtn .btn {
+			padding: 10px 30px;
+			border-radius: 6px;
+			align-items: center;
+			justify-content: center;
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 10px;
+			color: white;
 		}
 
 		.mypage .row {
@@ -103,7 +117,7 @@ session_start();
 		}
 
 		.signbtn {
-			background-color: #039ed8;
+			background-color: black;
 
 		}
 
@@ -111,8 +125,16 @@ session_start();
 			/* background-color: #039ed8; */
 			padding: 10px 30px;
 			border-radius: 6px;
-			margin: 2em 11em;
+			/* margin: 2em 11em; */
+			height: 80px;
+			width: 250px;
+			align-items: center;
+			justify-content: center;
+			font-size: 20px;
+			font-weight: bold;
+			color: white
 		}
+
 
 		.title {
 			font-weight: bold;
@@ -166,12 +188,12 @@ session_start();
 	<div class="deskview container-fluid p-0 m-0 ">
 		<div></div>
 		<div class="navigation-menu row m-0" id="myTopnav">
-			<div class="col-10 col-sm-10 col-md-3 col-lg-5">
-				<img id="logo" class="w-100" src="assets/images/logo.png" alt="">
+			<div class="col-10 col-sm-10 col-md-5 col-lg-6">
+				<img id="logo" src="assets/images/newlogo.png" alt="">
 			</div>
-			<div class="d-none d-md-block col-md-9 col-lg-7">
+			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-1">
 				<ul class="pl-2">
-					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<li><a id="activePage" href="registrazione.php" tabindex="" accesskey="">CREATE</a></li>
 					<!-- <li> <a id="activePage" href="">MYPAGE</a></li> -->
 					<li><a id="subdrop" href="">LOGIN</a></li>
@@ -182,283 +204,34 @@ session_start();
 			</div>
 		</div>
 		<div class="content container-fluid p-0">
-			<div class="row">
+			<div class="row m-0">
 				<div class="cover col-12">
 					<h1>MYPAGE</h1>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-12">
-					<h3 class="title">Accedi O Registrati.</h3>
+			<div class="container-fluid px-0 py-5 my-5">
+				<div class="row m-0">
+					<div class="col-12">
+						<h3 class="title">Accedi O Registrati.</h3>
+					</div>
 				</div>
-
+				<div class=" row buttonregistration"></div>
 			</div>
-			<div class=" row buttonregistration"></div>
 			<div class="container-fluid registration">
-				<!-- <div class="row">
-					<div class="col-6 backgr login">
-						<h3 class="title">Accedi al tuo profilo</h3>
-						<form action="#" method="post" id="loginForm">
-							<div class="form-row mypage">
-								<div class="form-group col-12 col-md-5 backgr">
-									<label for="usr" class="accesso col-form-label">Username</label>
-									<div>
-										<input name="usr" type="text" id="usr" class="credenziali form-control" />
-										<small id="passwordHelpBlock" class="usrn message form-text"></small>
-									</div>
-								</div>
-								<div class="form-group col-12 col-md-5 backgr">
-									<label for="usr" class="accesso col-form-label">Password</label>
-									<div>
-										<input name="pwd" type="password" id="pwd" class="credenziali form-control" />
-										<small id="passwordHelpBlock" class="usrn message form-text"></small>
-									</div>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 align-items-center d-flex justify-content-center">
-									<button type="submit" class="btn mypagebtn">LOGIN</button>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="col-6 nobackgr signin">
-						<h3 class="title">Crea il tuo profilo</h3>
-						<form action="#" method="post" id="loginForm">
-							<div class="form-row mypage">
-								<div class="form-group col-12 col-md-5 nobackgr">
-									<label for="usr" class="accesso col-form-label">Username</label>
-									<div>
-										<input name="usr" type="text" id="usr" class="credenziali form-control" />
-										<small id="passwordHelpBlock" class="usrn message form-text"></small>
-									</div>
-								</div>
-								<div class="form-group col-12 col-md-5 nobackgr">
-									<label for="usr" class="accesso col-form-label">Password</label>
-									<div>
-										<input name="pwd" type="password" id="pwd" class="credenziali form-control" />
-										<small id="passwordHelpBlock" class="usrn message form-text"></small>
-									</div>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 align-items-center d-flex justify-content-center">
-									<button type="submit" class="btn mypagebtn">SIGN IN</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div> -->
 			</div>
-			<!-- <div class="col-6 backgr">
-						<form action="#" method="post" id="loginForm">
-							<div class="container-fluid mypage">
-								<h3 class="title">Accedi al tuo profilo</h3>
-								<div class="row">
-									<div class="col-12 col-md-6 d-flex username">
-										<div class="form-group row">
-											<label for="usr" class="accesso col-form-label">Username</label>
-											<div>
-												<input name="usr" type="text" id="usr" class="credenziali form-control">
-												<small id="passwordHelpBlock" class="usrn message form-text "></small>
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-md-6 d-flex justify-content-center">
-										<div class="form-group row">
-											<label for="pwd" class="accesso col-form-label">Password</label>
-											<div>
-												<input name="pwd" type="password" id="pwd" class="credenziali form-control">
-												<small id="passwordHelpBlock" class="usrn message form-text "></small>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<div class="col-12 align-items-center d-flex">
-										<button type="submit" class="btn mypagebtn">LOGIN</button>
-									</div>
-								</div>
-							</div>
-						</form></div> -->
-
-			<!-- signin section -->
-			<!-- <div class="col-6">
-
-						<form action="#" method="post" id="loginForm">
-							<div class="container-fluid mypage">
-								<h3 class="title">Crea un profilo</h3>
-
-								<div class="row">
-									<div class="col-12 col-md-6 d-flex username">
-										<div class="form-group row">
-											<label for="usr" class="accesso col-form-label">Username</label>
-											<div>
-												<input name="usr" type="text" id="usr" class="credenziali form-control">
-												<small id="passwordHelpBlock" class="usrn message form-text "></small>
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-md-6 d-flex justify-content-center">
-										<div class="form-group row">
-											<label for="pwd" class="accesso col-form-label">Password</label>
-											<div>
-												<input name="pwd" type="password" id="pwd" class="credenziali form-control">
-												<small id="passwordHelpBlock" class="usrn message form-text "></small>
-
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<div class="col-12 align-items-center d-flex">
-										<button type="submit" class="btn mypagebtn" style="background-color:#039ed8">SIGN IN</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					
-					
-					
-					
-					
-					</div> -->
-
-			<!-- <div class="row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-					<h3 class="title">Registrati per accedere al tuo profilo ed acquistare i nostri biglietti</h2>
-				</div>
-			</div>
-
-			<form action="registrazionecompiuta.php" method="post" enctype="multipart/form-data" id="formvalidato">
-				<div class="row m-3">
-					<div class="offset-1 offset-md-3 col-11 col-md-7 col-lg-6 ">
-						<div class="form-row">
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-								<label for="user" class="col-form-label">Username*</label>
-								<input name="user" type="text" id="user" class=" credenziali form-control" placeholder="" maxlength="20" value="" aria-describedby="passwordHelpBlock">
-								<?php
-								// $causa = $_REQUEST["causa"];
-								// if ($causa == 4) {
-								// 	$error_msg = "Utente gia' esistente";
-								// 	echo "<small id=\"passwordHelpBlock\" class=\"usrn form-text\">";
-								// 	echo "$error_msg";
-								// 	echo "</small>";
-								// }
-								// if ($causa != 4) {
-								// 	echo "<small id=\"passwordHelpBlock\" class=\"form-text text-muted\">";
-								// 	echo "Your username must be 7 characters long.";
-								// 	echo "</small>";
-								// }
-								?>
-							</div>
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-								<label for="pawd" class="col-form-label">Password*</label>
-								<input type="password" class="credenziali form-control" id="pawd" name="pawd" placeholder="Password" aria-describedby="passwordHelpBlock">
-								<small id="passwordHelpBlock" class="form-text text-muted">
-									Your password must be 7 characters long.
-								</small>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-								<label for="nome" class="col-form-label">Nome</label>
-								<input name="nome" type="text" id="nome" class="form-control" placeholder="" value="">
-							</div>
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-								<label for="cogn" class="col-form-label">Cognome</label>
-								<input type="text" class="form-control" id="cogn" name="cogn" placeholder="" value="">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
-								<label for="email">Email*</label>
-								<input type="email" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="passwordHelpBlock">
-								<small id="passwordHelpBlock" class="form-text text-muted">
-									Your email must have @
-								</small>
-							</div>
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
-								<label for="cemail"> Conferma email*</label>
-								<input type="email" class="form-control" id="cemail" name="cemail" placeholder=" Conferma Email" aria-describedby="passwordHelpBlock">
-								<small id="passwordHelpBlock" class="form-text text-muted">
-									Your email must have @
-								</small>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-9 col-sm-9 col-md-8 col-lg-8 col-xl-8">
-								<label for="indirizzo">Indirizzo</label>
-								<input type="text" class="form-control" id="indirizzo" name="indirizzo" placeholder="1234 Main St">
-							</div>
-							<div class="form-group col-3 col-sm-3 col-md-4 col-lg-4 col-xl-4">
-								<label for="nciv">N. civico</label>
-								<input type="text" class="form-control" id="nciv" name="nciv" placeholder="00">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-								<label for="city">City</label>
-								<input type="text" class="form-control" id="city" name="city">
-							</div>
-							<div class="form-group col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-								<label for="state">State</label>
-								<select name="state" class="form-control">
-									<?php
-									$host = "127.0.0.1:3307";
-									$phpuser = "root";
-									$phppwd = "";
-									$dbname = "approcciavanzatiprogetto";
-									$conn = new mysqli($host, $phpuser, $phppwd, $dbname);
-									$query = "select nomenaz from nazioni ";
-									$result = $conn->query($query);
-									while ($row = $result->fetch_assoc()) {
-										$codice = $row["codice"];
-										$nazione = $row["nomenaz"];
-										echo "<option value=\"$codice\">$nazione</option>";
-									}
-									?>
-								</select>
-							</div>
-							<div class="form-group col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2">
-								<label for="zip">Zip</label>
-								<input type="text" class="form-control" id="zip" name="zip">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
-								<label for="iban">Iban</label>
-								<input type="text" class="form-control" id="iban" name="iban" placeholder="1234 Main St">
-								<small id="passwordHelpBlock" class="form-text text-muted">
-									Your iban must have 17 caratteri.
-								</small>
-							</div>
-							<div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-								<label for="intestatario">Intestatario</label>
-								<input type="text" class="form-control" id="intestatario" name="intestatario" placeholder="Apartment, studio, or floor">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class=" col-12 d-flex justify-content-center">
-								<button type="submit" class="btn" style="background-color:#039ed8">REGISTRATI</button>
-							</div>
-						</div>
-					</div>
-			</form> -->
-
 		</div>
 	</div>
 	<footer id="footer">
 	</footer>
-	<div class="mobileview container-fluid">
+	<div class="mobileview container-fluid p-0">
 		<div class="mobilecontainer row">
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-				<ul>
-					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+			<div class="col-12 mobilecol">
+				<ul class="p-0">
 					<li><a id="subdrop" href="" tabindex="2" accesskey="8">LOGIN</a></li>
-					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<li><a id="activePage" href="registrazione.php" tabindex="" accesskey="">CREATE</a></li>
+					<li><a href="#" class="icona mt-5" onclick="ritornamenu()"><i class="fas fa-arrow-circle-left" style="font-size: 2em;"></i></a></li>
+
 				</ul>
 			</div>
 		</div>

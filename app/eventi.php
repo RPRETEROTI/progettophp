@@ -69,6 +69,7 @@ session_start();
 
 		.eventcontent {
 			font-weight: bold;
+			border-bottom: 2px solid black
 		}
 
 		#feedback {
@@ -99,23 +100,36 @@ session_start();
 				height: 30em;
 				background-size: cover;
 			}
-		}
 
-		@media screen and (min-width:360px) and (max-width:1279px) {
-			.cantante {
-				font-size: 2em;
+			.eventcontent {
+				font-size: 18px;
 			}
 		}
 
-		@media screen and (min-width:360px) and (max-width:767px) {
+		/* @media screen and (min-width:360px) and (max-width:1279px) {
+			.cantante {
+				font-size: 2em;
+			}
+		} */
+
+		@media screen and (min-width:360px) and (max-width:1279px) {
+			.eventcontent {
+				font-weight: bold;
+				font-size: 16px;
+			}
+
+			.cantante {
+				font-size: 2em;
+			}
+
 			.container-img-artist {
-				height: 20em;
+				height: 26em;
 				background-size: cover;
 			}
 		}
 
 		.background-artist {
-			background-color: #039ed8;
+			background-color: #49c6e5;
 			border-bottom: 2px solid white
 		}
 
@@ -152,6 +166,13 @@ session_start();
 			display: inline-block;
 		}
 
+		.filterbtn {
+			background-color: black;
+			color: white;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
 		.deskview #subdrop:hover {
 			background-color: blue;
 		}
@@ -167,11 +188,11 @@ session_start();
 	<div class="deskview container-fluid p-0 m-0 ">
 		<div class="navigation-menu row m-0" id="myTopnav">
 			<div class="col-10 col-sm-10 col-md-5 col-lg-6">
-				<img id="logo" class="w-100" src="assets/images/logo.png" alt="">
+				<img id="logo" src="assets/images/newlogo.png" alt="">
 			</div>
-			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-2">
+			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-1">
 				<ul class="pl-2">
-					<li> <a class="notActive pagina" href="homepage.php">HOME</a></li>
+					<li> <a class="notActive pagina" href="index.php">HOME</a></li>
 					<li><a id="activePage" tabindex="" accesskey="">EVENTI</a></li>
 					<li> <a class="notActive pagina" href="buildevent.php">CREATE</a></li>
 					<li><a id="subdrop" href="logout.php">LOGOUT</a></li>
@@ -192,12 +213,7 @@ session_start();
 				<div class="cover col-12">
 					<h1>EVENTS </h1>
 				</div>
-				<i class="fas fa-music"></i>
-				<i class="fas fa-volleyball-ball"></i>
-				<i class="fas fa-book"></i>
-				<i class="fas fa-clock"></i>
-				<i class="fas fa-calendar-day"></i>
-				<i class="fas fa-info"></i>
+
 			</div>
 
 			<div class=" container-fluid p-0">
@@ -209,17 +225,18 @@ session_start();
 	</div>
 	<footer id="footer">
 	</footer>
-	<div class="mobileview container-fluid">
+	<div class="mobileview container-fluid p-0">
 		<div class="mobilecontainer row">
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-				<ul>
-					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+			<div class="col-12 mobilecol">
+				<ul class="p-0">
 					<?php
 					$mypage = mypageMobile();
 					?>
-					<li><a class="notActive pagina" href="homepage.php" tabindex="" accesskey="">HOME</a></li>
+					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<li> <a id="activePage" href="">EVENTS</a></li>
 					<li><a class="notActive pagina" href="buildevent.php" tabindex="" accesskey="">CREATE</a></li>
+					<li><a href="#" class="icona mt-5" onclick="ritornamenu()"><i class="fas fa-arrow-circle-left" style="font-size: 2em;"></i></a></li>
+
 					<!-- 
 						<?php
 						// if (isset($_SESSION["utente"])) {

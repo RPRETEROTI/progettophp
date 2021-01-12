@@ -16,7 +16,7 @@ session_start();
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.js" integrity="sha512-14GPUgKFTeCsgj5WWZpTNQ525GYlOK3DMTqrjsly3TDIDnOUbZ5sWyfI6HqsWUmMmaCoa6q7FHrbq9xdqNhmYg==" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="style/main.css">
 
 
@@ -54,21 +54,26 @@ session_start();
 	{
 		if (isset($_SESSION["utente"])) {
 			$ut = $_SESSION["utente"];
-			echo " <div class=\"row no-gutters\">";
-			echo " <div class=\"col-12 col-md-6\">";
+			echo " <div class=\"row no-gutters justify-content-around\">";
+			echo " <div class=\"col-12 col-md-3 \">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
-			echo " <a class=\"artists\" href=\"eventi.php\"> DISCOVER THE EVENTS</a></li>";
+			echo " <a class=\"artists\" href=\"eventi.php\">EVENTS</a></li>";
 			echo " </div>";
 			echo " </div>";
-			echo " <div class=\"col-12 col-md-6 \">";
+			echo " <div class=\"col-12 col-md-3 \">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
-			echo " <a class=\"artists\" href=\"buildevent.php\">BUILD YOUR EVENT</a></li>";
+			echo " <a class=\"artists\" href=\"buildevent.php\">CREATE</a></li>";
 			echo " </div>";
 			echo " </div>";
 			echo " </div>";
 		} else {
-			echo " <div class=\"row no-gutters\">";
-			echo " <div class=\"col-12 col-md-12\">";
+			echo " <div class=\"row no-gutters justify-content-around\">";
+			echo " <div class=\"col-12 col-md-3 \">";
+			echo " <div class=\"home-call-to-action m-3 p-2\">";
+			echo " <a class=\"artists\" href=\"registrazione.php\">CREATE</a></li>";
+			echo " </div>";
+			echo " </div>";
+			echo " <div class=\"col-12 col-md-3\">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
 			echo " <a class=\"artists\" href=\"registrazione.php\">SIGN UP</a></li>";
 			echo " </div>";
@@ -89,10 +94,10 @@ session_start();
 		}
 
 		.content .home-call-to-action {
-			background: #039ed8;
+			background: black;
+			/* color: #039ed8; */
 			display: flex;
-			height: 460px;
-			border-radius: 35%;
+			border-radius: 5px;
 			align-items: center;
 			justify-content: center;
 		}
@@ -119,6 +124,34 @@ session_start();
 			text-shadow: 0px 0px 10px #323232;
 			position: relative;
 			top: 10px;
+		}
+
+
+		@media screen and (min-width: 1280px) {
+			.claim {
+				height: 500px;
+
+			}
+		}
+
+		@media screen and (min-width: 768px) and (max-width:1279px) {
+			.claim {
+				height: 300px;
+
+			}
+		}
+
+		@media screen and (min-width: 360px) and (max-width:767px) {
+			.claim {
+				height: 200px;
+
+			}
+		}
+
+		.claim {
+			background-image: url(assets/images/homeimg3.png);
+			display: block;
+			background-size: cover
 		}
 
 		.claim-carousel {
@@ -165,6 +198,14 @@ session_start();
 			height: 20rem;
 		}
 
+		.title-home {
+
+			font-weight: bold;
+			text-align: center;
+			padding: 24px;
+
+		}
+
 		.deskview .navigation-menu li a#subdrop {
 			color: black;
 			padding: 20px 10px;
@@ -188,7 +229,7 @@ session_start();
 			<div class="col-10 col-sm-10 col-md-5 col-lg-6">
 				<img id="logo" src="assets/images/newlogo.png" alt="">
 			</div>
-			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-2">
+			<div class="d-none d-md-block col-md-7 col-lg-4 offset-lg-1">
 				<ul class="pl-2">
 					<li> <a id="activePage" href="#">HOME</a></li>
 					<?php
@@ -201,74 +242,31 @@ session_start();
 			</div>
 		</div>
 		<div class="content">
-			<div class="carousel-container row no-gutters">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-					<div class="carousel slide" data-ride="carousel" id="miocarousel">
-						<ol class="carousel-indicators">
-							<li data-target="#miocarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#miocarousel" data-slide-to="1"></li>
-							<li data-target="#miocarousel" data-slide-to="2"></li>
-							<li data-target="#miocarousel" data-slide-to="3"></li>
-						</ol>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img class="imgcarousel w-100" src="assets/images/backsito.jpg" alt="copertina">
-								<div class="carousel-caption">
-									<h1 class="claim-carousel">PISCINASSOUND</h1>
-									<h2 class="evento">7-8-9<br /> Settembre 2018</h2>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="imgcarousel w-100" src="assets/images/trentau.jpg" alt="copertina">
-								<div class="carousel-caption">
-									<h1 class="claim-carousel">PRODIGY</h1>
-									<h2 class="evento">7 Settembre 2018</h2>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="imgcarousel w-100" src="assets/images/unos.jpg" alt="copertina">
-								<div class="carousel-caption">
-									<h1 class="claim-carousel">MAX GAZZE'</h1>
-									<h2 class="evento">8 Settembre 2018</h2>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="imgcarousel w-100" src="assets/images/duess.jpg" alt="copertina">
-
-								<div class="carousel-caption">
-									<h1 class="claim-carousel">SAMUEL</h1>
-									<h2 class="evento">9 Settembre 2018</h2>
-								</div>
-							</div>
-						</div>
-						<a class="carousel-control-prev" href="#miocarousel" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon"></span>
-						</a>
-						<a class="carousel-control-next" href="#miocarousel" role="button" data-slide="next">
-							<span class="carousel-control-next-icon"></span>
-						</a>
+			<div class="container-fluid p-0">
+				<div class="row m-0">
+					<div class="col-12 claim"></div>
+				</div>
+			</div>
+			<div class="container-fluid py-4">
+				<div class="row">
+					<div class="col-12">
+						<h4 class="title-home">Crea i tuoi eventi con la nostra piattaforma dedicata</h4>
 					</div>
 				</div>
+				<?php
+				$mypage = buttonHome();
+				?>
 			</div>
 
-			<?php
-			$mypage = buttonHome();
-			?>
-			<div class="row no-gutters">
-				<div class="marchio d-none d-md-block col-md-10">
-					<img class="logo-home w-100" src="assets/images/logo.png" alt="">
-				</div>
-			</div>
 		</div>
 	</div>
 
 	<footer id="footer">
 	</footer>
-	<div class="mobileview container-fluid">
+	<div class="mobileview container-fluid p-0">
 		<div class="mobilecontainer row">
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-				<ul>
-					<li><a href="#" class="icona" onclick="ritornamenu()">X</a></li>
+			<div class="col-12 mobilecol">
+				<ul class="p-0">
 					<?php
 					$mypage = mypageMobile();
 					?>
@@ -287,6 +285,8 @@ session_start();
 						echo "<li><a class=\"notActive pagina\" href=\"registrazione.php\">CREATE</a></li>";
 					}
 					?>
+					<li><a href="#" class="icona mt-5" onclick="ritornamenu()"><i class="fas fa-arrow-circle-left" style="font-size: 2em;"></i></a></li>
+
 				</ul>
 			</div>
 		</div>
