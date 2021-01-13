@@ -17,7 +17,7 @@ class Category
 
     function read()
     {
-        $sql = 'SELECT * FROM categorie';
+        $sql = 'SELECT * FROM categorie'; // read categories
         // $resultSet=$this->conn->$query;
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();

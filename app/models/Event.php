@@ -7,8 +7,9 @@ class Event
     public string $name;
     public string $code;
     public string $fotoev;
-    public string $price;
+    public int $price;
     public string $description;
+    //new date
     public string $date;
     public string $hour;
     public string $category;
@@ -21,14 +22,21 @@ class Event
 
     function create()
     {
-
+        //la prima query consiste nell'individuare se esiste già codice 
         $sql1 = "SELECT 'codice' FROM eventi WHERE codice=?";
+        //preparo la prima query
         $stmt = $this->conn->prepare($sql1);
-        $this->code = htmlspecialchars(strip_tags($this->code));
-        $stmt->bindParam(1, $this->code);
-        $stmt->execute();
-        $quante_tuple = $stmt->rowCount();
+        //sanifico
 
+        $this->code = htmlspecialchars(strip_tags($this->code));
+        //invio il valore per il parametro
+
+        $stmt->bindParam(1, $this->code);
+        //esecuzione query
+        $stmt->execute();
+        //conteggio records
+        $quante_tuple = $stmt->rowCount();
+        //se il numero di righe individuate è uguale a 0 scatta la query di inserimento
         if ($quante_tuple === 0) {
             $sql = "INSERT INTO eventi SET 
                 nome = :name, 
@@ -40,8 +48,10 @@ class Event
                 ora = :hour, 
                 fotoevento = :fotoev ";
 
+            //preparo query
             $stmt = $this->conn->prepare($sql);
 
+            //sanificazione dati
             $this->name = htmlspecialchars(strip_tags($this->name));
             $this->code = htmlspecialchars(strip_tags($this->code));
             $this->category = htmlspecialchars(strip_tags($this->category));
@@ -51,6 +61,7 @@ class Event
             $this->hour = htmlspecialchars(strip_tags($this->hour));
             $this->fotoev = htmlspecialchars(strip_tags($this->fotoev));
 
+            //abbinamento dati con prepared statement
             $stmt->bindParam(":name", $this->name);
             $stmt->bindParam(":code", $this->code);
             $stmt->bindParam(":category", $this->category);
@@ -60,13 +71,15 @@ class Event
             $stmt->bindParam(":hour", $this->hour);
             $stmt->bindParam(":fotoev", $this->fotoev);
 
+            //execute
             $stmt->execute();
+            //viene desettata la sessione codevento nel momento in cui si crea correttamente evento
             unset($_SESSION["codevento"]);
             // print_r($_SESSION);
 
-
             return $stmt;
         } else {
+            //se il codice è presente è settatala sessione codevento
             $_SESSION["codevento"] = "Il codice evento non può essere usato";
             // print_r($_SESSION);
 
@@ -75,16 +88,25 @@ class Event
     }
     function filter()
     {
+        //se il filtro della categoria è all allora la query interessa tutti gli eventi altrimenti quelli della categoria filrata
         if ($this->category === 'all') {
+            //creazione query di lettura
             $sql = 'SELECT * FROM eventi JOIN categorie ON eventi.categoria=categorie.id';
+            //prparazione
             $stmt = $this->conn->prepare($sql);
+            //esecuzione
             $stmt->execute();
             return $stmt;
         } else {
+            // quer diu lettura con filtro specifico di categoria
             $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.categoria=?';
+            //preparazione 
             $stmt = $this->conn->prepare($sql);
+            //sanifico
             $key = htmlspecialchars(strip_tags($this->category));
+            //invio il valore per il parametro con prepared statements
             $stmt->bindParam(1, $key);
+            //esecuzione query
             $stmt->execute();
             return $stmt;
         }
@@ -92,19 +114,28 @@ class Event
 
     function read()
     {
+        //lettura degli eventi con join a tabella categorie per il recupero dell'icona categoria
         $sql = 'SELECT *,categorie.icon FROM eventi JOIN categorie ON eventi.categoria=categorie.id';
+        //preparazione query
         $stmt = $this->conn->prepare($sql);
+        //esecuzione query
         $stmt->execute();
         return $stmt;
     }
 
     function delete()
     {
+
+        //cancellazione dell'evento con il codice pari a quello recuperato dal servizio
         $sql = "DELETE FROM eventi WHERE codice= ?";
         // $resultSet=$this->conn->$query;
+        //preparazione query
         $stmt = $this->conn->prepare($sql);
+        //sanifico dati
         $this->code = htmlspecialchars(strip_tags($this->code));
+        //invio il valore per il parametro con prepared statements
         $stmt->bindParam(1, $this->code);
+        //esecuzion equery
         $stmt->execute();
         return $stmt;
         // return $resultSet;
