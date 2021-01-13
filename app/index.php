@@ -104,7 +104,8 @@ session_start();
 
 		.content .home-call-to-action .artists,
 		.content .home-call-to-action .program {
-			color: white;
+			width: 100%;
+			text-align: center;
 			font-size: 25px;
 			font-weight: bold
 		}

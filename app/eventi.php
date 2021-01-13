@@ -12,6 +12,7 @@ session_start();
 	<script src="js/main.js"></script>
 	<script src="js/footer.js"></script>
 	<script src="js/delete-event.js"></script>
+	<script src="js/events-template.js"></script>
 	<script src="js/read-events.js"></script>
 	<script src="js/filter-event.js"></script>
 	<script src="js/read-categories.js"></script>
