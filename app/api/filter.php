@@ -25,7 +25,8 @@ if ($stmt) {
             "hourexhibition" => $row["ora"],
             "code" => $row["codice"],
             "fotoart" => $row["fotoevento"],
-            "category" => $row["categoria"]
+            "category" => $row["categoria"],
+            "iconCategory" =>  $row["icon"]
         );
         array_push($events["events"], $event);
     }

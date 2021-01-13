@@ -76,12 +76,12 @@ class Event
     function filter()
     {
         if ($this->category === 'all') {
-            $sql = 'SELECT * FROM eventi';
+            $sql = 'SELECT * FROM eventi JOIN categorie ON eventi.categoria=categorie.id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt;
         } else {
-            $sql = 'SELECT * FROM eventi WHERE categoria = ?';
+            $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.categoria=?';
             $stmt = $this->conn->prepare($sql);
             $key = htmlspecialchars(strip_tags($this->category));
             $stmt->bindParam(1, $key);
