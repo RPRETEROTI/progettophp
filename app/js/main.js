@@ -1,4 +1,4 @@
-// functions related the show and hide menu navbar
+// functions related the show and hide menu navbar in mobile view
 function cambiamenu() {
   $(".deskview").hide();
   $("footer").hide();

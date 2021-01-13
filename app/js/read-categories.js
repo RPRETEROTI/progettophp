@@ -1,14 +1,15 @@
 $(document).ready(function () {
-  showCategoriesFilter();
+  showCategoriesFilter(); //invoke the function every load page
 });
 
 function showCategoriesFilter() {
+  //service to read categories
   $.ajax({
     url:
       "http://localhost/progetto_approcciavanzati2020/app/api/read-category.php",
     type: "GET",
     success: function (data) {
-      filterTemplate(data);
+      filterTemplate(data); // data from response server
       console.log("categ", data);
     },
     error: function (xhr, err, exc) {
@@ -21,6 +22,8 @@ function showCategoriesFilter() {
 // function to show list of categories
 
 function filterTemplate(data) {
+  //generazione pagina con i data della response server side
+  // data = list of categories, as JSON object: {"categories": [{..},{..}, ]}
   containerHtml = ` 
     <form action="#" method="POST" id="filterForm">
     <div class="form-row my-4">`;
@@ -38,6 +41,8 @@ function filterTemplate(data) {
     All
     </option>
     `;
+  // loop through returned list of data
+
   $.each(data.categories, function (key, val) {
     console.log("val", val);
     containerHtml +=
@@ -54,10 +59,6 @@ function filterTemplate(data) {
   containerHtml += `    
   </div></div></form>`;
 
-  // inject to 'page-content' of our app
+  // inject to 'event-filter-by-category' of our app
   $(".event-filter-by-category").html(containerHtml);
 }
-
-//data-id="` +
-// val.dataId +
-// `">

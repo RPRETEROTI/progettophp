@@ -1,93 +1,54 @@
-// $(document).ready(function () {
-//   // show list of artists on first load
-//   showArtists();
-//   $(document).on("mouseover", ".cantante", function () {
-//     // first par = event; second (optional) par = selector (in this case the class); last par = event handler
-//     $(this).css("color", "white");
-//   });
-//   $(document).on("mouseout", ".cantante", function () {
-//     // first par = event; second (optional) par = selector (in this case the class); last par = event handler
-//     $(this).css("color", "black");
-//   });
-// });
-
-// $(document).ready(function () {
-//   // $("#feedback").addClass("left");
-//   // $("#feedback").fadeIn();
-//   $(document).on("click", ".delete-event", function () {
-//     // $("#feedback").addClass("left");
-//     // $("#feedback").fadeIn();
-//     // $("#feedback").animate({ right: "0px" }, "slow");
-//     // $("#feedback").fadeOut();
-//     $("#feedback").fadeIn();
-//     $("#feedback").addClass("left");
-//     var event_id = $(this).attr("data-event");
-//     deleteEvent(event_id);
-//     $("#feedback").removeClass("left");
-//     $("#feedback").animate({ right: "0px" }, "slow");
-//     $("#feedback").fadeOut();
-//     $("#feedback").animate({ left: "0px" }, "slow");
-
-//     // });
-//     // $("#feedback").animate({ right: "0px" }, "slow", function () {
-//     //   $(this).hide();
-//     // });
-//   });
-// });
 $(document).ready(function () {
   $(document).on("click", ".delete-event", function () {
+    //on the event click on .delete-.event it is retrieved the value of data-event
     var event_id = $(this).attr("data-event");
-    deleteEvent(event_id);
-    $("#feedback").fadeIn(2000);
+    deleteEvent(event_id); //invoke function with arg the event_id
+    $("#feedback").fadeIn(2000); //A message of success or error fades in and then fades out in a small interval
     $("#feedback").fadeOut(3000);
   });
 });
 // function to show list of artists
 function deleteEvent(id) {
-  // get data from the read service
+  // delete event from  the delete service
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/delete.php",
     type: "POST",
     dataType: "json",
-    data: JSON.stringify({ code: id }),
+    data: JSON.stringify({ code: id }), //the data in Json(code of the event to be deleted) has beenn stringified
     success: function (result) {
       console.log("datacheck", result);
       // html for listing products
-      positiveFeedbackSong();
+      positiveFeedbackSong(); //if success launch the function
       location.href = "eventi.php";
     },
     error: function (xhr, err, exc) {
-      // show error to console
-      // console.log(xhr, err, exc);
       console.log("capra");
-      // negativeFeedbackSong();
-      //console.warn(xhr.responseText);
-      // console.log(form_data);
     },
   });
-  negativeFeedbackSong();
+  negativeFeedbackSong(); //if no success launch the function
   return false;
-} // showProducts
+}
 
-// product list html
 function positiveFeedbackSong() {
+  //message if the deletion has success
   containerHtml = `
   <div class="alert alert-primary" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-      Hai aggiunto corettamente la canzone. 
+      Hai rimosso correttamente l'evento. 
           </div>`;
 
-  // inject to 'page-content' of our app
+  // inject to 'feedback' of our app
   $("#feedback").html(containerHtml);
 }
 
-function negativeFeedbackSong() {
+function negativeFeedback() {
+  //message if the deletion has no success
   containerHtml = `<div class="alert alert-danger" role="alert">
       C'è stato un problema. Ritenta
     </div>`;
 
-  // inject to 'page-content' of our app
+  // inject to 'feedback' of our app
   $("#feedback").html(containerHtml);
 }

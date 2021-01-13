@@ -1,6 +1,7 @@
 $(document).ready(function () {
-  registerTemplate();
+  registerTemplate(); //the function is loaded at every document ready
   $(document).on("click", ".signin", function () {
+    //click event that launches function formtemplate and manipulates the elements by different method(text,attr,addClass) in dependance from the class button
     formTemplate();
     $("#registerForm").find("button").text("SIGN IN");
     $("#registerForm").find("button").attr("data-id", "signIn");
@@ -16,22 +17,16 @@ $(document).ready(function () {
   });
 
   $(document).on("submit", "#registerForm", function (e) {
+    // submit event
     e.preventDefault();
-    var authenticate_id = $(this).find("button").attr("data-id");
-    var userName;
-    var passWord;
-    userName = $(this).find("input[name=usr]").val();
-    passWord = $(this).find("input[name=pwd]").val();
-    var form_data = JSON.stringify($(this).serializeObject()); // this = the submitted form
+    var authenticate_id = $(this).find("button").attr("data-id"); //find data-id to know if it is login o signin action
+    var form_data = JSON.stringify($(this).serializeObject()); // on the submitted form is applied serializeobject function and then the result is a json stringified to pass into the body of api
     console.log("form_data", form_data);
-    console.log("key", userName, passWord);
-    console.log("cetrioli");
-    authenticate_id === "logIn" ? login(form_data) : signin(form_data);
-
-    // authenticate_id === "logIn" ? login(userName, passWord) : signin(form_data);
+    authenticate_id === "logIn" ? login(form_data) : signin(form_data); // conditional ternary
   });
 });
 
+//function to make form values to json format
 $.fn.serializeObject = function () {
   var o = {};
   var a = this.serializeArray();
@@ -47,38 +42,18 @@ $.fn.serializeObject = function () {
   });
   return o;
 };
-// function login(usr, psw) {
-//   $.ajax({
-//     url:
-//       "http://localhost/progetto_approcciavanzati2020/app/api/login.php?usr=" +
-//       usr +
-//       "&pwd=" +
-//       psw,
-//     method: "GET",
-//     success: function (data) {
-//       // successLogin(data);
-//       location.href = "homepage.php";
-//       console.log("dataaf", data);
-//     },
-//     error: function (xhr, err, exc) {
-//       console.log("E stato riscontrato un errore", err);
-//       console.log("E stato riscontrato un errore", xhr.responseText);
-//       console.log("xhr", xhr);
-//       console.log("E stato riscontrato un errore", exc);
-//       var errorJsonMessage = JSON.parse(xhr.responseText);
-//       failureLogin(errorJsonMessage);
-//     },
-//   });
-// }
+
 function login(form_data) {
+  //login service
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/login.php",
     method: "POST",
-    contentType: "application/json",
-    dataType: "json",
+    contentType: "application/json", //  // content-type dei dati della request
+    dataType: "json", // formato dei dati della response
     data: form_data,
     success: function (result) {
-      // successLogin(data);
+      //if ok
+      //redirect
       location.href = "index.php";
       console.log("dataaf", result);
     },
@@ -87,46 +62,40 @@ function login(form_data) {
       console.log("E stato riscontrato un errore", xhr.responseText);
       console.log("xhr", xhr);
       console.log("E stato riscontrato un errore", exc);
+      //if not success retrieve the error and transform intop from string to json
       var errorJsonMessage = JSON.parse(xhr.responseText);
-      failureLogin(errorJsonMessage);
+      authenticationFailure(errorJsonMessage); //invoke function of error with error message from server
     },
   });
 }
 function signin(form_data) {
+  //signin service
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/signin.php",
     type: "POST",
-    contentType: "application/json",
-    dataType: "json",
+    contentType: "application/json", // content-type dei dati della request
+    dataType: "json", // formato dei dati della response
     data: form_data,
     success: function (result) {
+      //the user is signedin
       console.log(result);
       console.log(form_data);
+      //redirect
+
       location.href = "index.php";
     },
     error: function (xhr, err, exc) {
       console.log("hai bsagliato:", xhr.responseText);
+      //if not success retrieve the error and transform intop from string to json
       var errorJsonMessage = JSON.parse(xhr.responseText);
-      failureLogin(errorJsonMessage);
+      authenticationFailure(errorJsonMessage); //invoke function of error with error message from server
     },
   });
   return false;
 }
 
-function successLogin() {
-  containerHtml = `
-  <div class="alert alert-primary" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-      SEistato loggato correttamente. Fottiti. 
-          </div>`;
-
-  // inject to 'page-content' of our app
-  $(".message").html(containerHtml);
-}
-
-function failureLogin(errorJsonMessage) {
+function authenticationFailure(errorJsonMessage) {
+  //the function renders the template with the error form arg errorJsonMessage
   $("#registerForm").find("input").val("");
   containerHtml =
     `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -137,14 +106,14 @@ function failureLogin(errorJsonMessage) {
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">  <i class="fas fa-times"></i></span>
   </button>
-    
     </div>`;
 
-  // inject to 'page-content' of our app
+  // inject to 'messageLogin' of our app
   $(".messageLogin").html(containerHtml);
 }
 
 function formTemplate() {
+  // the form template
   containerHtml = `	<div class="row formRegister">
   <div class="col-12 ">
     <h3 class="title"></h3>
@@ -169,20 +138,19 @@ function formTemplate() {
       <div class="form-row">
       <div class="col-12 align-items-center d-flex justify-content-center messageLogin">
       </div>
-    </div>
-      
+    </div>   
     </form>
   </div>
     </form>
   </div>
 </div>`;
 
-  //   // inject to 'page-content' of our app
+  //   // inject to 'registration' of our app
   $(".registration").html(containerHtml);
 }
-{
-}
+
 function registerTemplate() {
+  //the registration templatebuttons
   containerHtml = `	
 
         <div class="col-6 align-items-center d-flex justify-content-center login">
@@ -191,9 +159,8 @@ function registerTemplate() {
         <div class="col-6 align-items-center d-flex justify-content-center signin">
         <button type="submit" class="btn signbtn mypagebtn">SIGN IN</button>
       </div>
-
 `;
 
-  // inject to 'page-content' of our app
+  // inject to 'buttonregistration' of our app
   $(".buttonregistration").html(containerHtml);
 }
