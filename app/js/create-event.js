@@ -176,8 +176,10 @@ function createEvent(formData) {
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/create2.php",
     type: "POST",
+    enctype: "multipart/form-data",
     // contentType: "multipart/form-data",
-    // dataType: "json",
+    dataType: "json",
+    // mimeType: "multipart/form-data",
     processData: false, //messi a false per recupero automatico dei dati
     contentType: false, //messi a false per recupero automatico dei dati
     data: formData,

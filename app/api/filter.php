@@ -3,6 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 // definisco il formato della risposta (json)
 header("Content-Type: application/json; charset=UTF-8");
+// definisco il metodo consentito per la request
+header("Access-Control-Allow-Methods: GET");
 include_once '../models/APPDatabase.php';
 include_once '../models/Event.php';
 

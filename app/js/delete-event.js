@@ -12,7 +12,7 @@ function deleteEvent(id) {
   // delete event from  the delete service
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/delete.php",
-    type: "POST",
+    type: "DELETE",
     dataType: "json",
     data: JSON.stringify({ code: id }), //the data in Json(code of the event to be deleted) has beenn stringified
     success: function (result) {
