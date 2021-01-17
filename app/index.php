@@ -9,16 +9,12 @@ session_start();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 	<script src="js/main.js"></script>
-
 	<script src="js/footer.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.js" integrity="sha512-14GPUgKFTeCsgj5WWZpTNQ525GYlOK3DMTqrjsly3TDIDnOUbZ5sWyfI6HqsWUmMmaCoa6q7FHrbq9xdqNhmYg==" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="style/main.css">
-
 
 	<!-- <?php
 			// print_r($_SESSION);
@@ -27,13 +23,10 @@ session_start();
 	{
 
 		if (isset($_SESSION["utente"])) {
-			// echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-			// echo "<li><a class=\"notActive pagina\" href=\"artisticonfilter.php\" >ARTISTSTest</a></li>";
 			echo "<li><a class=\"notActive pagina\" href=\"eventi.php\" >EVENTI</a></li>";
-			echo "<li><a class=\"notActive pagina\" href=\"buildevent.php\" >CREATE</a></li>";
+			echo "<li><a class=\"notActive pagina\" href=\"eventcreate.php\" >CREATE</a></li>";
 			echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
 		} else {
-			// echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
 			echo "<li><a class=\"notActive pagina\" href=\"registrazione.php\" >CREATE</a></li>";
 			echo " <li><a id=\"subdrop\" href=\"registrazione.php\">LOGIN</a></li>";
 		}
@@ -53,16 +46,15 @@ session_start();
 	<?php function buttonHome()
 	{
 		if (isset($_SESSION["utente"])) {
-			$ut = $_SESSION["utente"];
 			echo " <div class=\"row no-gutters justify-content-around\">";
 			echo " <div class=\"col-12 col-md-3 \">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
-			echo " <a class=\"artists\" href=\"eventi.php\">EVENTS</a></li>";
+			echo " <a class=\"homebtn\" href=\"eventi.php\">EVENTS</a></li>";
 			echo " </div>";
 			echo " </div>";
 			echo " <div class=\"col-12 col-md-3 \">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
-			echo " <a class=\"artists\" href=\"buildevent.php\">CREATE</a></li>";
+			echo " <a class=\"homebtn\" href=\"eventcreate.php\">CREATE</a></li>";
 			echo " </div>";
 			echo " </div>";
 			echo " </div>";
@@ -70,12 +62,12 @@ session_start();
 			echo " <div class=\"row no-gutters justify-content-around\">";
 			echo " <div class=\"col-12 col-md-3 \">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
-			echo " <a class=\"artists\" href=\"registrazione.php\">CREATE</a></li>";
+			echo " <a class=\"homebtn\" href=\"registrazione.php\">CREATE</a></li>";
 			echo " </div>";
 			echo " </div>";
 			echo " <div class=\"col-12 col-md-3\">";
 			echo " <div class=\"home-call-to-action m-3 p-2\">";
-			echo " <a class=\"artists\" href=\"registrazione.php\">SIGN UP</a></li>";
+			echo " <a class=\"homebtn\" href=\"registrazione.php\">SIGN UP</a></li>";
 			echo " </div>";
 			echo " </div>";
 			echo " </div>";
@@ -83,16 +75,6 @@ session_start();
 	}
 	?>
 	<style>
-		.content .description {
-			font-family: Swistblnk Monthoers;
-			justify-content: center;
-			display: flex;
-			align-items: center;
-			font-weight: bold;
-			padding: 24px;
-			background-color: #039ed8;
-		}
-
 		.content .home-call-to-action {
 			background: black;
 			/* color: #039ed8; */
@@ -102,31 +84,17 @@ session_start();
 			justify-content: center;
 		}
 
-		.content .home-call-to-action .artists,
-		.content .home-call-to-action .program {
+		.title-home {
+			text-align: center;
+			font-weight: bold
+		}
+
+		.content .home-call-to-action .homebtn {
 			width: 100%;
 			text-align: center;
 			font-size: 25px;
 			font-weight: bold
 		}
-
-		.carousel-caption {
-			border: 4px solid white;
-			height: 300px;
-		}
-
-		.evento {
-			color: red;
-			font-family: Swistblnk Monthoers;
-			font-size: 2em;
-			line-height: 100px;
-			text-align: center;
-			text-transform: uppercase;
-			text-shadow: 0px 0px 10px #323232;
-			position: relative;
-			top: 10px;
-		}
-
 
 		@media screen and (min-width: 1280px) {
 			.claim {
@@ -155,58 +123,6 @@ session_start();
 			background-size: cover
 		}
 
-		.claim-carousel {
-			color: white;
-			font-family: Swistblnk Monthoers;
-			font-size: 1.5em;
-			line-height: 60px;
-			text-align: center;
-			text-transform: uppercase;
-			text-shadow: 0px 0px 10px #323232;
-			position: relative;
-			top: 30px;
-		}
-
-		.imgcarousel {
-			height: 28.5rem;
-		}
-
-		.carousel-container {
-			border: 1px solid blue;
-			z-index: 5;
-		}
-
-		/* 
-		#logo {
-			height: 120px;
-			width: 120px;
-		} */
-
-		.abbonamento {
-			font-family: Swistblnk Monthoers;
-			font-size: 3em;
-
-		}
-
-		.marchio {
-			margin-left: 5em;
-			margin-right: 5em;
-			height: 40%;
-		}
-
-		.logo-home {
-			margin-top: 9rem;
-			height: 20rem;
-		}
-
-		.title-home {
-
-			font-weight: bold;
-			text-align: center;
-			padding: 24px;
-
-		}
-
 		.deskview .navigation-menu li a#subdrop {
 			color: black;
 			padding: 20px 10px;
@@ -221,7 +137,7 @@ session_start();
 		}
 	</style>
 
-	<title>Piscinas Sounds </title>
+	<title>EventYou</title>
 </head>
 
 <body>
@@ -281,7 +197,7 @@ session_start();
 					<?php
 					if (isset($_SESSION["utente"])) {
 						$ut = $_SESSION["utente"];
-						echo "<li><a class=\"notActive pagina\" href=\"buildevent.php\">CREATE</a></li>";
+						echo "<li><a class=\"notActive pagina\" href=\"eventcreate.php\">CREATE</a></li>";
 					} else {
 						echo "<li><a class=\"notActive pagina\" href=\"registrazione.php\">CREATE</a></li>";
 					}

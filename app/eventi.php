@@ -12,11 +12,8 @@ session_start();
 	<script src="js/main.js"></script>
 	<script src="js/footer.js"></script>
 	<script src="js/delete-event.js"></script>
-	<script src="js/events-template.js"></script>
-	<script src="js/read-events.js"></script>
 	<script src="js/filter-event.js"></script>
 	<script src="js/read-categories.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.js" integrity="sha512-14GPUgKFTeCsgj5WWZpTNQ525GYlOK3DMTqrjsly3TDIDnOUbZ5sWyfI6HqsWUmMmaCoa6q7FHrbq9xdqNhmYg==" crossorigin="anonymous"></script>
@@ -26,41 +23,18 @@ session_start();
 	include_once './models/APPDatabase.php';
 	?>
 
-	<?php function mypage()
-	{
-		if (isset($_SESSION["utente"])) {
-			$ut = $_SESSION["utente"];
-			echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-			echo " <li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
-		} else {
-			echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
-			echo " <li><a id=\"subdrop\" href=\"registrazione.php?causa=0\">LOGIN</a></li>";
-		}
-	}
-	?>
 	<?php function mypageMobile()
 	{
-
 		if (isset($_SESSION["utente"])) {
-			$ut = $_SESSION["utente"];
 			echo "<li><a id=\"subdrop\" href=\"logout.php\">LOGOUT</a></li>";
 		} else {
 			echo "<li><a id=\"subdrop\" href=\"registrazione.php\">LOGIN</a></li>";
 		}
 	}
 	?>
-	<?php
-	$ut = "";
-	if (isset($_SESSION["utente"])) {
-		$ut = $_SESSION["utente"];
-	} else {
-		$ut = "";
-	}
 
-
-	?>
 	<style>
-		.cantante {
+		.event-name {
 			color: black;
 			font-family: Swistblnk Monthoers;
 			margin: auto;
@@ -93,7 +67,7 @@ session_start();
 		}
 
 		@media screen and (min-width:1280px) {
-			.cantante {
+			.event-name {
 				font-size: 3em;
 			}
 
@@ -107,19 +81,13 @@ session_start();
 			}
 		}
 
-		/* @media screen and (min-width:360px) and (max-width:1279px) {
-			.cantante {
-				font-size: 2em;
-			}
-		} */
-
 		@media screen and (min-width:360px) and (max-width:1279px) {
 			.eventcontent {
 				font-weight: bold;
 				font-size: 16px;
 			}
 
-			.cantante {
+			.event-name {
 				font-size: 2em;
 			}
 
@@ -142,15 +110,6 @@ session_start();
 		.artist-name {
 			position: relative;
 			flex-direction: column;
-		}
-
-		.song-section-title {
-			font-size: 16px;
-		}
-
-		.artist {
-			border-bottom: 5px solid #84b4eb;
-			position: relative;
 		}
 
 		.icon {
@@ -178,11 +137,8 @@ session_start();
 			background-color: blue;
 		}
 	</style>
-	<title>Piscinas Sounds </title>
+	<title>EventYou</title>
 </head>
-
-
-
 
 <body>
 
@@ -195,28 +151,21 @@ session_start();
 				<ul class="pl-2">
 					<li> <a class="notActive pagina" href="index.php">HOME</a></li>
 					<li><a id="activePage" tabindex="" accesskey="">EVENTI</a></li>
-					<li> <a class="notActive pagina" href="buildevent.php">CREATE</a></li>
+					<li> <a class="notActive pagina" href="eventcreate.php">CREATE</a></li>
 					<li><a id="subdrop" href="logout.php">LOGOUT</a></li>
-					<!-- <?php
-							// $mypage = mypage()
-							?> -->
 				</ul>
 			</div>
 			<div class="container-menu-icon col-2 col-sm-2 d-md-none">
 				<a href="#" class="icon" onclick="cambiamenu();">☰</a>
 			</div>
 			<div id="feedback"></div>
-
 		</div>
-
 		<div class="content container-fluid">
 			<div class="row">
 				<div class="cover col-12">
 					<h1>EVENTS </h1>
 				</div>
-
 			</div>
-
 			<div class=" container-fluid p-0">
 				<div class="event-filter-by-category"></div>
 				<div class="artist-section"></div>
@@ -235,18 +184,8 @@ session_start();
 					?>
 					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<li> <a id="activePage" href="">EVENTS</a></li>
-					<li><a class="notActive pagina" href="buildevent.php" tabindex="" accesskey="">CREATE</a></li>
+					<li><a class="notActive pagina" href="eventcreate.php" tabindex="" accesskey="">CREATE</a></li>
 					<li><a href="#" class="icona mt-5" onclick="ritornamenu()"><i class="fas fa-arrow-circle-left" style="font-size: 2em;"></i></a></li>
-
-					<!-- 
-						<?php
-						// if (isset($_SESSION["utente"])) {
-						// 	$ut = $_SESSION["utente"];
-						// 	echo "<li class=\"drop\"> <a class=\"pagina\" href=\"profilo.php?profilopagina=$ut\">MYPAGE</a>";
-						// } else {
-						// 	echo "<li><a class=\"notActive pagina\" href=\"registrazione.php?causa=0\" tabindex=\"2\" accesskey=\"8\">MYPAGE</a></li>";
-						// }
-						?> -->
 				</ul>
 			</div>
 		</div>
