@@ -9,7 +9,7 @@ class Event
     public string $fotoev;
     public int $price;
     public string $description;
-    //new date
+    public string $user;
     public string $date;
     public string $hour;
     public string $category;
@@ -23,15 +23,18 @@ class Event
     function create()
     {
         //la prima query consiste nell'individuare se esiste già codice 
-        $sql1 = "SELECT 'codice' FROM eventi WHERE codice=?";
+        $sql1 = "SELECT 'codice' FROM eventi WHERE codice=? AND user=?";
         //preparo la prima query
         $stmt = $this->conn->prepare($sql1);
         //sanifico
 
         $this->code = htmlspecialchars(strip_tags($this->code));
+        $this->user = htmlspecialchars(strip_tags($this->user));
+
         //invio il valore per il parametro
 
         $stmt->bindParam(1, $this->code);
+        $stmt->bindParam(2, $this->user);
         //esecuzione query
         $stmt->execute();
         //conteggio records
@@ -40,6 +43,7 @@ class Event
         if ($quante_tuple === 0) {
             $sql = "INSERT INTO eventi SET 
                 nome = :name, 
+                user=:user,
                 codice = :code,
                 categoria = :category, 
                 descrizione = :description,
@@ -54,6 +58,7 @@ class Event
             //sanificazione dati
             $this->name = htmlspecialchars(strip_tags($this->name));
             $this->code = htmlspecialchars(strip_tags($this->code));
+            $this->user = htmlspecialchars(strip_tags($this->user));
             $this->category = htmlspecialchars(strip_tags($this->category));
             $this->description = htmlspecialchars(strip_tags($this->description));
             $this->price = htmlspecialchars(strip_tags($this->price));
@@ -64,6 +69,7 @@ class Event
             //abbinamento dati con prepared statement
             $stmt->bindParam(":name", $this->name);
             $stmt->bindParam(":code", $this->code);
+            $stmt->bindParam(":user", $this->user);
             $stmt->bindParam(":category", $this->category);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":price", $this->price);
@@ -88,37 +94,37 @@ class Event
     }
     function filter()
     {
-        //se il filtro della categoria è all allora la query interessa tutti gli eventi altrimenti quelli della categoria filrata
-        if ($this->category === 'all') {
-            //creazione query di lettura
-            $sql = 'SELECT * FROM eventi JOIN categorie ON eventi.categoria=categorie.id';
-            //prparazione
-            $stmt = $this->conn->prepare($sql);
-            //esecuzione
-            $stmt->execute();
-            return $stmt;
-        } else {
-            // quer diu lettura con filtro specifico di categoria
-            $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.categoria=?';
-            //preparazione 
-            $stmt = $this->conn->prepare($sql);
-            //sanifico
-            $key = htmlspecialchars(strip_tags($this->category));
-            //invio il valore per il parametro con prepared statements
-            $stmt->bindParam(1, $key);
-            //esecuzione query
-            $stmt->execute();
-            return $stmt;
-        }
+
+        // query di lettura con filtro specifico di categoria e di utenza
+        $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.categoria=? AND eventi.user=?';
+        //preparazione 
+        $stmt = $this->conn->prepare($sql);
+
+        //sanifico
+        $key = htmlspecialchars(strip_tags($this->category));
+        $this->user = htmlspecialchars(strip_tags($this->user));
+
+        //invio il valore per il parametro con prepared statements
+        $stmt->bindParam(1, $key);
+        $stmt->bindParam(2, $this->user);
+        //esecuzione query
+        $stmt->execute();
+        return $stmt;
     }
 
     function read()
     {
-        //lettura degli eventi con join a tabella categorie per il recupero dell'icona categoria
-        $sql = 'SELECT *,categorie.icon FROM eventi JOIN categorie ON eventi.categoria=categorie.id';
-        //preparazione query
+        //creazione query di lettura
+        $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.user=?';
+        //prparazione
         $stmt = $this->conn->prepare($sql);
-        //esecuzione query
+        //sanifico
+        $this->user = htmlspecialchars(strip_tags($this->user));
+
+        //invio il valore per il parametro con prepared statements
+        $stmt->bindParam(1, $this->user);
+
+        //esecuzione
         $stmt->execute();
         return $stmt;
     }
@@ -126,72 +132,21 @@ class Event
     function delete()
     {
 
-        //cancellazione dell'evento con il codice pari a quello recuperato dal servizio
-        $sql = "DELETE FROM eventi WHERE codice= ?";
+        //cancellazione dell'evento con il codice pari a quello recuperato dal servizio e utenza
+        $sql = 'DELETE FROM eventi WHERE codice= ? AND user=?';
         // $resultSet=$this->conn->$query;
         //preparazione query
         $stmt = $this->conn->prepare($sql);
         //sanifico dati
         $this->code = htmlspecialchars(strip_tags($this->code));
+        $this->user = htmlspecialchars(strip_tags($this->user));
         //invio il valore per il parametro con prepared statements
         $stmt->bindParam(1, $this->code);
+        $stmt->bindParam(2, $this->user);
+
         //esecuzion equery
         $stmt->execute();
         return $stmt;
         // return $resultSet;
     }
-
-
-    // public function setIconCategoryEvent($iconCategory)
-    // {
-    //     switch ($iconCategory) {
-    //         case $iconCategory === 'a1':
-    //             $iconCategory = 'fa-music';
-    //             $this->iconCategory = $iconCategory;
-    //             break;
-    //         case $iconCategory === 'b2':
-    //             $iconCategory = 'fa-volleyball-ball';
-    //             $this->iconCategory = $iconCategory;
-
-    //             break;
-    //         case $iconCategory === 'c3':
-    //             $iconCategory = 'fa-book';
-    //             $this->iconCategory = $iconCategory;
-
-    //             break;
-    //         case $iconCategory === 'd4':
-    //             $iconCategory = 'fa-utensils';
-    //             $this->iconCategory = $iconCategory;
-
-    //             break;
-    //         default;
-    //     }
-    // }
-
-
-
-    function readWithAuthentication()
-    {
-        $firstsql = "SELECT * FROM profilo";
-        $resultSet = $this->conn->query($firstsql);
-        while ($record = $resultSet->fetch(PDO::FETCH_ASSOC)) {
-            echo $record['usr'];
-            echo $record['nome'];
-        }
-        //$user = $resultSet['usr'];
-        return $resultSet;
-        // return  $this->session;
-        // $sql = 'SELECT * FROM artisti,profilo JOIN artistipreferiti ON artisti.';
-        // // $resultSet=$this->conn->$query;
-        // $stmt = $this->conn->prepare($sql);
-        // $stmt->execute();
-        // return $stmt;
-        // return $resultSet;
-    }
-    // function addToPreferite{
-    //     $sql='SELECT ';
-    //     $stmt->this->conn->prepare($sql)
-    //     $stmt->execute();
-    //     return $stmt
-    // }
 }

@@ -6,7 +6,6 @@ class Category
     private $conn;
     public string $name;
     public string $id;
-    public int $dataid;
 
 
     public function __construct($database)

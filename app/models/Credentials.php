@@ -31,8 +31,8 @@ class Credentials
         return $stmt;
         // return $resultSet;
     }
-    //signin method
-    function signin()
+    //signup method
+    function signup()
     {
         //seleziona utente con corripondenza usr
         $sql1 = "SELECT usr FROM profiloutente WHERE usr=?";
@@ -63,12 +63,12 @@ class Credentials
             $stmt->bindParam(":password", $this->password);
             //escecuzione query
             $stmt->execute();
-            //unset sessione errosignin in caso di corretto procedimento di iscrizione
-            unset($_SESSION["errorsignin"]);
+            //unset sessione errosignup in caso di corretto procedimento di iscrizione
+            unset($_SESSION["errorsignup"]);
 
             return $stmt;
         } else { //se è stata trovata corrispondenza significa confermare l'esistenza di un utente con stesso usr(primary key)
-            $_SESSION["errorsignin"] = "Il nome utente non è disponibile"; //settaggio session errorsignin
+            $_SESSION["errorsignup"] = "Il nome utente non è disponibile"; //settaggio session errorsignup
             return $stmt;
         }
         // return $resultSet;
