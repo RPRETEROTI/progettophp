@@ -17,8 +17,13 @@ $event = new Event($database);
 
 // leggo i dati nel body della request (metodo POST)
 $data = json_decode(file_get_contents("php://input"));
-//associazione pro.codice sitanza con il codice riusultante dal body request
+//associazione pro.codice sitanza con il codice risultante dal body request
 $event->code = $data->code;
+if (isset($_SESSION["utente"])) { //recupero sessione utente
+    $usr = $_SESSION["utente"];
+}
+//valorizzazione proprieta user
+$event->user = $usr;
 
 // invoco il metodo delete() che cancella l'evento con codice specifico
 if ($event->delete()) { // se va a buon fine...

@@ -26,7 +26,6 @@ if ($stmt->rowCount() > 0) { // se ci sono categorie
         $category = array(
             "name" => $row["nome"],
             "id" => $row['id'],
-            // "dataId" => $row['dataId']
         );
         //aggiungo categoria alla lista categories
 

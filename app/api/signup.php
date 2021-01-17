@@ -29,9 +29,9 @@ if (
     $user->password = $data->pwd;
 
     // invoco il metodo create() che crea una nuova utenza
-    if ($user->signin()) { // se va a buon fine...
+    if ($user->signup()) { // se va a buon fine...
 
-        if (!isset($_SESSION["errorsignin"])) { // se non è presente la sessione errorsignin per inserimento username già esistente
+        if (!isset($_SESSION["errorsignup"])) { // se non è presente la sessione errorsignup per inserimento username già esistente
             //valorizzo la seezione utente con i dati del nuovo usr
             $_SESSION["utente"] = $data->usr;
             http_response_code(201); // response code 201 = created

@@ -17,9 +17,17 @@ $events = new Event($database);
 $key = $_GET['filterKey'] ? $_GET['filterKey'] : 'all';
 //associazione della prop categoria dell'istanza con il filtro individuato
 $events->category = $key;
-
-//invocazione metodo filter
-$stmt = $events->filter();
+if (isset($_SESSION["utente"])) { //recupero sessione utente
+    $usr = $_SESSION["utente"];
+}
+//valorizzazione proprieta user
+$events->user = $usr;
+//invocazione metodo filter o read in base al filtro
+if ($key === 'all') {
+    $stmt = $events->read();
+} else {
+    $stmt = $events->filter();
+}
 
 if ($stmt) { //se va a buon fine
     // creo una coppia events: [lista-di-eventi]
