@@ -104,7 +104,7 @@ function loadFormBuilder() {
 
     <div class="form-row">
       <div class="form-group col-12 col-sm-12 ">
-          <label for="descr" class="col-form-label">Descrizione</label>
+          <label for="descr" class="col-form-label">Descrizione*</label>
           <!-- <input name="nome" type="text" id="nome" class="form-control" placeholder="" value=""> -->
           <textarea class="form-control" id="descr" name="descr" rows="3" maxlength="100"></textarea>
       </div>
@@ -115,7 +115,7 @@ function loadFormBuilder() {
           <input type="number" class="form-control" id="price" name="price" placeholder="Price" aria-describedby="passwordHelpBlock">
       </div>
       <div class="form-group col-12 col-sm-12 col-md-8 ">
-          <label for="img">Immagine*</label>
+          <label for="img">Immagine</label>
           <div class="imgbutton">Carica</div>
           <input type="file" class="form-control" id="uploadimg" name="uploadimg" style="bottom: 2px; position:relative;" placeholder="inserisci img">
       </div>
@@ -151,11 +151,11 @@ function loadFormBuilder() {
 
     <div class="form-row">
       <div class="form-group col-12  col-md-5 offset-md-1">
-          <label for="indirizzo">Data</label>
+          <label for="indirizzo">Data*</label>
           <input type="date" class="form-control" id="date" name="date" placeholder="GG/MM/AA">
       </div>
       <div class="form-group col-12 col-md-5">
-          <label for="hour">Ora</label>
+          <label for="hour">Ora*</label>
           <input type="time" class="form-control" id="hour" name="hour" placeholder="00">
       </div>
     </div>
@@ -174,7 +174,7 @@ function loadFormBuilder() {
 //type:POST
 function createEvent(formData) {
   $.ajax({
-    url: "http://localhost/progetto_approcciavanzati2020/app/api/create2.php",
+    url: "http://localhost/progetto_approcciavanzati2020/app/api/create.php",
     type: "POST",
     enctype: "multipart/form-data",
     // contentType: "multipart/form-data",
@@ -194,7 +194,7 @@ function createEvent(formData) {
       console.log(err);
       //se va in error viene salvato il messaggio derivante da server e inserito come arg della funzione failureLogin
       var errorJsonMessage = JSON.parse(xhr.responseText);
-      // location.href = "buildevent.php";
+      // location.href = "eventcreate.php";
       failureCreation(errorJsonMessage);
     },
   });

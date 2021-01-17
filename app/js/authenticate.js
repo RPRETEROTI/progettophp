@@ -1,10 +1,10 @@
 $(document).ready(function () {
   registerTemplate(); //the function is loaded at every document ready
-  $(document).on("click", ".signin", function () {
+  $(document).on("click", ".signup", function () {
     //click event that launches function formtemplate and manipulates the elements by different method(text,attr,addClass) in dependance from the class button
     formTemplate();
     $("#registerForm").find("button").text("SIGN IN");
-    $("#registerForm").find("button").attr("data-id", "signIn");
+    $("#registerForm").find("button").attr("data-id", "signup");
     $("#registerForm").find("button").addClass("signbtn");
     $(".formRegister").find(".title").text("Iscriviti alla piattaforma");
   });
@@ -19,10 +19,10 @@ $(document).ready(function () {
   $(document).on("submit", "#registerForm", function (e) {
     // submit event
     e.preventDefault();
-    var authenticate_id = $(this).find("button").attr("data-id"); //find data-id to know if it is login o signin action
+    var authenticate_id = $(this).find("button").attr("data-id"); //find data-id to know if it is login o signup action
     var form_data = JSON.stringify($(this).serializeObject()); // on the submitted form is applied serializeobject function and then the result is a json stringified to pass into the body of api
     console.log("form_data", form_data);
-    authenticate_id === "logIn" ? login(form_data) : signin(form_data); // conditional ternary
+    authenticate_id === "logIn" ? login(form_data) : signup(form_data); // conditional ternary
   });
 });
 
@@ -68,10 +68,10 @@ function login(form_data) {
     },
   });
 }
-function signin(form_data) {
-  //signin service
+function signup(form_data) {
+  //signup service
   $.ajax({
-    url: "http://localhost/progetto_approcciavanzati2020/app/api/signin.php",
+    url: "http://localhost/progetto_approcciavanzati2020/app/api/signup.php",
     type: "POST",
     contentType: "application/json", // content-type dei dati della request
     dataType: "json", // formato dei dati della response
@@ -156,7 +156,7 @@ function registerTemplate() {
         <div class="col-6 align-items-center d-flex justify-content-center login">
           <button type="submit" class="btn loginbtn mypagebtn">LOGIN</button>
         </div>
-        <div class="col-6 align-items-center d-flex justify-content-center signin">
+        <div class="col-6 align-items-center d-flex justify-content-center signup">
         <button type="submit" class="btn signbtn mypagebtn">SIGN IN</button>
       </div>
 `;
