@@ -24,7 +24,7 @@ function showFilterEvents(keyFilter) {
     url:
       "http://localhost/progetto_approcciavanzati2020/app/api/filter.php?filterKey=" +
       keyFilter,
-    method: "GET",
+    type: "GET",
     success: function (data) {
       //if success
       readEventsTemplate(data); //data are response server. invoke function with arg data

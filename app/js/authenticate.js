@@ -47,7 +47,7 @@ function login(form_data) {
   //login service
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/login.php",
-    method: "POST",
+    type: "POST",
     contentType: "application/json", //  // content-type dei dati della request
     dataType: "json", // formato dei dati della response
     data: form_data,
