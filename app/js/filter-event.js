@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var keyFilter;
-  keyFilter = ""; //create keyFilter var
+  var keyFilter; //create keyFilter var
+  keyFilter = "";
   showFilterEvents(keyFilter);
   $(document).on("mouseover", ".event-name", function () {
     //evento di mouseover che manipola il colore dell'elemento
@@ -28,7 +28,7 @@ function showFilterEvents(keyFilter) {
     success: function (data) {
       //if success
       readEventsTemplate(data); //data are response server. invoke function with arg data
-      console.log("dataaf", data);
+      console.log("dataf", data);
     },
     error: function (xhr, err, exc) {
       console.log("E stato riscontrato un errore", err);
@@ -49,7 +49,7 @@ function readEventsTemplate(data) {
     var fotoev =
       val.fotoev != " "
         ? `url(assets/uploadimages/` + val.fotoev + `)`
-        : `url(assets/images/homeimg3.png)`;
+        : `url(assets/images/defaultimg.png)`;
     containerHtml +=
       `<div class="background-artist row  ">
           <div style="background-image:` +

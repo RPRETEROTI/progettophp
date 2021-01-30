@@ -55,14 +55,14 @@ function login(form_data) {
       //if ok
       //redirect
       location.href = "index.php";
-      console.log("dataaf", result);
+      console.log("datalogins", result);
     },
     error: function (xhr, err, exc) {
       console.log("E stato riscontrato un errore", err);
       console.log("E stato riscontrato un errore", xhr.responseText);
       console.log("xhr", xhr);
       console.log("E stato riscontrato un errore", exc);
-      //if not success retrieve the error and transform intop from string to json
+      //if not success retrieve the error and transform  from string to json
       var errorJsonMessage = JSON.parse(xhr.responseText);
       authenticationFailure(errorJsonMessage); //invoke function of error with error message from server
     },
@@ -85,7 +85,7 @@ function signup(form_data) {
       location.href = "index.php";
     },
     error: function (xhr, err, exc) {
-      console.log("hai bsagliato:", xhr.responseText);
+      console.log("hai sbagliato:", xhr.responseText);
       //if not success retrieve the error and transform intop from string to json
       var errorJsonMessage = JSON.parse(xhr.responseText);
       authenticationFailure(errorJsonMessage); //invoke function of error with error message from server
@@ -119,7 +119,7 @@ function formTemplate() {
     <h3 class="title"></h3>
     <form action="#" method="post" id="registerForm" autocomplete="off">
       <div class="form-row mypage">
-        <div class="form-group col-12 col-md-3 ">
+        <div class="form-group col-12 col-md-3 offset-md-2 offset-lg-1">
           <label for="usr" class="accesso col-form-label">Username</label>
           <div>
             <input name="usr" type="text" id="usr" class="credenziali form-control" />
@@ -131,11 +131,11 @@ function formTemplate() {
             <input name="pwd" type="password" id="pwd" class="credenziali form-control" />
           </div>
         </div>
-        <div class="col-12 col-md-2 containerBtn">
+        <div class="col-12 col-md-3 containerBtn">
           <button type="submit" data-id="" class="btn"></button>
         </div>
       </div>
-      <div class="form-row">
+      <div class="row m-0">
       <div class="col-12 align-items-center d-flex justify-content-center messageLogin">
       </div>
     </div>   

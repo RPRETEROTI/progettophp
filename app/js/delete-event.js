@@ -7,9 +7,8 @@ $(document).ready(function () {
     $("#feedback").fadeOut(3000);
   });
 });
-// function to show list of artists
+// function to delete event with id of event
 function deleteEvent(id) {
-  // delete event from  the delete service
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/delete.php",
     type: "DELETE",
@@ -17,19 +16,19 @@ function deleteEvent(id) {
     data: JSON.stringify({ code: id }), //the data in Json(code of the event to be deleted) has beenn stringified
     success: function (result) {
       console.log("datacheck", result);
-      // html for listing products
-      positiveFeedbackSong(); //if success launch the function
-      location.href = "eventi.php";
+      // html for feedback
+      positiveFeedback(); //if success launch the function
+      location.href = "eventi.php"; //redirect
     },
     error: function (xhr, err, exc) {
-      console.log("capra");
+      console.log("error");
+      negativeFeedback(); //if no success launch the function
     },
   });
-  negativeFeedbackSong(); //if no success launch the function
   return false;
 }
 
-function positiveFeedbackSong() {
+function positiveFeedback() {
   //message if the deletion has success
   containerHtml = `
   <div class="alert alert-primary" role="alert">

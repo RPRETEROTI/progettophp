@@ -59,8 +59,8 @@ $(document).ready(function () {
     },
     submitHandler: function () {
       //Se il form risulta validato viene lanciata l'invio del form(submit)
-      console.log("forzo submit", $(this));
-      var form = $(this.currentForm)[0]; // Viene generato un oggetto/array con i campi del form validato
+      console.log("submit", $(this));
+      var form = $(this.currentForm)[0]; // Gnero un oggetto/array con i campi del form validato
       var formData = new FormData(form); //generato l'oggetto formData da passare al body dell'api. Si è scelta questa strada dato che il form ha tipo multipart/form-data vista la presenza di un file
       console.log("formData", formData);
       //viene avviata la funzione di creazione con arg. il formdata
@@ -81,7 +81,7 @@ function loadFormBuilder() {
   </div>
 </div>`;
   containerHtml += `
-<form action="#" method="post" id="formvalidato" enctype="multipart/form-data">
+<form action="#" method="post"  enctype: "multipart/form-data" id="formvalidato" enctype="multipart/form-data">
   <div class="row m-3">
       <div class="offset-1 offset-md-3 col-11 col-md-7 col-lg-6 ">`;
 
@@ -176,10 +176,8 @@ function createEvent(formData) {
   $.ajax({
     url: "http://localhost/progetto_approcciavanzati2020/app/api/create.php",
     type: "POST",
-    enctype: "multipart/form-data",
-    // contentType: "multipart/form-data",
+    //enctype: "multipart/form-data",
     dataType: "json",
-    // mimeType: "multipart/form-data",
     processData: false, //messi a false per recupero automatico dei dati
     contentType: false, //messi a false per recupero automatico dei dati
     data: formData,
@@ -205,7 +203,6 @@ function createEvent(formData) {
 function failureCreation(errorJsonMessage) {
   $(document).on("click", ".close", function () {
     $("#myModal").hide();
-    $("#formvalidato").find(".title").text("Iscriviti alla piattaforma");
     $("#code").val("");
     $("#checkcode").val("");
   });
