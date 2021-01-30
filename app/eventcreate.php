@@ -106,7 +106,6 @@ session_start();
 					<li><a class="notActive pagina" href="index.php" tabindex="" accesskey="">HOME</a></li>
 					<?php
 					if (isset($_SESSION["utente"])) {
-						$ut = $_SESSION["utente"];
 						echo "<li><a class=\"notActive pagina\" href=\"eventi.php\">EVENTS</a></li>";
 					}
 					?>

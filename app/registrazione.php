@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,10 +16,6 @@ session_start();
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.js" integrity="sha512-14GPUgKFTeCsgj5WWZpTNQ525GYlOK3DMTqrjsly3TDIDnOUbZ5sWyfI6HqsWUmMmaCoa6q7FHrbq9xdqNhmYg==" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="style/main.css">
 
-
-	<!-- <?php
-			// print_r($_SESSION);
-			?> -->
 
 	<style>
 		.title {
