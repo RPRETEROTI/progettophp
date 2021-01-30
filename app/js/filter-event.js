@@ -46,14 +46,17 @@ function readEventsTemplate(data) {
   // loop through returned list of data
   $.each(data.events, function (key, val) {
     console.log("datasingolo", data.events);
+    var fotoev =
+      val.fotoev != " "
+        ? `url(assets/uploadimages/` + val.fotoev + `)`
+        : `url(assets/images/homeimg3.png)`;
     containerHtml +=
       `<div class="background-artist row  ">
-       
-                      <div style="background-image: url(assets/uploadimages/` +
-      val.fotoev +
-      `)" class="container-img-artist col-12 col-sm-6"></div>
-                      <div class="d-flex flex-column artist-name col-12 col-sm-5 col-md-6 col-xl-6">
-                      <div class="d-flex justify-content-end py-2"><i class="fas fa-trash delete-event" style="color:#F08080;font-size:30px;" data-event="` +
+          <div style="background-image:` +
+      fotoev +
+      ` "  class="container-img-artist col-12 col-sm-6"></div>
+         <div class="d-flex flex-column artist-name col-12 col-sm-5 col-md-6 col-xl-6">
+          <div class="d-flex justify-content-end py-2"><i class="fas fa-trash delete-event" style="color:#F08080;font-size:30px;" data-event="` +
       val.code +
       `"></i></div> 
   
