@@ -55,9 +55,9 @@ if (
          if (!isset($_SESSION["utente"])) { //settaggio sessione utente
             $_SESSION["utente"] = $usr_digitato;
          }
-         http_response_code(201); //success
+         http_response_code(200); //success
          //codifico in oogetto json coppia(key:value)
-         echo json_encode(array("message" => "a bravo"));
+         echo json_encode(array("message" => "Utente registrato"));
          exit();
       }
    } else { // se la creazione è fallita...

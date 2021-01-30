@@ -51,5 +51,5 @@ if (
 } else { // se i dati sono incompleti
     http_response_code(400); // response code 400 = bad request
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-    echo json_encode(array("message" => "Unable to create product. Data is incomplete: "));
+    echo json_encode(array("message" => "Unable to create user. Data is incomplete: "));
 }

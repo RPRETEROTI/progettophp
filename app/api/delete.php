@@ -27,7 +27,7 @@ $event->user = $usr;
 
 // invoco il metodo delete() che cancella l'evento con codice specifico
 if ($event->delete()) { // se va a buon fine...
-    http_response_code(201); // response code 200 = ok
+    http_response_code(200); // response code 200 = ok
 
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
     echo json_encode(array("message" => "Event was deleted"));

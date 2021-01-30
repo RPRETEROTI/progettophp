@@ -51,10 +51,10 @@ if ($stmt) { //se va a buon fine
         array_push($events["events"], $event);
     }
     http_response_code(200); //ok
-    echo json_encode(($events)); //codifica in JSON dell'array creato
+    echo json_encode($events); //codifica in JSON dell'array creato
 
 } else { // se la creazione è fallita...
     http_response_code(503); // response code 503 = service unavailable
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
-    echo json_encode(array("message" => "Unable to create product"));
+    echo json_encode(array("message" => "Unable to read events"));
 }

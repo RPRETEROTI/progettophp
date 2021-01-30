@@ -46,11 +46,10 @@ if (isset($_FILES['uploadimg']['name']) && $hasValue == true) {
         $location = $target_dir . $filename;
         //se lo spostamento dalla cartella provvisoria del server tmp_name alla directory scelta ha esito positivo valorizzo variabile a true
         if (move_uploaded_file($_FILES['uploadimg']['tmp_name'], $location)) {
-            // $response = $location;
             $isFileUploaded = 1;
         }
     } else {
-        //se il formato img non è valido valorizzao variabile img con il tipo di errore e isfileuploaded a false
+        //se il formato img non è valido valorizzo variabile img con il tipo di errore e isfileuploaded a false
         $imgErrorType = "Il formato del file non è consentito. Solo .png,.jpeg,.jpg!";
         $isFileUploaded = 0;
     }
@@ -101,7 +100,7 @@ if (
             // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
             echo json_encode(array("message" => "Event was created" . $isFileUploaded . $imgErrorType));
         } else {
-            http_response_code(409); // response code 201 = created
+            http_response_code(409); // response code 409=resource conflict. every event has a unique code
             // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
             echo json_encode(array("message" => "Event code in conflitto"));
         }

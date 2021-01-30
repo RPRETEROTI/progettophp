@@ -11,7 +11,7 @@ include_once '../models/Category.php';
 //connessione al database
 $db = new APPDatabase();
 $database = $db->getConnection();
-//costruzione istanza catgeoria
+//costruzione istanza categoria
 $categories = new Category($database);
 //invocazione metodo read
 $stmt = $categories->read();
@@ -32,7 +32,7 @@ if ($stmt->rowCount() > 0) { // se ci sono categorie
         array_push($categories["categories"], $category);
     }
     http_response_code(200); //ok
-    echo json_encode(($categories)); //codifica in JSON dell'array creato
+    echo json_encode($categories); //codifica in JSON dell'array creato
 } else {
     http_response_code(404);
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio

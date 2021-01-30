@@ -1,6 +1,3 @@
-<?php
-// session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -49,6 +46,7 @@
 			/* padding: 10px 20px;
 			margin: 2em auto; */
 			align-items: center;
+			justify-content: center;
 			display: flex;
 
 		}
@@ -142,7 +140,7 @@
 						<h3 class="title">Accedi O Registrati.</h3>
 					</div>
 				</div>
-				<div class=" row buttonregistration"></div>
+				<div class=" row m-0 buttonregistration"></div>
 			</div>
 			<div class="container-fluid registration">
 			</div>

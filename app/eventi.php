@@ -69,7 +69,7 @@ session_start();
 
 			.container-img-artist {
 				height: 30em;
-				background-size: cover;
+
 			}
 
 			.eventcontent {
@@ -77,7 +77,7 @@ session_start();
 			}
 		}
 
-		@media screen and (min-width:360px) and (max-width:1279px) {
+		@media screen and (min-width:768px) and (max-width:1279px) {
 			.eventcontent {
 				font-weight: bold;
 				font-size: 16px;
@@ -89,8 +89,29 @@ session_start();
 
 			.container-img-artist {
 				height: 26em;
-				background-size: cover;
+
 			}
+		}
+
+		@media screen and (min-width:360px) and (max-width:767px) {
+			.eventcontent {
+				font-weight: bold;
+				font-size: 16px;
+			}
+
+			.event-name {
+				font-size: 2em;
+			}
+
+			.container-img-artist {
+				height: 15em;
+			}
+		}
+
+
+		.container-img-artist {
+			background-size: cover;
+			background-repeat: no-repeat;
 		}
 
 		.background-artist {
