@@ -22,7 +22,7 @@ class Event
 
     function create()
     {
-        //la prima query consiste nell'individuare se esiste già codice 
+        //la prima query consiste nell'individuare se esiste già codice evento dell'utente x
         $sql1 = "SELECT 'codice' FROM eventi WHERE codice=? AND user=?";
         //preparo la prima query
         $stmt = $this->conn->prepare($sql1);
@@ -66,7 +66,7 @@ class Event
             $this->hour = htmlspecialchars(strip_tags($this->hour));
             $this->fotoev = htmlspecialchars(strip_tags($this->fotoev));
 
-            //abbinamento dati con prepared statement
+            //invio valori
             $stmt->bindParam(":name", $this->name);
             $stmt->bindParam(":code", $this->code);
             $stmt->bindParam(":user", $this->user);
@@ -96,7 +96,7 @@ class Event
     {
 
         // query di lettura con filtro specifico di categoria e di utenza
-        $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.categoria=? AND eventi.user=?';
+        $sql = 'SELECT * FROM eventi  JOIN categorie ON eventi.categoria=categorie.id  WHERE eventi.categoria=? AND eventi.user=?';
         //preparazione 
         $stmt = $this->conn->prepare($sql);
 
@@ -104,7 +104,7 @@ class Event
         $key = htmlspecialchars(strip_tags($this->category));
         $this->user = htmlspecialchars(strip_tags($this->user));
 
-        //invio il valore per il parametro con prepared statements
+        //invio il valore per il parametro 
         $stmt->bindParam(1, $key);
         $stmt->bindParam(2, $this->user);
         //esecuzione query
@@ -115,7 +115,8 @@ class Event
     function read()
     {
         //creazione query di lettura
-        $sql = 'SELECT * FROM categorie  JOIN eventi ON categorie.id=eventi.categoria WHERE eventi.user=?';
+
+        $sql = 'SELECT * FROM eventi  JOIN categorie ON eventi.categoria=categorie.id WHERE eventi.user=?';
         //prparazione
         $stmt = $this->conn->prepare($sql);
         //sanifico
@@ -132,7 +133,7 @@ class Event
     function delete()
     {
 
-        //cancellazione dell'evento con il codice pari a quello recuperato dal servizio e utenza
+        //cancellazione dell'evento con il codice pari a quello recuperato dal servizio e utenza x
         $sql = 'DELETE FROM eventi WHERE codice= ? AND user=?';
         // $resultSet=$this->conn->$query;
         //preparazione query
