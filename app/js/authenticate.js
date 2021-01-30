@@ -3,7 +3,7 @@ $(document).ready(function () {
   $(document).on("click", ".signup", function () {
     //click event that launches function formtemplate and manipulates the elements by different method(text,attr,addClass) in dependance from the class button
     formTemplate();
-    $("#registerForm").find("button").text("SIGN IN");
+    $("#registerForm").find("button").text("SIGN UP");
     $("#registerForm").find("button").attr("data-id", "signup");
     $("#registerForm").find("button").addClass("signbtn");
     $(".formRegister").find(".title").text("Iscriviti alla piattaforma");
@@ -157,7 +157,7 @@ function registerTemplate() {
           <button type="submit" class="btn loginbtn mypagebtn">LOGIN</button>
         </div>
         <div class="col-6 align-items-center d-flex justify-content-center signup">
-        <button type="submit" class="btn signbtn mypagebtn">SIGN IN</button>
+        <button type="submit" class="btn signbtn mypagebtn">SIGN UP</button>
       </div>
 `;
 
