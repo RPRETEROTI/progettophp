@@ -122,13 +122,13 @@ function formTemplate() {
         <div class="form-group col-12 col-md-3 offset-md-2 offset-lg-1">
           <label for="usr" class="accesso col-form-label">Username</label>
           <div>
-            <input name="usr" type="text" id="usr" class="credenziali form-control" />
+            <input name="usr" type="text" id="usr"  maxlength="10" class="credenziali form-control" />
           </div>
         </div>
         <div class="form-group col-12 col-md-3 ">
           <label for="usr" class="accesso col-form-label">Password</label>
           <div>
-            <input name="pwd" type="password" id="pwd" class="credenziali form-control" />
+            <input name="pwd" type="password" id="pwd"  maxlength="6" class="credenziali form-control" />
           </div>
         </div>
         <div class="col-12 col-md-3 containerBtn">
