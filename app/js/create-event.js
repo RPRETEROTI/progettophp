@@ -94,11 +94,11 @@ function loadFormBuilder() {
     <div class="form-row">
       <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
           <label for="code">Codice*</label>
-          <input type="text" class="form-control" id="code" name="code" placeholder="Codice" aria-describedby="passwordHelpBlock">
+          <input type="text" class="form-control" id="code" name="code" maxlength="8" placeholder="Codice" aria-describedby="passwordHelpBlock">
       </div>
       <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
           <label for="checkcode"> Conferma codice*</label>
-          <input type="text" class="form-control" id="checkcode" name="checkcode" placeholder="Conferma Codice" aria-describedby="passwordHelpBlock">
+          <input type="text" class="form-control" id="checkcode" name="checkcode" maxlength="8" placeholder="Conferma Codice" aria-describedby="passwordHelpBlock">
       </div>
     </div>
 
@@ -112,7 +112,7 @@ function loadFormBuilder() {
     <div class="form-row">
       <div class="form-group col-12 col-sm-4">
           <label for="price">Prezzo*</label>
-          <input type="number" class="form-control" id="price" name="price" placeholder="Price" aria-describedby="passwordHelpBlock">
+          <input type="number" class="form-control" id="price" min="1" max="99" name="price" placeholder="Price" aria-describedby="passwordHelpBlock">
       </div>
       <div class="form-group col-12 col-sm-12 col-md-8 ">
           <label for="img">Immagine</label>
