@@ -35,7 +35,8 @@ session_start();
 			font-family: Swistblnk Monthoers;
 			margin: auto;
 			font-weight: bold;
-
+			font-size: 2em;
+			text-align: center;
 		}
 
 		.eventcontent {
@@ -63,10 +64,6 @@ session_start();
 		}
 
 		@media screen and (min-width:1280px) {
-			.event-name {
-				font-size: 3em;
-			}
-
 			.container-img-artist {
 				height: 30em;
 
@@ -83,10 +80,6 @@ session_start();
 				font-size: 16px;
 			}
 
-			.event-name {
-				font-size: 2em;
-			}
-
 			.container-img-artist {
 				height: 26em;
 
@@ -100,7 +93,7 @@ session_start();
 			}
 
 			.event-name {
-				font-size: 2em;
+				font-size: 1.2em;
 			}
 
 			.container-img-artist {
