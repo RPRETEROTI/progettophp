@@ -24,7 +24,7 @@ if ($stmt->rowCount() > 0) { // se ci sono categorie
         // costruisco un array associativo ($categories) che rappresenta ogni singolo evento...
 
         $category = array(
-            "name" => $row["nome"],
+            "name" => $row["nomecat"],
             "id" => $row['id'],
         );
         //aggiungo categoria alla lista categories
