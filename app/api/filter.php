@@ -29,7 +29,7 @@ if ($key === 'all') {
     $stmt = $events->filter();
 }
 
-if ($stmt) { //se va a buon fine
+if ($stmt->rowCount() > 0) { //se ci sono eventi
     // creo una coppia events: [lista-di-eventi]
     $events = array();
     $events["events"] = array();
@@ -53,6 +53,10 @@ if ($stmt) { //se va a buon fine
     http_response_code(200); //ok
     echo json_encode($events); //codifica in JSON dell'array creato
 
+} else if ($stmt->rowCount() == 0) { // se non ci sono eventi...
+    http_response_code(404); // response code 404 = no events
+    // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
+    echo json_encode(array("message" => "Non ci sono eventi della categoria selezionata"));
 } else { // se la creazione è fallita...
     http_response_code(503); // response code 503 = service unavailable
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio

@@ -31,6 +31,8 @@ function showFilterEvents(keyFilter) {
       console.log("dataf", data);
     },
     error: function (xhr, err, exc) {
+      var errorJsonMessage = JSON.parse(xhr.responseText);
+      filterNoEventsTemplate(errorJsonMessage); //invoke function of error with error message from server
       console.log("E stato riscontrato un errore", err);
     },
   });
@@ -95,5 +97,22 @@ function readEventsTemplate(data) {
   containerHtml += `</div>`;
 
   // inject to 'artist-section' of our app
+  $(".artist-section").html(containerHtml);
+}
+function filterNoEventsTemplate(errorJsonMessage) {
+  //the function renders the template with the error form arg errorJsonMessage
+
+  containerHtml =
+    `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong> ` +
+    errorJsonMessage["message"] +
+    `
+    </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">  <i class="fas fa-times"></i></span>
+  </button>
+    </div>`;
+
+  // inject to 'messageLogin' of our app
   $(".artist-section").html(containerHtml);
 }
