@@ -57,7 +57,7 @@ if ($stmt->rowCount() > 0) { //se ci sono eventi
     http_response_code(404); // response code 404 = no events
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
     echo json_encode(array("message" => "Non ci sono eventi della categoria selezionata"));
-} else { // se la creazione è fallita...
+} else { // se la lettura è fallita...
     http_response_code(503); // response code 503 = service unavailable
     // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
     echo json_encode(array("message" => "Unable to read events"));

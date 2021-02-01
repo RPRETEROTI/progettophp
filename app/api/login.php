@@ -59,7 +59,7 @@ if (
       //codifico in oogetto json coppia(key:value)
       echo json_encode(array("message" => "Utente registrato"));
       exit();
-   } else { // se la creazione è fallita...
+   } else {
       http_response_code(503); // response code 503 = service unavailable
       // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
       echo json_encode(array("message" => "Unable to login"));
