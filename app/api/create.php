@@ -49,9 +49,8 @@ if (isset($_FILES['uploadimg']['name']) && $hasValue == true) {
             $isFileUploaded = 1;
         }
     } else {
-        //se il formato img non è valido valorizzo variabile img con il tipo di errore e isfileuploaded a false
+        //se il formato img non è valido valorizzo variabile img con il tipo di errore e isfileuploaded resta false
         $imgErrorType = "Il formato del file non è consentito. Solo .png,.jpeg,.jpg!";
-        $isFileUploaded = 0;
     }
 } else {
     $isFileUploaded = 1;

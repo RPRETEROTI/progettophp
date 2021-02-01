@@ -55,18 +55,17 @@ function login(form_data) {
       //if ok
       //redirect
       location.href = "index.php";
-      console.log("datalogins", result);
+      // console.log("datalogins", result);
     },
     error: function (xhr, err, exc) {
-      console.log("E stato riscontrato un errore", err);
-      console.log("E stato riscontrato un errore", xhr.responseText);
-      console.log("xhr", xhr);
-      console.log("E stato riscontrato un errore", exc);
+      // console.log("E stato riscontrato un errore", xhr.responseText);
+
       //if not success retrieve the error and transform  from string to json
       var errorJsonMessage = JSON.parse(xhr.responseText);
       authenticationFailure(errorJsonMessage); //invoke function of error with error message from server
     },
   });
+  return false;
 }
 function signup(form_data) {
   //signup service

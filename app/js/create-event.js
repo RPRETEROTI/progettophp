@@ -178,18 +178,18 @@ function createEvent(formData) {
     type: "POST",
     //enctype: "multipart/form-data",
     dataType: "json",
-    processData: false, //messi a false per recupero automatico dei dati
-    contentType: false, //messi a false per recupero automatico dei dati
+    processData: false, //messi a false per bloccare formattazione jquery
+    contentType: false, //messi a false per formattazione jquery
     data: formData,
     success: function (result) {
-      console.log(result);
+      // console.log(result);
       console.log(formData);
       //se l'ajax ha success sono rediretto in index.php
       location.href = "index.php";
     },
     error: function (xhr, err, exc) {
-      console.log(xhr.responseText);
-      console.log(err);
+      // console.log(xhr.responseText);
+      // console.log(err);
       //se va in error viene salvato il messaggio derivante da server e inserito come arg della funzione failureLogin
       var errorJsonMessage = JSON.parse(xhr.responseText);
       // location.href = "eventcreate.php";

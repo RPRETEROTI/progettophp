@@ -135,7 +135,7 @@ class Event
 
         //cancellazione dell'evento con il codice pari a quello recuperato dal servizio e utenza x
         $sql = 'DELETE FROM eventi WHERE codice= ? AND user=?';
-        // $resultSet=$this->conn->$query;
+        // $resultSet=$this->conn->query($sql);
         //preparazione query
         $stmt = $this->conn->prepare($sql);
         //sanifico dati
