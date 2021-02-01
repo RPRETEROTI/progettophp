@@ -45,7 +45,7 @@ a.icon {
   }
 
   .navigation-menu {
-    height: 20%;
+    height: 21%;
   }
 }
 
@@ -54,13 +54,13 @@ a.icon {
     font-size: 15px;
   }
   .navigation-menu {
-    height: 17%;
+    height: 20%;
   }
 }
 
 @media screen and (min-width: 360px) and (max-width: 767px) {
   .navigation-menu {
-    height: 12%;
+    height: 14%;
   }
 }
 
