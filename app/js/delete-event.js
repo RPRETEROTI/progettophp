@@ -4,7 +4,7 @@ $(document).ready(function () {
     var event_id = $(this).attr("data-event");
     deleteEvent(event_id); //invoke function with arg the event_id
     $("#feedback").fadeIn(2000); //A message of success or error fades in and then fades out in a small interval
-    $("#feedback").fadeOut(3000);
+    $("#feedback").fadeOut(7000);
   });
 });
 // function to delete event with id of event
