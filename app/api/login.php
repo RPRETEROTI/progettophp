@@ -26,40 +26,39 @@ if (
    // associazione valore usr nella proprietà corrispondente dell'istanza 
    $user->username = $data->usr;
    $stmt = $user->login();
-   if ($stmt) { //se login va a buon fine
-      if ($stmt->rowCount() == 0) { //se il numero di record è uguale a 0
-         // Utente non registrato
-         http_response_code(404); //risorsa non trovata
-         //codifico in oogetto json coppia(key:value)
-         echo json_encode(array("message" => "User not found"));
-         //esco
-         exit();
+
+   if ($stmt->rowCount() == 0) { //se il numero di record è uguale a 0
+      // Utente non registrato
+      http_response_code(404); //risorsa non trovata
+      //codifico in oogetto json coppia(key:value)
+      echo json_encode(array("message" => "User not found"));
+      //esco
+      exit();
+   }
+   // Password errata
+   // associazione valore pwd nella proprietà corrispondente dell'istanza 
+   $pwd_digitata = $data->pwd;
+   //recupero il recordset risultato dalla query
+   $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   //valorizzo pwd con quella presente nel database per confrontarla con quella inserita dall'utente
+   $pwd_registrata = $row["passwrd"];
+   if ($pwd_digitata != $pwd_registrata) { //se la password inserita e quella presente in database differiscono
+      http_response_code(404); //resource not found
+      //codifica in oggeto json in coppia chiave valore del messaggio
+      echo json_encode(array("message" => "Password not correct"));
+      exit();
+   }
+   //Success
+   $usr_digitato = $data->usr;
+   if ($stmt->rowCount() > 0) { //se il recordset è maggiore di 0
+      // session_start();
+      if (!isset($_SESSION["utente"])) { //settaggio sessione utente
+         $_SESSION["utente"] = $usr_digitato;
       }
-      // Password errata
-      // associazione valore pwd nella proprietà corrispondente dell'istanza 
-      $pwd_digitata = $data->pwd;
-      //recupero il recordset risultato dalla query
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      //valorizzo pwd con quella presente nel database per confrontarla con quella inserita dall'utente
-      $pwd_registrata = $row["passwrd"];
-      if ($pwd_digitata != $pwd_registrata) { //se la password inserita e quella presente in database differiscono
-         http_response_code(404); //resource not found
-         //codifica in oggeto json in coppia chiave valore del messaggio
-         echo json_encode(array("message" => "Password not correct"));
-         exit();
-      }
-      //Success
-      $usr_digitato = $data->usr;
-      if ($stmt->rowCount() > 0) { //se il recordset è maggiore di 0
-         // session_start();
-         if (!isset($_SESSION["utente"])) { //settaggio sessione utente
-            $_SESSION["utente"] = $usr_digitato;
-         }
-         http_response_code(200); //success
-         //codifico in oogetto json coppia(key:value)
-         echo json_encode(array("message" => "Utente registrato"));
-         exit();
-      }
+      http_response_code(200); //success
+      //codifico in oogetto json coppia(key:value)
+      echo json_encode(array("message" => "Utente registrato"));
+      exit();
    } else { // se la creazione è fallita...
       http_response_code(503); // response code 503 = service unavailable
       // creo un oggetto JSON costituito dalla coppia message: testo-del-messaggio
