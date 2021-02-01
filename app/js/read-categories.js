@@ -14,7 +14,7 @@ function showCategoriesFilter() {
     },
     error: function (xhr, err, exc) {
       console.log(xhr, err, exc);
-      console.log("E stato riscontrato un errore", err);
+      console.log("E stato riscontrato un errore");
     },
   });
   return false;
