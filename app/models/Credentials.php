@@ -25,11 +25,9 @@ class Credentials
         $usr_digitato = htmlspecialchars(strip_tags($this->username));
         //invio il valore per il parametro
         $stmt->bindParam(1, $usr_digitato);
-        // $resultSet=$this->conn->$query;
         //eseguo query
         $stmt->execute();
         return $stmt;
-        // return $resultSet;
     }
     //signup method
     function signup()
@@ -71,6 +69,5 @@ class Credentials
             $_SESSION["errorsignup"] = "Il nome utente non è disponibile"; //settaggio session errorsignup
             return $stmt;
         }
-        // return $resultSet;
     }
 }
